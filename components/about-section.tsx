@@ -19,7 +19,7 @@ export function AboutSection() {
                 Líderes en Soluciones Industriales
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-                Desde 1995, IndustrialTech ha sido el socio de confianza para empresas que buscan soluciones técnicas de
+                IndustrialTech es socio de confianza para empresas que buscan soluciones técnicas de
                 alta calidad. Nuestra experiencia y compromiso con la excelencia nos han posicionado como líderes en el
                 mercado latinoamericano.
               </p>
