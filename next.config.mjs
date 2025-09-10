@@ -3,8 +3,8 @@ const nextConfig = {
   // Configuración de imágenes
   images: {
     unoptimized: true, // Solo si realmente lo necesitas
-    domains: [], // Añade dominios permitidos aquí si cargas imágenes externas
-    formats: ['image/webp', 'image/avif'],
+   domains: [], // Añade dominios permitidos aquí si cargas imágenes externas
+  formats: ['image/webp', 'image/avif'],
   },
   
   // Configuración de compilación
@@ -23,6 +23,8 @@ const nextConfig = {
   // Configuración experimental (opcional)
   experimental: {
     // typedRoutes: true, // Rutas tipadas (Next.js 13.2+)
+suppressHydrationWarning: true,
+
   },
 
   // Variables de entorno
