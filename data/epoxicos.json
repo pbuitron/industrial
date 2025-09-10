@@ -1,0 +1,10 @@
+[
+  {
+    "id": 9,
+    "name": "Epóxico MetalShield Pro",
+    "description": "Recubrimiento epóxico de alta resistencia para metales",
+    "image": "/industrial-epoxy-coating-metal-protection.jpg",
+    "specs": ["Espesor: 200-500 micrones", "Curado: 24 horas", "Resistencia química: Excelente"],
+    "applications": ["Tanques de almacenamiento", "Estructuras marinas", "Equipos químicos"]
+  }
+]

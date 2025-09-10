@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Conector Multifuncional de Tuberias - SEALPRO A",
+    "description": "Acople flexible tipo Slip - DN20 a DN500 - 3/4\" a 20\"",
+    "image": "/sealproA.webp",
+    "specs": [
+      "Material: Acero inoxidable 304 / 316",
+      "Presión: Hasta 25 BAR",
+      "Temperatura: -20°C a 250°C"
+    ],
+    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía", "Industria química"],
+    "table": [
+      {
+        "dn": "DN20 / 3/4\"",
+        "odMinMax": "26 - 30 mm",
+        "pn": "16",
+        "wp": "25",
+        "s": "2.0",
+        "l": "80",
+        "m": "0.5",
+        "nm": "35"
+      },
+      {
+        "dn": "DN25 / 1\"",
+        "odMinMax": "32 - 36 mm",
+        "pn": "16",
+        "wp": "25",
+        "s": "2.0",
+        "l": "85",
+        "m": "0.6",
+        "nm": "40"
+      }
+    ]
+  }
+]

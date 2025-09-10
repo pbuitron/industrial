@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+/*import { Button } from "@/components/ui/button"
 import { ArrowRight, Shield, Wrench, Droplets } from "lucide-react"
 
 export function HeroSection() {
@@ -62,6 +62,75 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+    </section>
+  )
+}
+*/
+
+"use client"
+
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay, Pagination, Navigation } from "swiper/modules"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+
+import { Button } from "@/components/ui/button"
+
+export function HeroSection() {
+  const slides = [
+    {
+      title: "Soluciones Industriales",
+      subtitle: "de Confianza",
+      description: "Reparación y protección de tuberías, equipos y superficies críticas.",
+      cta: "Contáctanos",
+      image: "/pumps_8.jpg"
+    },
+    {
+      title: "Abrazaderas SEALPRO",
+      subtitle: "Reparación inmediata",
+      description: "Sella fugas en minutos sin detener la operación.",
+      cta: "Ver Productos",
+      image: "/carrusel.jpg"
+    },
+    {
+      title: "Recubrimientos Epóxicos",
+      subtitle: "Protección Total",
+      description: "Resistencia a abrasión, impacto, temperatura y ataque químico.",
+      cta: "Solicitar Cotización",
+      image: "/flotacion.webp"
+    }
+  ]
+
+  return (
+    <section id="inicio" className="relative w-full h-[85vh]">
+      <Swiper
+        modules={[Autoplay, Pagination, Navigation]}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        navigation
+        loop
+        className="h-full"
+      >
+        {slides.map((slide, idx) => (
+          <SwiperSlide key={idx}>
+            <div
+              className="h-full w-full bg-cover bg-center flex items-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            >
+              <div className="max-w-3xl px-6 lg:px-12 text-white bg-black/40 rounded-2xl p-8">
+                <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                  {slide.title} <span className="text-primary block">{slide.subtitle}</span>
+                </h1>
+                <p className="mt-4 text-lg lg:text-xl">{slide.description}</p>
+                <Button size="lg" className="mt-6">
+                  {slide.cta}
+                </Button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   )
 }
