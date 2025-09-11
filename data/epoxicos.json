@@ -6,5 +6,13 @@
     "image": "/industrial-epoxy-coating-metal-protection.jpg",
     "specs": ["Espesor: 200-500 micrones", "Curado: 24 horas", "Resistencia química: Excelente"],
     "applications": ["Tanques de almacenamiento", "Estructuras marinas", "Equipos químicos"]
+  },
+  {
+    "id": 10,
+    "name": "Epóxico Reparación Rápida",
+    "description": "Epóxico de curado rápido para reparaciones urgentes",
+    "image": "/fast-curing-epoxy-repair-compound-industrial.jpg",
+    "specs": ["Curado: 30 minutos", "Temperatura aplicación: 5°C a 40°C", "Adherencia: 25 MPa"],
+    "applications": ["Reparaciones de emergencia", "Mantenimiento correctivo", "Sellado de grietas"]
   }
 ]

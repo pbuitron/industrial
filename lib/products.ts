@@ -69,7 +69,7 @@ export const products: Record<string, Product[]> = {
       id: 7,
       name: "Kit Reparación de Fugas con presión - Sealpro",
       description: "Kit completo para reparación de fugas en tuberías en 15 minutos",
-      image: "/pipe-leak-repair-kit-professional-tools.jpg",
+      image: "/kitrf.png",
       specs: ["Incluye:", '1 rollo de fibra de vidrio con resina epóxica (2" - 4" - 6")', '1 rollo de cinta autovulcanizante (1" - 2")', "1 Barra epoxica de curado rápido", "Guantes e instructivo", "Tiempo aplicación: 15 minutos", "Resistencia: 450 PSI", "Duración: Permanente"],
       applications: ["Fugas activas", "Mantenimiento preventivo", "Emergencias industriales"],
     category: "kits"
@@ -78,7 +78,7 @@ export const products: Record<string, Product[]> = {
       id: 8,
       name: "Kit Reparación de Fugas sin presión - SealPRO",
       description: "Solución rápida para sellado temporal de fugas",
-      image: "/temporary-pipe-sealing-kit-industrial.jpg",
+      image: "/kitrf.png",
       specs: ["Incluye:", '1 rollo de fibra de vidrio con resina epóxica (2" - 4" - 6")', "1 Barra epoxica de curado rápido", "Guantes e instructivo", "Tiempo aplicación: 15 minutos", "Resistencia: 450 PSI", "Duración: Permanente"],
 
       applications: ["Reparaciones temporales", "Paradas de planta", "Mantenimiento programado"],

@@ -1,19 +1,85 @@
 [
   {
-    "id": 7,
+    "id": 1,
     "name": "Kit Reparación de Fugas con presión - Sealpro",
     "description": "Kit completo para reparación de fugas en tuberías en 15 minutos",
-    "image": "/pipe-leak-repair-kit-professional-tools.jpg",
+    "image": "/kitrf.png",
     "specs": [
       "Incluye:",
       "1 rollo de fibra de vidrio con resina epóxica (2\" - 4\" - 6\")",
       "1 rollo de cinta autovulcanizante (1\" - 2\")",
-      "1 Barra epoxica de curado rápido",
+      "1 Barra epóxica de curado rápido",
       "Guantes e instructivo",
       "Tiempo aplicación: 15 minutos",
       "Resistencia: 450 PSI",
       "Duración: Permanente"
     ],
-    "applications": ["Fugas activas", "Mantenimiento preventivo", "Emergencias industriales"]
+    "applications": ["Fugas activas", "Mantenimiento preventivo", "Emergencias industriales"],
+    "technicalData": {
+      "headers": ["CÓDIGO", "Descripción", "Contenido"],
+      "rows": [
+        ["SPU0206", "KIT REPARACION DE FUGA CON PRESION", [
+          "1 Rollo de fibra de vidrio con resina epóxica 2\" x 1.8m",
+          "1 Rollo de cinta autovulcanizante 1\" x 3m", 
+          "1 Barra epóxica de curado rápido de 20g",
+          "Guantes de protección",
+          "Instructivo de uso"
+        ]],
+        ["SPU0412", "KIT REPARACION DE FUGA CON PRESION", [
+          "1 Rollo de fibra de vidrio con resina epóxica 4\" x 3.6m",
+          "1 Rollo de cinta autovulcanizante 2\" x 5m", 
+          "1 Barra epóxica de curado rápido de 40g",
+          "Guantes de protección",
+          "Instructivo de uso"
+        ]],
+        ["SPU0612", "KIT REPARACION DE FUGA CON PRESION", [
+          "1 Rollo de fibra de vidrio con resina epóxica 6\" x 3.6m",
+          "1 Rollo de cinta autovulcanizante 2\" x 5m", 
+          "1 Barra epóxica de curado rápido de 40g",
+          "Guantes de protección",
+          "Instructivo de uso"
+        ]]
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Kit Reparación de Fugas sin presión - Sealpro",
+    "description": "Kit completo para reparación de fugas en tuberías en 15 minutos",
+    "image": "/kitrf.png",
+    "specs": [
+      "Incluye:",
+      "1 rollo de fibra de vidrio con resina epóxica (2\" - 4\" - 6\")",
+      "1 rollo de cinta autovulcanizante (1\" - 2\")",
+      "1 Barra epóxica de curado rápido",
+      "Guantes e instructivo",
+      "Tiempo aplicación: 15 minutos",
+      "Resistencia: 450 PSI",
+      "Duración: Permanente"
+    ],
+    "applications": ["Fugas activas", "Mantenimiento preventivo", "Emergencias industriales"],
+    "technicalData": {
+      "headers": ["CÓDIGO", "Descripción", "Contenido"],
+      "rows": [
+        ["SP0206", "KIT REPARACION DE FUGA SIN PRESION", [
+          "1 Rollo de fibra de vidrio con resina epóxica 2\" x 1.8m",
+          "1 Barra epóxica de curado rápido de 20g",
+          "Guantes de protección",
+          "Instructivo de uso"
+        ]],
+        ["SP0412", "KIT REPARACION DE FUGA SIN PRESION", [
+          "1 Rollo de fibra de vidrio con resina epóxica 4\" x 3.6m",
+          "1 Barra epóxica de curado rápido de 40g",
+          "Guantes de protección",
+          "Instructivo de uso"
+        ]],
+        ["SP0612", "KIT REPARACION DE FUGA SIN PRESION", [
+          "1 Rollo de fibra de vidrio con resina epóxica 6\" x 3.6m",
+          "1 Barra epóxica de curado rápido de 40g",
+          "Guantes de protección",
+          "Instructivo de uso"
+        ]]
+      ]
+    }
   }
 ]

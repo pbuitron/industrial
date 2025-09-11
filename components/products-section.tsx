@@ -187,7 +187,7 @@ export function ProductsSection() {
 }
 
 */
-
+/*
 "use client"
 
 import { useState } from "react"
@@ -198,6 +198,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowRight, Wrench, Droplets, Shield } from "lucide-react"
 import { products } from "@/lib/products"   // ⬅️ importamos desde /lib
+import abrazaderas from "@/data/abrazaderas.json"
 
 export function ProductsSection() {
   const [activeTab, setActiveTab] = useState("abrazaderas")
@@ -281,6 +282,162 @@ export function ProductsSection() {
               </div>
             </TabsContent>
           ))}
+        </Tabs>
+      </div>
+    </section>
+  )
+}
+*/
+
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ArrowRight, Wrench, Droplets, Shield } from "lucide-react"
+
+// Importa los datos
+import abrazaderas from "@/data/abrazaderas.json"
+import kits from "@/data/kits.json"
+import epoxicos from "@/data/epoxicos.json"
+
+
+export function ProductsSection() {
+  const [activeTab, setActiveTab] = useState("abrazaderas")
+
+  return (
+    <section id="productos" className="py-20 bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Nuestros Productos</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Soluciones técnicas especializadas para cada necesidad industrial. Calidad certificada y respaldo técnico
+            garantizado.
+          </p>
+        </div>
+
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-12">
+            <TabsTrigger value="abrazaderas" className="flex items-center gap-2">
+              <Wrench className="h-4 w-4" /> Abrazaderas
+            </TabsTrigger>
+            <TabsTrigger value="kits" className="flex items-center gap-2">
+              <Droplets className="h-4 w-4" /> Kits de Reparación
+            </TabsTrigger>
+            <TabsTrigger value="epoxicos" className="flex items-center gap-2">
+              <Shield className="h-4 w-4" /> Epóxicos
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="abrazaderas">
+            <div className="grid md:grid-cols-3 gap-8">
+              {abrazaderas.map((product) => (
+                <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="aspect-video bg-muted">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-xl">{product.name}</CardTitle>
+                    <CardDescription className="text-base">{product.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Especificaciones:</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1">
+                        {product.specs?.map((spec, index) => (
+                          <li key={index}>• {spec}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Aplicaciones:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {product.applications?.map((app, index) => (
+                          <Badge key={index} variant="secondary">
+                            {app}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex gap-2 pt-4">
+                      <Link href={`/productos/abrazaderas/${product.id}`} className="flex-1">
+                        <Button className="w-full">
+                          Ver Detalles <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                      <Button variant="outline">Cotizar</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent value="kits">
+            <div className="grid md:grid-cols-2 gap-8">
+              {kits.map((product) => (
+                <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="aspect-video bg-muted">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-xl">{product.name}</CardTitle>
+                    <CardDescription className="text-base">{product.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <h4 className="font-semibold mb-2">Aplicaciones:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {product.applications?.map((app, index) => (
+                        <Badge key={index} variant="secondary">
+                          {app}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 pt-4">
+                      <Link href={`/productos/kits/${product.id}`} className="flex-1">
+                        <Button className="w-full">Ver Detalles</Button>
+                      </Link>
+                      <Button variant="outline">Cotizar</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent value="epoxicos">
+            <div className="grid md:grid-cols-2 gap-8">
+              {epoxicos.map((product) => (
+                <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="aspect-video bg-muted">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-xl">{product.name}</CardTitle>
+                    <CardDescription className="text-base">{product.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <h4 className="font-semibold mb-2">Aplicaciones:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {product.applications?.map((app, index) => (
+                        <Badge key={index} variant="secondary">
+                          {app}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 pt-4">
+                      <Link href={`/productos/epoxicos/${product.id}`} className="flex-1">
+                        <Button className="w-full">Ver Detalles</Button>
+                      </Link>
+                      <Button variant="outline">Cotizar</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
         </Tabs>
       </div>
     </section>
