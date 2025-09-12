@@ -1,19 +1,24 @@
 "use client"
 
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone, Mail } from "lucide-react"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+  const pathname = usePathname()
+  
+  // Detectar si estamos en una página de producto
+  const isProductPage = pathname?.startsWith('/productos/')
+  
   const navigation = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Productos", href: "#productos" },
-    { name: "Aplicaciones", href: "#aplicaciones" },
-    { name: "Nosotros", href: "#nosotros" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Inicio", href: isProductPage ? "/#inicio" : "#inicio" },
+    { name: "Productos", href: isProductPage ? "/#productos" : "#productos" },
+    { name: "Aplicaciones", href: isProductPage ? "/#aplicaciones" : "#aplicaciones" },
+    { name: "Nosotros", href: isProductPage ? "/#nosotros" : "#nosotros" },
+    { name: "Contacto", href: isProductPage ? "/#contacto" : "#contacto" },
   ]
 
   return (

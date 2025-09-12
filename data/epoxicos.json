@@ -1,18 +1,536 @@
 [
   {
-    "id": 9,
-    "name": "Epóxico MetalShield Pro",
-    "description": "Recubrimiento epóxico de alta resistencia para metales",
-    "image": "/industrial-epoxy-coating-metal-protection.jpg",
-    "specs": ["Espesor: 200-500 micrones", "Curado: 24 horas", "Resistencia química: Excelente"],
-    "applications": ["Tanques de almacenamiento", "Estructuras marinas", "Equipos químicos"]
+    "id": "s-26",
+    "name": "ARCOR S-26",
+    "description": "Recubrimiento epóxico libre de solventes, mezcla de Novolac diseñado particularmente como recubrimiento protector para metales en ambientes altamente agresivos, especialmente aquellos con combinaciones de química, abrasión y temperatura. Excelente en una amplia gama de químicos. Sistema diseñado para aplicación en 1 capa por spray o 2 capas a mano.",
+    "generic_type": "RECUBRIMIENTO EPÓXICO; CURADO CON AMINAS, 100% SÓLIDOS, 0% COV",
+    "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+    "product_url": "https://www.arcorepoxy.com/en/products/arcor-s-26/",
+    "film_thickness": {
+      "hand_application": "10-30 mils por capa (250-750 micrones)",
+      "spray_application": "15-40 mils por capa (375-1000 micrones)",
+      "max_without_slump_hand": "30 mils por capa",
+      "max_without_slump_spray": "40 mils por capa"
+    },
+    "flexibility": "Buena. Muy buena con mat de poliéster o fibra de vidrio; 1.5 oz/ft2 (.5 KG/M2)",
+    "applications": [
+      "Tanques petroquímicos para petróleo crudo",
+      "Diesel",
+      "Aceites combustibles",
+      "Tanques de neutralización",
+      "Tanques cáusticos",
+      "Clarificadores",
+      "Tanques de desmineralización",
+      "Contención secundaria de concreto",
+      "Bombas"
+    ],
+    "temperature_resistance": {
+      "immersion_max": "200°F (93°C)",
+      "immersion_spike": "350°F (177°C) (3 horas)",
+      "dry_max": "325°F (163°C)",
+      "dry_spike": "500°F (260°C) (3 horas)"
+    },
+    "specifications": {
+      "solids_by_volume": "100%",
+      "viscosity": "65,000-85,000 cps",
+      "pot_life": "23 min/KG @ 72°F",
+      "mix_ratio": "2:1 por volumen (Base:Activador)",
+      "mix_ratio_weight": "100 gm: 50 gm",
+      "colors": ["Azul"],
+      "shelf_life": "5 años a 55-95°F (13-35°C)",
+      "coverage": "80 sf/gal @ 20 mils (7.4 M2/Gal)",
+      "weight_per_gallon": "12.5 lbs (5.7 KG)",
+      "abrasion_resistance": "Excelente"
+    },
+    "special_features": [
+      "Sistema de 1 capa por spray",
+      "Sistema de 2 capas a mano",
+      "Bajo coeficiente de fricción mejora el flujo",
+      "Excelente resistencia química"
+    ]
   },
   {
-    "id": 10,
-    "name": "Epóxico Reparación Rápida",
-    "description": "Epóxico de curado rápido para reparaciones urgentes",
-    "image": "/fast-curing-epoxy-repair-compound-industrial.jpg",
-    "specs": ["Curado: 30 minutos", "Temperatura aplicación: 5°C a 40°C", "Adherencia: 25 MPa"],
-    "applications": ["Reparaciones de emergencia", "Mantenimiento correctivo", "Sellado de grietas"]
-  }
-]
+    "id": "8507",
+    "name": "ARCOR 8507",
+    "description": "Compuesto de reconstrucción epóxico comparable al 8506 en diseño de resina y amina. Incorpora perlas cerámicas de malla pequeña adicionales y rellenos minerales de alta dureza para un producto más denso capaz de manejar mayores niveles de impacto, abrasión y resistencias compresivas. Formulación auto-humectante que puede aplicarse sin primer.",
+    "generic_type": "COMPUESTO DE RECONSTRUCCIÓN EPÓXICO CURADO CON AMINAS 100% SÓLIDOS",
+    "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+    "product_url": "https://www.arcorepoxy.com/en/products/arcor-8507/",
+    "film_thickness": {
+      "max_vertical_overhead": "+3/4″ (750 mils, 18.75mm)",
+      "description": "Puede aplicarse en verticales y aéreas, se nivela a un acabado liso sin necesidad de recubrimiento superior"
+    },
+    "flexibility": "Regular",
+    "applications": [
+      "Equipos de manejo de mineral y carbón",
+      "Conductos",
+      "Bombas",
+      "Impulsores",
+      "Hélices",
+      "Válvulas",
+      "Ruedas hidráulicas",
+      "Codos de tubería",
+      "Cualquier aplicación de alto desgaste de inmersión o no inmersión"
+    ],
+    "temperature_resistance": {
+      "inmersion_max": "140°F (60°C)",
+      "immersion_pico": "200°F (93°C) (3 horas)",
+      "dry_max": "325°F (163°C)",
+      "dry_spike": "450°F"
+    },
+    "specifications": {
+      "solids_by_volume": "100%",
+      "viscosity": "Pasta",
+      "pot_life": "23 min/KG @ 75°F",
+      "mix_ratio": "1:1 por volumen (Base:Activador)",
+      "mix_ratio_weight": "100 gm: 90 gm",
+      "colors": ["Azul"],
+      "shelf_life": "5 años a 55-95°F (13-35°C)",
+      "weight_per_gallon": "17.8 lbs (8.1 KG)",
+      "abrasion_resistance": "Excelente",
+      "flexural_strength": "16,800 psi (ASTM D790/7 días)",
+      "compressive_strength": "19,400 psi (ASTM D695/7 días)",
+      "tensile_shear": "2,660 psi (ASTM D1002/acero:acero)"
+    },
+    "special_features": [
+      "Perlas cerámicas de malla múltiple",
+      "Rellenos minerales de alta dureza",
+      "Formulación auto-humectante",
+      "No requiere primer",
+      "Relación de mezcla conveniente 1:1",
+      "Acabado liso sin recubrimiento superior",
+      "Minimiza tiempo de aplicación y retorno"
+    ]
+  },
+  {
+    "id": "8509",
+    "name": "ARCOR 8509",
+    "description": "Compuesto de reconstrucción epóxico comparable al 8507 en diseño de resina con carga comparable y tamaño de malla de perlas cerámicas. Una modificación en agentes de curado proporciona fraguado y curado rápido, con retorno al servicio en tan solo 1 hora. Formulación auto-humectante que puede aplicarse sin primer.",
+    "generic_type": "COMPUESTO DE RECONSTRUCCIÓN EPÓXICO; CURADO CON AMINAS 100% SÓLIDOS; 0% COV",
+    "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+    "product_url": "https://www.arcorepoxy.com/en/products/arcor-8509/",
+    "film_thickness": {
+      "max_vertical_overhead": "+3/4″ (750 mils, 18.75mm)",
+      "description": "Puede aplicarse en verticales y aéreas, se nivela a un acabado liso sin necesidad de recubrimiento superior"
+    },
+    "flexibility": "Regular",
+    "applications": [
+      "Reparación rápida y retorno al servicio para equipos de manejo de mineral y carbón",
+      "Conductos",
+      "Bombas",
+      "Impulsores",
+      "Hélices",
+      "Válvulas",
+      "Ruedas hidráulicas",
+      "Codos de tubería",
+      "Cualquier aplicación de alto desgaste de inmersión o no inmersión"
+    ],
+    "temperature_resistance": {
+      "immersion_max": "140°F (60°C)",
+      "immersion_spike": "200°F (149°C) (3 horas)",
+      "dry_max": "325°F (165°C)",
+      "dry_spike": "450°F"
+    },
+    "specifications": {
+      "solids_by_volume": "100%",
+      "viscosity": "Pasta",
+      "pot_life": "5 min/KG @ 75°F",
+      "mix_ratio": "2:1 por volumen (Base:Activador)",
+      "mix_ratio_weight": "100 gm: 50 gm",
+      "colors": ["Azul"],
+      "shelf_life": "5 años a 55-95°F (13-35°C)",
+      "weight_per_gallon": "15.2 lbs (6.9 KG)",
+      "abrasion_resistance": "Excelente",
+      "flexural_strength": "14,000 psi (ASTM D790/7 días)",
+      "compressive_strength": "17,480 psi (ASTM D695/7 días)",
+      "tensile_shear": "2,360 psi (ASTM D1002/acero:acero)"
+    },
+    "special_features": [
+      "Curado rápido - retorno al servicio en 1 hora",
+      "Perlas cerámicas comparables al 8507",
+      "Formulación auto-humectante",
+      "No requiere primer",
+      "Relación de mezcla conveniente 2:1",
+      "Acabado liso sin recubrimiento superior",
+      "Minimiza dramáticamente tiempo de aplicación y retorno"
+    ],
+    "cure_time": {
+      "full_cure_immersion": "4 horas a 77°F",
+      "return_to_service": "1 hora",
+      "overcoat_window": "20 minutos a 2 horas a 77°F"
+    }
+  },
+  {
+    "id": "slr-50",
+    "name": "ARCOR SLR-50",
+    "description": "Recubrimiento elastomérico híbrido epóxico/uretano de alta elongación, diseñado como recubrimiento de alta resistencia, alta resistencia al desgarre, alta resistencia al impacto que es ideal para combatir cavitación y abrasión. Completamente compatible con recubrimientos epóxicos. El aspecto uretano proporciona resistencia flexible y resistente mientras que el aspecto epóxico proporciona mejor resistencia al agua y química y estabilidad en almacenamiento.",
+    "generic_type": "ELASTOMÉRICO HIBRIDIZADO EPÓXICO/URETANO",
+    "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+    "product_url": "https://www.arcorepoxy.com/en/products/arcor-slr-50/",
+    "film_thickness": {
+      "maximum": "50 mils sin descolgamiento",
+      "description": "Recubrimiento viscoso, fácilmente aplicado por brocha, rodillo, aplicador de cartucho, spray de componentes múltiples"
+    },
+    "flexibility": "Alta elongación, elastomérico",
+    "applications": [
+      "Protección contra cavitación",
+      "Protección contra abrasión",
+      "Pisos de concreto y acero",
+      "Áreas de trabajo",
+      "Pasos de hombre"
+    ],
+    "temperature_resistance": {
+      "immersion_max": "150°F (66°C)",
+      "immersion_spike": "180°F (82°C) (3 horas)",
+      "dry_max": "325°F (163°C)"
+    },
+    "specifications": {
+      "mix_ratio": "2:1 por volumen",
+      "mix_ratio_weight": "100 gm: 50 gm",
+      "self_priming": true,
+      "abrasion_resistance": "Alta",
+      "impact_resistance": "Alta",
+      "tear_resistance": "Alta"
+    },
+    "special_features": [
+      "Alta elongación",
+      "Propiedades elastoméricas",
+      "Tecnología híbrida epóxico/uretano",
+      "Insensible a la humedad",
+      "Auto-cebante",
+      "Elimina sensibilidad a humedad y toxicidad asociada con uretanos tradicionales"
+    ]
+  },
+    {
+      "id": "s-20-rc",
+      "name": "ARCOR S-20 RC",
+      "description": "Versión de curado rápido del S-20, un Novolac epóxico de alta funcionalidad y sin solventes, diseñado particularmente como recubrimiento protector para metales en ambientes altamente agresivos, especialmente con alta exposición a químicos, abrasión y temperaturas elevadas. Excelente en una amplia gama de soluciones cáusticas y ácidos.",
+      "generic_type": "NOVOCAL EPÓXICO 100% SÓLIDOS CON CURADO AMÍNICO, CAPA FINAL",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-s-20-rc/",
+      "film_thickness": [
+        "20-40 mils (1 capa) para aplicación con pulverizador",
+        "15-30 mils por capa (2 capas) para aplicación a mano",
+        "Rango: 15-40 mils"
+      ],
+      "flexibility": "Muy buena. Excelente con esteras de poliéster o fibra de vidrio; 1.5 oz/ft2 (.5 KG/M2)",
+      "applications": [
+        "Tanques de neutralización",
+        "Tanques cáusticos",
+        "Clarificadores",
+        "Tanques de desmineralización",
+        "Canales de drenaje de químicos",
+        "Contención secundaria",
+        "Bombas",
+        "Conductos de salida de FGD",
+        "Absorbedores",
+        "Ventiladores I.D.",
+        "Lavadores (Scrubbers)",
+        "Tanques de barcazas",
+        "Separadores",
+        "Pisos industriales"
+      ],
+      "temperature_resistance": {
+        "immersion_max": "250°F (177°C)",
+        "immersion_spike": "350°F (3 horas)",
+        "dry_max": "400°F (190°C)",
+        "dry_spike": "500°F (3 horas)"
+      },
+      "specifications": {
+        "solids_by_volume": "100%",
+        "viscosity": "65,000-85,000 cps",
+        "pot_life": "5 MIN/100gr @ 72°F (22.2°C)",
+        "mix_ratio": "2:1 por volumen (Base: Activador)",
+        "mix_ratio_weight": "100 gm: 50 gm",
+        "colors": [
+          "Azul",
+          "Gris"
+        ],
+        "vida_util_en_almacen": "5 años a 55-95°F (13-35°C)",
+        "peso_por_galon": "12.6 lbs. (5.7 KG)",
+        "resistencia_a_la_abrasion": "Excelente"
+      }
+    },
+    {
+      "id": "ee-91",
+      "name": "ARCOR EE-91",
+      "description": "Compuesto de reconstrucción epóxico sin solventes diseñado para la protección contra la corrosión y la abrasión de condensadores e intercambiadores de calor. Excelente para inmersión en todos los ambientes acuosos (salados, salobres, potables). Se curará completamente en inmersión en agua.",
+      "generic_type": "COMPUESTO DE RECONSTRUCCIÓN EPÓXICO 100% SÓLIDOS CON CURADO AMÍNICO",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-ee-91/",
+      "film_thickness": [
+        "Máximo: 500 mils verticales",
+        "Se puede aplicar hasta 500 mils sin colapso"
+      ],
+      "flexibility": "Buena a regular - Resistencia a la flexión 10,000 psi",
+      "applications": [
+        "Condensadores",
+        "Intercambiadores de calor",
+        "Tubos de circulación",
+        "Pantallas de agua",
+        "Bombas",
+        "Impulsores",
+        "Filtros",
+        "Válvulas",
+        "Ruedas hidráulicas",
+        "Revestimientos de tanques",
+        "Filtros de intercambio iónico"
+      ],
+      "temperature_resistance": {
+        "immersion_max": "120°F",
+        "dry_max": "200°F"
+      },
+      "specifications": {
+        "solids_by_volume": "100%",
+        "viscosity": "Masilla",
+        "pot_life": "35 MIN / KG @ 72°F",
+        "mix_ratio": "2:1 por volumen (Base: Activador)",
+        "mix_ratio_weight": "100 gm: 48 gm",
+        "colors": [
+          "Gris"
+        ],
+        "vida_util_en_almacen": "5 años a 55-95°F (13-35°C)",
+        "peso_por_galon": "12 lbs (5.44 KG)",
+        "resistencia_a_la_abrasion": "Muy buena"
+      },
+      "certifications": [
+        "Certificado por la NSF para agua potable",
+        "USDA para contacto incidental con alimentos en la producción de carne y aves de corral",
+        "FDA, listado en la Guía CFR 21, Sección 175.300 para uso en contacto repetido con alimentos"
+      ]
+    },
+    {
+      "id": "ee-121",
+      "name": "ARCOR EE-121",
+      "description": "Recubrimiento epóxico Novolac sin solventes, de alta funcionalidad 3.6, adecuado para servicio de inmersión y no inmersión. Diseñado específicamente para resistencia a químicos agresivos y temperaturas elevadas. Produce un recubrimiento resistente a químicos en metales ferrosos y no ferrosos para inmersión completa y en concreto para contención secundaria.",
+      "generic_type": "NOVOCAL EPÓXICO 100% SÓLIDOS 3.6 CON CURADO AMÍNICO, CAPA FINAL",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-ee-121/",
+      "film_thickness": [
+        "Rango: 20-60 mils (.51-1.53 mm) por capa",
+        "Exterior: 2 capas",
+        "Inmersion: 2-3 capas"
+      ],
+      "flexibility": "Buena",
+      "applications": [
+        "Bombas de metanol",
+        "Tanques",
+        "Tubos",
+        "Conducto FGD",
+        "Revestimientos de tanques químicos agresivos",
+        "Áreas de contención secundaria",
+        "Contención industrial agresiva"
+      ],
+      "temperature_resistance": {
+        "immersion_max": "350°F (177°C)",
+        "immersion_spike": "450°F (3 horas)",
+        "dry_max": "450°F",
+        "dry_spike": "525°F (3 horas)",
+        "curado_forzado_recomendado": "250°F @ 4 horas"
+      },
+      "specifications": {
+        "solids_by_volume": "100%",
+        "viscosity": "80,000-105,000 cps",
+        "pot_life": "25 MIN/100gr @ 72°F",
+        "mix_ratio": "2:1 por volumen (Base : Activador)",
+        "mix_ratio_weight": "100 gm: 50 gm",
+        "colors": [
+          "Azul"
+        ],
+        "vida_util_en_almacen": "5 años a 55-95°F (13-35°C)",
+        "cobertura": "26-80 ft²(7.5 M²)/gal/capa",
+        "peso_por_galon": "10.7 lbs (4.76 KG)",
+        "resistencia_a_la_abrasion": "Muy buena"
+      },
+      "chemical_resistance": [
+        "DEA",
+        "MDEA",
+        "MEA"
+      ]
+    },
+    {
+      "id": "s-16",
+      "name": "ARCOR S-16",
+      "description": "Recubrimiento epóxico sin solventes diseñado como recubrimiento protector para metales en servicio de inmersión. Produce un recubrimiento resistente a químicos y flexible, ideal para servicios en ambientes acuosos agresivos (salados, salobres). Mejorado por la química multifuncional, es un recubrimiento multiusos adecuado para servicios con ácidos y cáusticos moderados, y excelente en todos los ambientes acuosos.",
+      "generic_type": "IMPRIMACIÓN/CAPA FINAL EPÓXICA 100% SÓLIDOS CON CURADO AMÍNICO",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-s-16/",
+      "film_thickness": [
+        "Rango: 15-20 mils/capa (.35-.50 mm)",
+        "Inmersión: 2 o 3 capas"
+      ],
+      "flexibility": "Buena; Muy buena con estera de fibra de vidrio; 1.5 oz/ft2 (.5 KG/M2)",
+      "applications": [
+        "Condensadores",
+        "Intercambiadores de calor",
+        "Tubos de circulación",
+        "Pantallas de agua",
+        "Bombas",
+        "Impulsores",
+        "Filtros",
+        "Válvulas",
+        "Ruedas hidráulicas",
+        "Revestimientos de tanques",
+        "Filtros de intercambio iónico"
+      ],
+      "temperature_resistance": {
+        "immersion_max": "150°F (65°C)",
+        "immersion_spike": "190°F (88°C) (3 horas)"
+      },
+      "specifications": {
+        "solids_by_volume": "100%",
+        "viscosity": "130,000 – 260,000 cps",
+        "pot_life": "30 MIN/Gal @ 72°F",
+        "mix_ratio": "2:1 por volumen (Base: Activador)",
+        "mix_ratio_weight": "100 gm :33 gm",
+        "colors": [
+          "Azul",
+          "Blanco",
+          "Rojo",
+          "Gris"
+        ],
+        "vida_util_en_almacen": "5 años a 55-95°F (13-35°C)",
+        "cobertura": "80 ft2 (7.5 M2)/gal (teórico) @ 20mils",
+        "peso_por_galon": "12.6 LBS (5.72 KG)",
+        "resistencia_a_la_abrasion": "Muy buena"
+      },
+      "certifications": [
+        "NSF 61 & AS/NZS 4020:2018 Aprobado para uso en contacto con agua potable",
+        "USDA para contacto incidental con alimentos en la producción de carne y aves de corral",
+        "FDA, listado en la Guía CFR 21, Sección 175.300 para uso en contacto repetido con alimentos"
+      ]
+    },
+    {
+      "id": "8518",
+      "name": "ARCOR 8518",
+      "description": "Recubrimiento epóxico Novolac sin solventes, con relleno cerámico de alta funcionalidad, adecuado para servicio de inmersión y no inmersión, particularmente en ambientes ácidos y alcalinos agresivos con temperaturas elevadas y/o abrasión. El uso de agentes de flexibilidad reactiva le da una excelente flexibilidad sin sacrificar la resistencia química y a la temperatura, haciéndolo ideal para paredes y pisos de tanques grandes sin necesidad de estera de fibra de vidrio.",
+      "generic_type": "CAPA FINAL EPÓXICA 100% SÓLIDOS CON CURADO AMÍNICO",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-8518/",
+      "film_thickness": [
+        "Rango: 20-80 mils (.51-2.04 mm) por capa",
+        "Salpicadura: 2 capas",
+        "Inmersión: 2-3 capas",
+        "Máximo por capa: 80 mils"
+      ],
+      "flexibility": "Muy buena - Excelente con estera de poliéster; 1.5 oz/ft2 (.5 KG/M2)",
+      "applications": [
+        "Revestimientos de tanques químicos agresivos",
+        "Áreas de contención secundaria",
+        "Conductos FGD",
+        "Zonas de mezcla",
+        "Ventiladores I.D.",
+        "Lavadores (Scrubbers)"
+      ],
+      "temperature_resistance": {
+        "immersion_max": "265°F (130°C)",
+        "immersion_spike": "400°F (204°C) (3 horas)",
+        "curado_forzado_recomendado": "120°F @ 8 horas"
+      },
+      "specifications": {
+        "solids_by_volume": "100%",
+        "viscosity": "40,000-65,000 cps",
+        "pot_life": "25 MIN/KG @ 72°F",
+        "mix_ratio": "1:1 por volumen (Base: Activador)",
+        "mix_ratio_weight": "100 gm: 116 gm",
+        "colors": [
+          "Gris"
+        ],
+        "vida_util_en_almacen": "5 años a 55-95°F (13-35°C)",
+        "cobertura": "35 SF @ 20 mils / KG",
+        "peso_por_galon": "10.2 lbs (4.62 KG)",
+        "resistencia_a_la_abrasion": "Muy buena"
+      },
+      "special_features": [
+        "Relleno cerámico",
+        "Baja viscosidad",
+        "Adecuado para aplicación a mano o con pulverizador"
+      ]
+    },
+    {
+      "id": "ee-92",
+      "name": "ARCOR EE-92",
+      "description": "Compuesto de reconstrucción de dos componentes sin solventes, diseñado particularmente como material de reconstrucción/reparación para metales dañados por corrosión, cavitación y erosión.",
+      "generic_type": "COMPUESTO DE RECONSTRUCCIÓN EPÓXICO 100% SÓLIDOS CON CURADO AMÍNICO",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-ee-92/",
+      "film_thickness": [
+        "DFT final especificado por necesidad; Consultar a ARCOR"
+      ],
+      "flexibility": "Buena",
+      "applications": [
+        "Intercambiadores de calor",
+        "Placas divisorias",
+        "Compuertas wicket",
+        "Carcasas e impulsores de bombas",
+        "Conductos de salida de FGD",
+        "Absorbedores",
+        "Ventiladores I.D.",
+        "Lavadores (Scrubbers)",
+        "Tanques de barcazas",
+        "Separadores",
+        "Bombas"
+      ],
+      "temperature_resistance": {
+      "immersion_max": "250ºF(177°C)",
+      "immersion_spike": "350°F (177°C) (3 horas)",
+      "dry_max": "400°F (190°C)",
+      "dry_spike": "500°F (260°C) (3 horas)"
+    },
+      "specifications": {
+        "peso_por_galon": "14.9 lbs./Gal (6.8 KG)",
+        "peso_por_litro": "3.9 lbs. (1.8 KG)/Litro",
+        "tiempo_de_curado_completo": "72 horas a 77°F (25°C)",
+        "ventana_de_recubrimiento": "2-12 horas a 77°F (25°C)"
+      }
+    },
+    {
+      "id": "ee-101",
+      "name": "ARCOR EE-101",
+      "description": "Recubrimiento epóxico Novolac sin solventes, de funcionalidad Ultra 3.6, diseñado para su uso en los ambientes químicos y de alta temperatura más agresivos.",
+      "generic_type": "NOVOCAL ULTRA 100% SÓLIDOS CON CURADO AMÍNICO",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-ee-101/",
+      "film_thickness": [
+        "Recubrimiento de alto rendimiento para ambientes extremos"
+      ],
+      "flexibility": "Buena",
+      "applications": [
+        "Ambientes químicos más agresivos",
+        "Aplicaciones de alta temperatura",
+        "Condiciones de servicio extremas"
+      ],
+      "specifications": {
+        "funcionalidad": "Ultra 3.6",
+        "resistencia_quimica": "Extrema"
+      }
+    },
+    {
+      "id": "s-30",
+      "name": "ARCOR S-30",
+      "description": "Novolac epóxico sin solventes de alta funcionalidad, diseñado particularmente como recubrimiento protector para metales en servicio de inmersión y como imprimación para otros productos ARCOR.",
+      "generic_type": "IMPRIMACIÓN/CAPA FINAL NOVOCAL 100% SÓLIDOS CON CURADO AMÍNICO",
+      "image_url": "https://i0.wp.com/www.arcorepoxy.com/media/2013/01/ARCOR-Header-e1617380077472-scaled.jpg?fit=2560%2C427&ssl=1",
+      "product_url": "https://www.arcorepoxy.com/en/products/arcor-s-30/",
+      "film_thickness": [
+        "Adecuado para aplicación con pulverizador"
+      ],
+      "flexibility": "Buena",
+      "applications": [
+        "Protección de metales en servicio de inmersión",
+        "Imprimación para sistemas ARCOR",
+        "Prevención de la oxidación de superficies recién granalladas"
+      ],
+      "specifications": {
+        "mix_ratio": "2:1 por volumen",
+        "mix_ratio_weight": "100 gramos de base por 52 gramos de activador",
+        "metodo_de_aplicacion": [
+          "pulverizador",
+          "brocha",
+          "rodillo"
+        ]
+      }
+    }
+   
+    
+  ]

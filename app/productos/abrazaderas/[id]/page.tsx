@@ -4,6 +4,7 @@ import { useState } from "react"
 import {use} from 'react'
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Header } from "@/components/header"
 import abrazaderas from "@/data/abrazaderas.json"
 
 export default function AbrazaderaDetail({ params }: { params: Promise<{ id: string }> }) {
@@ -27,23 +28,38 @@ export default function AbrazaderaDetail({ params }: { params: Promise<{ id: str
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-12 px-6">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="max-w-6xl mx-auto py-12 px-6">
       <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
       <p className="text-lg text-muted-foreground mb-6">{product.description}</p>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Imagen */}
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full md:w-1/2 rounded-lg shadow"
-        />
+        {/* Imagen con logo superpuesto */}
+        <div className="relative w-full md:w-1/2">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full rounded-lg shadow"
+          />
+          <img
+            src="/Logo-azul.jpg"
+            alt="Industrial IOT Logo"
+            className="absolute top-2 left-2 w-70 h-auto opacity-80 rounded-sm"
+          />
+        </div>
 
         {/* Info */}
         <div className="flex-1 space-y-6">
+          {product.details && (
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">Detalles</h2>
+            <p className="text-sm text-justify text-gray-700">{product.details}</p>
+          </div>
+        )}
           <div>
             <h2 className="text-2xl font-semibold mb-2">Especificaciones</h2>
-            <ul className="list-disc pl-6 space-y-1">
+            <ul className="text-sm list-disc pl-6 space-y-1">
               {product.specs?.map((spec, i) => (
                 <li key={i}>{spec}</li>
               ))}
@@ -52,13 +68,15 @@ export default function AbrazaderaDetail({ params }: { params: Promise<{ id: str
 
           <div>
             <h2 className="text-2xl font-semibold mb-2">Aplicaciones</h2>
-            <ul className="list-disc pl-6 space-y-1">
+            <ul className="text-sm list-disc pl-6 space-y-1">
               {product.applications?.map((app, i) => (
                 <li key={i}>{app}</li>
               ))}
             </ul>
           </div>
+          
         </div>
+        
       </div>
 
       {/* Datos técnicos con selección */}
@@ -141,6 +159,7 @@ export default function AbrazaderaDetail({ params }: { params: Promise<{ id: str
           </div>
         </DialogContent>
       </Dialog>
+      </div>
     </div>
   )
 }

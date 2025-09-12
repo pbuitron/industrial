@@ -1,20 +1,34 @@
 [
   {
     "id": 1,
-    "name": "Kit Reparación de Fugas con presión - Sealpro",
+    "name": "KIT PARA REPARACIÓN DE FUGAS CON PRESIÓN SEALPRO",
     "description": "Kit completo para reparación de fugas en tuberías en 15 minutos",
     "image": "/kitrf.png",
     "specs": [
-      "Incluye:",
-      "1 rollo de fibra de vidrio con resina epóxica (2\" - 4\" - 6\")",
-      "1 rollo de cinta autovulcanizante (1\" - 2\")",
-      "1 Barra epóxica de curado rápido",
-      "Guantes e instructivo",
+      "Reparaciones bajo fuga activa hasta 150 psi(11 kg/cm2) presión",
+      "No requiere apagado de la línea",
+      "Aplicable en tuberías metálicas y plásticas hasta 18\" de diámetro",
+      "Repara la fuga en 15 minutos",
+      "Resistencia a la presión de hasta 500 psi (35 kg/cm2)",
       "Tiempo aplicación: 15 minutos",
-      "Resistencia: 450 PSI",
-      "Duración: Permanente"
+      "Resistencia a la temperatura hasta 200 °C (392 °F)",
+      "Ideal para refuerzos de tuberías"
     ],
-    "applications": ["Fugas activas", "Mantenimiento preventivo", "Emergencias industriales"],
+    "applications": [
+      "Juntas de expansión", 
+      "Fugas activas", 
+      "Emergencias industriales",
+      "Control de derrames",
+      "Refuerzos de tuberías",
+      "Reparaciones bajo presión"
+    ],
+     "resistencia": [
+      "Petróleo", 
+      "Hidrocarburos",
+      "Gases (LNG, LPG)",
+      "Sales orgánicas",
+      "Consulte a su vendedor"
+        ],
     "technicalData": {
       "headers": ["CÓDIGO", "Descripción", "Contenido"],
       "rows": [
@@ -44,20 +58,33 @@
   },
   {
     "id": 2,
-    "name": "Kit Reparación de Fugas sin presión - Sealpro",
+    "name": "KIT PARA REPARACIÓN DE FUGAS SIN PRESIÓN SEALPRO",
     "description": "Kit completo para reparación de fugas en tuberías en 15 minutos",
     "image": "/kitrf.png",
     "specs": [
-      "Incluye:",
-      "1 rollo de fibra de vidrio con resina epóxica (2\" - 4\" - 6\")",
-      "1 rollo de cinta autovulcanizante (1\" - 2\")",
-      "1 Barra epóxica de curado rápido",
-      "Guantes e instructivo",
+      "Reparaciones bajo fuga activa hasta 150 psi(11 kg/cm2) presión",
+      "No requiere apagado de la línea",
+      "Aplicable en tuberías metálicas y plásticas hasta 18\" de diámetro",
+      "Repara la fuga en 15 minutos",
+      "Resistencia a la presión de hasta 500 psi (35 kg/cm2)",
       "Tiempo aplicación: 15 minutos",
-      "Resistencia: 450 PSI",
-      "Duración: Permanente"
+      "Resistencia a la temperatura hasta 200 °C (392 °F)",
+      "Ideal para refuerzos de tuberías"
     ],
-    "applications": ["Fugas activas", "Mantenimiento preventivo", "Emergencias industriales"],
+    "applications": [
+      "Juntas de expansión", 
+      "Fugas en tuberías sin presión", 
+      "Protección contra corrosión",
+      "Control de derrames",
+      "Refuerzos de tuberías",
+      "Reparaciones en áreas de difícil acceso"],
+   "resistencia": [
+      "Petróleo", 
+      "Hidrocarburos",
+      "Gases (LNG, LPG)",
+      "Sales orgánicas",
+      "Consulte a su vendedor"
+        ],
     "technicalData": {
       "headers": ["CÓDIGO", "Descripción", "Contenido"],
       "rows": [

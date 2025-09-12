@@ -1,252 +1,1244 @@
 [
   {
     "id": 1,
-    "name": "Conector Multifuncional de Tuberías - SEALPRO A",
+    "name": "SEALPRO A - CONECTOR MULTIFUNCIONAL DE TUBERIAS",
     "description": "Acople flexible tipo Slip - DN20 a DN500 - 3/4\" a 20\"",
+    "details": "SEALPRO A es un acople flexible tipo Slip, diseñado para ofrecer una unión confiable y duradera entre tuberías de diferentes materiales o diámetros, sin necesidad de soldaduras ni bridas. Su diseño innovador permite una ligera flexión angular y un controlado desplazamiento axial, garantizando un sellado seguro incluso en condiciones de instalación exigentes. Gracias a su anillo de caucho de alta resistencia, el acople asegura una estanqueidad óptima, mientras que su estructura compacta facilita una instalación rápida, sencilla y segura en espacios reducidos o de difícil acceso. SEALPRO A combina versatilidad, eficiencia y confiabilidad en una sola solución.",
     "image": "/sealproA.webp",
-    "specs": ["Material: Acero inoxidable 304 / 316", "Presión: Hasta 25 BAR", "Temperatura: -20°C a 250°C"],
-    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía", "Industria química"],
+    "specs": [
+      "Material: Acero inoxidable 304 / 316",
+      "Presión: Hasta 30 BAR",
+      "Temperatura: Desde -20°C hasta 250°C (Depende del sello)",
+      "Sellos: NBR / EPDM / FKM"
+    ],
+    "applications": [
+      "Petroquímica",
+      "Minería",
+      "Tratamiento de agua",
+      "Energía",
+      "Industria química"
+    ],
     "technicalData": {
-"headers": [
-  "Diametro Nominal\nDN / Pulgadas",
-  "Rango de tuberias\nODmín - ODmáx (mm)",
-  "Presión Nominal de Barcos\nPN (bar)",
-  "Presión Admisible\nWP (bar)",
-  "Longitud\nS (mm)",
-  "Longitud\nL (mm)",
-  "Perno\nM",
-  "Torque\nNm"
-]
-,
+      "headers": [
+        "Diametro Nominal\nDN / Pulgadas",
+        "Rango de tuberias\nODmín - ODmáx (mm)",
+        "Presión Nominal de Barcos\nPN (bar)",
+        "Presión Admisible\nWP (bar)",
+        "Longitud\nS (mm)",
+        "Longitud\nL (mm)",
+        "Perno\nM",
+        "Torque\nNm"
+      ],
       "rows": [
-        ["DN20 / 3/4\"", "25 - 27", "16", "30", "60", "100", "8", "15"],
-  ["DN25 / 1\"", "32 - 34", "16", "30", "60", "100", "8", "15"],
-  ["DN32 / 1 1/4\"", "40 - 42 - 44.5 ", "16", "30", "60", "100", "8", "20"],
-  ["DN40 / 1 1/2\"", "48 - 54 ", "16", "30", "60", "100", "8", "20"],
-  ["DN50 / 2\"", "57 - 60 - 63 ", "16", "30", "80", "140", "8", "30"],
-  ["DN65 / 2 1/2\"", "76 ", "14", "28", "80", "140", "8", "30"],
-  ["DN80 / 3\"", "89 - 98 ", "14", "28", "105", "203", "10", "50"],
-  ["DN100 / 4\"", "108 - 110 - 114 - 118 ", "14", "25", "105", "203", "12", "50"],
-  ["DN125 / 5\"", "133 - 140 ", "14", "25", "115", "203", "14", "80"],
-  ["DN150 / 6\"", "159 - 168 - 180 ", "12", "24", "115", "203", "14", "80"],
-  ["DN200 / 8\"", "219 - 222 - 225 - 200 ", "8", "16", "155", "255", "14", "100"],
-  ["DN250 / 10\"", "250 - 273 - 280 ", "8", "16", "155", "255", "14", "100"],
-  ["DN300 / 12\"", "315 - 325 ", "7", "14", "155", "255", "14", "100"],
-  ["DN350 / 14\"", "355 - 377 ", "7", "14", "155", "255", "14", "100"],
-  ["DN400 / 16\"", "406 - 426 - 429 ", "6", "12", "155", "255", "14", "120"],
-  ["DN450 / 18\"", "450 - 457 - 478 ", "6", "12", "155", "255", "14", "120"],
-  ["DN500 / 20\"", "508 - 529 - 532 - 500 ", "5", "10", "155", "255", "14", "120"]
+        [
+          "DN20 / 3/4\"",
+          "25 - 27",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN25 / 1\"",
+          "32 - 34",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN32 / 1 1/4\"",
+          "40 - 42 - 44.5 ",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "20"
+        ],
+        [
+          "DN40 / 1 1/2\"",
+          "48 - 54 ",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "20"
+        ],
+        [
+          "DN50 / 2\"",
+          "57 - 60 - 63 ",
+          "16",
+          "30",
+          "80",
+          "140",
+          "8",
+          "30"
+        ],
+        [
+          "DN65 / 2 1/2\"",
+          "76 ",
+          "14",
+          "28",
+          "80",
+          "140",
+          "8",
+          "30"
+        ],
+        [
+          "DN80 / 3\"",
+          "89 - 98 ",
+          "14",
+          "28",
+          "105",
+          "203",
+          "10",
+          "50"
+        ],
+        [
+          "DN100 / 4\"",
+          "108 - 110 - 114 - 118 ",
+          "14",
+          "25",
+          "105",
+          "203",
+          "12",
+          "50"
+        ],
+        [
+          "DN125 / 5\"",
+          "133 - 140 ",
+          "14",
+          "25",
+          "115",
+          "203",
+          "14",
+          "80"
+        ],
+        [
+          "DN150 / 6\"",
+          "159 - 168 - 180 ",
+          "12",
+          "24",
+          "115",
+          "203",
+          "14",
+          "80"
+        ],
+        [
+          "DN200 / 8\"",
+          "219 - 222 - 225 - 200 ",
+          "8",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN250 / 10\"",
+          "250 - 273 - 280 ",
+          "8",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN300 / 12\"",
+          "315 - 325 ",
+          "7",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN350 / 14\"",
+          "355 - 377 ",
+          "7",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN400 / 16\"",
+          "406 - 426 - 429 ",
+          "6",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN450 / 18\"",
+          "450 - 457 - 478 ",
+          "6",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN500 / 20\"",
+          "508 - 529 - 532 - 500 ",
+          "5",
+          "10",
+          "155",
+          "255",
+          "14",
+          "120"
+        ]
       ]
     }
   },
   {
     "id": 2,
-    "name": "Conector con anillo dentado - SEALPRO B",
-    "description": "Acople flexible tipo Slip dentado - DN20 a DN500 3/4\" a 20\"",
+    "name": "SEALPRO B - CONECTOR CON ANILLO DENTADO",
+    "description": "Acople axialmente restringido tipo Slip dentado - DN20 a DN500 3/4\" a 20\"",
     "image": "/sealproB.jpg",
-    "specs": ["Material: Acero inoxidable 304 / 316", "Presión: Hasta 30 BAR", "Temperatura: -20°C a 250°C (Vitón / NBR)"],
-    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía"],
+    "specs": [
+      "Material: Acero inoxidable 304 / 316",
+      "Presión: Hasta 30 BAR",
+      "Temperatura: Desde -20°C hasta 250°C (Depende del sello)",
+      "Sellos: NBR / EPDM / FKM"
+    ],
+    "details": "SEALPRO B es un acople en forma de anillo, diseñado para brindar una unión segura y eficiente en tuberías lisas, sin necesidad de soldaduras ni bridas. Su anillo dentado interno se incrusta firmemente en la pared de la tubería durante el apriete, proporcionando una retención axial confiable y evitando deslizamientos incluso bajo presión. Gracias a su diseño circular, el acople distribuye la carga de manera uniforme, ofreciendo un rendimiento superior frente a vibraciones e impactos, al tiempo que contribuye a la reducción de ruido en los sistemas de conducción. SEALPRO B es sinónimo de seguridad, resistencia y desempeño confiable.",
+    "applications": [
+      "Petroquímica",
+      "Minería",
+      "Cementeras",
+      "Bebidas",
+      "Diversas industrias"
+    ],
     "technicalData": {
       "headers": [
-  "Diametro Nominal\nDN / Pulgadas",
-  "Rango de tuberias\nODmín - ODmáx (mm)",
-  "Presión Nominal de Barcos\nPN (bar)",
-  "Presión Admisible\nWP (bar)",
-  "Longitud\nS (mm)",
-  "Longitud\nL (mm)",
-  "Perno\nM",
-  "Torque\nNm"
-]
-,
+        "Diametro Nominal\nDN / Pulgadas",
+        "Rango de tuberias\nODmín - ODmáx (mm)",
+        "Presión Nominal de Barcos\nPN (bar)",
+        "Presión Admisible\nWP (bar)",
+        "Longitud\nS (mm)",
+        "Longitud\nL (mm)",
+        "Perno\nM",
+        "Torque\nNm"
+      ],
       "rows": [
-        ["DN20 / 3/4\"", "25 - 27", "16", "30", "60", "100", "8", "15"],
-  ["DN25 / 1\"", "32 - 34", "16", "30", "60", "100", "8", "15"],
-  ["DN32 / 1 1/4\"", "40 - 42 - 44.5 ", "16", "30", "60", "100", "8", "20"],
-  ["DN40 / 1 1/2\"", "48 - 54 ", "16", "30", "60", "100", "8", "20"],
-  ["DN50 / 2\"", "57 - 60 - 63 ", "16", "30", "80", "140", "8", "30"],
-  ["DN65 / 2 1/2\"", "76 ", "14", "28", "80", "140", "8", "30"],
-  ["DN80 / 3\"", "89 - 98 ", "14", "28", "105", "203", "10", "50"],
-  ["DN100 / 4\"", "108 - 110 - 114 - 118 ", "14", "25", "105", "203", "12", "50"],
-  ["DN125 / 5\"", "133 - 140 ", "14", "25", "115", "203", "14", "80"],
-  ["DN150 / 6\"", "159 - 168 - 180 ", "12", "24", "115", "203", "14", "80"],
-  ["DN200 / 8\"", "219 - 222 - 225 - 200 ", "8", "16", "155", "255", "14", "100"],
-  ["DN250 / 10\"", "250 - 273 - 280 ", "8", "16", "155", "255", "14", "100"],
-  ["DN300 / 12\"", "315 - 325 ", "7", "14", "155", "255", "14", "100"],
-  ["DN350 / 14\"", "355 - 377 ", "7", "14", "155", "255", "14", "100"],
-  ["DN400 / 16\"", "406 - 426 - 429 ", "6", "12", "155", "255", "14", "120"],
-  ["DN450 / 18\"", "450 - 457 - 478 ", "6", "12", "155", "255", "14", "120"],
-  ["DN500 / 20\"", "508 - 529 - 532 - 500 ", "5", "10", "155", "255", "14", "120"]
+        [
+          "DN20 / 3/4\"",
+          "25 - 27",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN25 / 1\"",
+          "32 - 34",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN32 / 1 1/4\"",
+          "40 - 42 - 44.5 ",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "20"
+        ],
+        [
+          "DN40 / 1 1/2\"",
+          "48 - 54 ",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "20"
+        ],
+        [
+          "DN50 / 2\"",
+          "57 - 60 - 63 ",
+          "16",
+          "30",
+          "80",
+          "140",
+          "8",
+          "30"
+        ],
+        [
+          "DN65 / 2 1/2\"",
+          "76 ",
+          "14",
+          "28",
+          "80",
+          "140",
+          "8",
+          "30"
+        ],
+        [
+          "DN80 / 3\"",
+          "89 - 98 ",
+          "14",
+          "28",
+          "105",
+          "203",
+          "10",
+          "50"
+        ],
+        [
+          "DN100 / 4\"",
+          "108 - 110 - 114 - 118 ",
+          "14",
+          "25",
+          "105",
+          "203",
+          "12",
+          "50"
+        ],
+        [
+          "DN125 / 5\"",
+          "133 - 140 ",
+          "14",
+          "25",
+          "115",
+          "203",
+          "14",
+          "80"
+        ],
+        [
+          "DN150 / 6\"",
+          "159 - 168 - 180 ",
+          "12",
+          "24",
+          "115",
+          "203",
+          "14",
+          "80"
+        ],
+        [
+          "DN200 / 8\"",
+          "219 - 222 - 225 - 200 ",
+          "8",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN250 / 10\"",
+          "250 - 273 - 280 ",
+          "8",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN300 / 12\"",
+          "315 - 325 ",
+          "7",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN350 / 14\"",
+          "355 - 377 ",
+          "7",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN400 / 16\"",
+          "406 - 426 - 429 ",
+          "6",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN450 / 18\"",
+          "450 - 457 - 478 ",
+          "6",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN500 / 20\"",
+          "508 - 529 - 532 - 500 ",
+          "5",
+          "10",
+          "155",
+          "255",
+          "14",
+          "120"
+        ]
       ]
     }
   },
-    {
+  {
     "id": 3,
-    "name": "Conector con anillo dentado - SEALPRO B",
-    "description": "Acople flexible tipo Slip dentado - DN20 a DN500 3/4\" a 20\"",
+    "name": "SEALPRO C - ABRAZADERA PARA REPARACIÓN – ONE CLIP",
+    "description": "Abrazadera metálica para reparación de fugas - DN20 a DN500 - 3/4\" a 20\"",
     "image": "/sealproC.jpg",
-    "specs": ["Material: Acero inoxidable 304 / 316", "Presión: Hasta 30 BAR", "Temperatura: -20°C a 250°C (Vitón / NBR)"],
-    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía"],
+    "specs": [
+      "Material: Acero inoxidable 304 / 316",
+      "Presión: Hasta 30 BAR",
+      "Temperatura: Desde -20°C hasta 250°C (Depende del sello)",
+      "Sellos: NBR / EPDM / FKM"
+    ],
+    "details": "Diseñado para reparaciones inmediatas en tuberías. Sella perforaciones, fisuras o rupturas ocasionadas por envejecimiento, desgaste o corrosión. Su Instalación es rápida y sencilla, sin necesidad de herramientas especiales, tambien ofrece un sellado seguro y eficiente, ideal para intervenciones de emergencia y mantenimiento preventivo o correctivo.",
+    "applications": [
+      "Industria química",
+      "Minería",
+      "Tratamiento de agua",
+      "Gas natural",
+      "Petróleo"
+    ],
     "technicalData": {
       "headers": [
-  "Diametro Nominal\nDN / Pulgadas",
-  "Rango de tuberias\nODmín - ODmáx (mm)",
-  "Presión Nominal de Barcos\nPN (bar)",
-  "Presión Admisible\nWP (bar)",
-  "Longitud\nS (mm)",
-  "Longitud\nL (mm)",
-  "Perno\nM",
-  "Torque\nNm"
-],
+        "Diametro Nominal\nDN / Pulgadas",
+        "Rango de tuberias\nODmín - ODmáx (mm)",
+        "Presión Nominal de Barcos\nPN (bar)",
+        "Presión Admisible\nWP (bar)",
+        "Longitud\nS (mm)",
+        "Longitud\nL (mm)",
+        "Perno\nM",
+        "Torque\nNm"
+      ],
       "rows": [
-        ["DN20 / 3/4\"", "25 - 27", "16", "30", "60", "100", "8", "15"],
-  ["DN25 / 1\"", "32 - 34", "16", "30", "60", "100", "8", "15"],
-  ["DN32 / 1 1/4\"", "40 - 42 - 44.5 ", "16", "30", "60", "100", "8", "20"],
-  ["DN40 / 1 1/2\"", "48 - 54 ", "16", "30", "60", "100", "8", "20"],
-  ["DN50 / 2\"", "57 - 60 - 63 ", "16", "30", "80", "140", "8", "30"],
-  ["DN65 / 2 1/2\"", "76 ", "14", "28", "80", "140", "8", "30"],
-  ["DN80 / 3\"", "89 - 98 ", "14", "28", "105", "203", "10", "50"],
-  ["DN100 / 4\"", "108 - 110 - 114 - 118 ", "14", "25", "105", "203", "12", "50"],
-  ["DN125 / 5\"", "133 - 140 ", "14", "25", "115", "203", "14", "80"],
-  ["DN150 / 6\"", "159 - 168 - 180 ", "12", "24", "115", "203", "14", "80"],
-  ["DN200 / 8\"", "219 - 222 - 225 - 200 ", "8", "16", "155", "255", "14", "100"],
-  ["DN250 / 10\"", "250 - 273 - 280 ", "8", "16", "155", "255", "14", "100"],
-  ["DN300 / 12\"", "315 - 325 ", "7", "14", "155", "255", "14", "100"],
-  ["DN350 / 14\"", "355 - 377 ", "7", "14", "155", "255", "14", "100"],
-  ["DN400 / 16\"", "406 - 426 - 429 ", "6", "12", "155", "255", "14", "120"],
-  ["DN450 / 18\"", "450 - 457 - 478 ", "6", "12", "155", "255", "14", "120"],
-  ["DN500 / 20\"", "508 - 529 - 532 - 500 ", "5", "10", "155", "255", "14", "120"]
+        [
+          "DN20 / 3/4\"",
+          "25 - 27",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN25 / 1\"",
+          "32 - 34",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN32 / 1 1/4\"",
+          "40 - 42 - 44.5 ",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "20"
+        ],
+        [
+          "DN40 / 1 1/2\"",
+          "48 - 54 ",
+          "16",
+          "30",
+          "60",
+          "100",
+          "8",
+          "20"
+        ],
+        [
+          "DN50 / 2\"",
+          "57 - 60 - 63 ",
+          "16",
+          "30",
+          "80",
+          "140",
+          "8",
+          "30"
+        ],
+        [
+          "DN65 / 2 1/2\"",
+          "76 ",
+          "14",
+          "28",
+          "80",
+          "140",
+          "8",
+          "30"
+        ],
+        [
+          "DN80 / 3\"",
+          "89 - 98 ",
+          "14",
+          "28",
+          "105",
+          "203",
+          "10",
+          "50"
+        ],
+        [
+          "DN100 / 4\"",
+          "108 - 110 - 114 - 118 ",
+          "14",
+          "25",
+          "105",
+          "203",
+          "12",
+          "50"
+        ],
+        [
+          "DN125 / 5\"",
+          "133 - 140 ",
+          "14",
+          "25",
+          "115",
+          "203",
+          "14",
+          "80"
+        ],
+        [
+          "DN150 / 6\"",
+          "159 - 168 - 180 ",
+          "12",
+          "24",
+          "115",
+          "203",
+          "14",
+          "80"
+        ],
+        [
+          "DN200 / 8\"",
+          "219 - 222 - 225 - 200 ",
+          "8",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN250 / 10\"",
+          "250 - 273 - 280 ",
+          "8",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN300 / 12\"",
+          "315 - 325 ",
+          "7",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN350 / 14\"",
+          "355 - 377 ",
+          "7",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN400 / 16\"",
+          "406 - 426 - 429 ",
+          "6",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN450 / 18\"",
+          "450 - 457 - 478 ",
+          "6",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN500 / 20\"",
+          "508 - 529 - 532 - 500 ",
+          "5",
+          "10",
+          "155",
+          "255",
+          "14",
+          "120"
+        ]
       ]
     }
   },
   {
     "id": 4,
-    "name": "Abrazadera de Reparación Rápida - SEALPRO D",
-    "description": "Abrazadera metálica para reparación de fugas - DN20 a DN500 - 3/4\" a 20\"",
+    "name": "SEALPRO D - ABRAZADERA PARA REPARACIÓN - DOUBLE CLIP",
+    "description": "Abrazadera flexible de 2 cuerpos para unión y reparación de tuberías. - DN20 a DN500 - 3/4\" a 20\"",
     "image": "/sealproD.jpg",
-    "specs": ["Material: Acero inoxidable 304 / 316", "Presión: Hasta 30 BAR", "Temperatura: -20°C a 250°C (Vitón / NBR)"],
-    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía"],
+    "specs": [
+      "Material: Acero inoxidable 304 / 316",
+      "Presión: Hasta 30 BAR",
+      "Temperatura: Desde -20°C hasta 250°C (Depende del sello)",
+      "Sellos: NBR / EPDM / FKM"
+    ],
+    
+    "details": "SEALPRO D Combina funciones de reparación, unión y compensación axial en un solo dispositivo. Optimiza la absorción de vibraciones y la reducción de ruidos estructurales. Su diseño avanzado garantiza estanqueidad y máxima seguridad en la conexión, aportando versatilidad y valor añadido en sistemas de conducción exigentes.",
+    "applications": [
+      "Petroquímica",
+      "Minería",
+      "Tratamiento de agua",
+      "Cementeras",
+      "Energía",
+      "Diversas industrias"
+    ],
     "technicalData": {
-            "headers": [
-  "Diametro Nominal\nDN / Pulgadas",
-  "Rango de tuberias\nODmín - ODmáx (mm)",
-  "Presión Admisible\nWP (bar)",
-  "Longitud\nS (mm)",
-  "Longitud\nL (mm)",
-  "Perno\nM",
-  "Torque\nNm"
-],
+      "headers": [
+        "Diametro Nominal\nDN / Pulgadas",
+        "Rango de tuberias\nODmín - ODmáx (mm)",
+        "Presión Admisible\nWP (bar)",
+        "Longitud\nS (mm)",
+        "Longitud\nL (mm)",
+        "Perno\nM",
+        "Torque\nNm"
+      ],
       "rows": [
-["DN32\n1 1/4\"", "42 - 45", "32", "60", "100", "8", "15"],
-  ["DN40\n1 1/2\"", "48 - 54", "32", "60", "100", "8", "15"],
-  ["DN50\n2\"", "57 - 60 - 63", "32", "60", "100", "8", "30"],
-  ["DN65\n2 1/2\"", "76 - 80", "28", "80", "139", "8", "30"],
-  ["DN80\n3\"", "89", "28", "107", "203", "10", "30"],
-  ["DN100\n4\"", "108 - 110 - 114 - 118", "28", "107", "203", "10", "50"],
-  ["DN125\n5\"", "133 - 140", "28", "115", "203", "12", "50"],
-  ["DN150\n6\"", "159 - 168 - 170", "24", "116", "203", "12", "80"],
-  ["DN200\n8\"", "200 - 219", "16", "155", "255", "14", "80"],
-  ["DN250\n10\"", "254 - 273", "16", "155", "255", "14", "100"],
-  ["DN300\n12\"", "315 - 325", "16", "155", "255", "14", "100"],
-  ["DN350\n14\"", "355 - 377", "14", "155", "255", "14", "100"],
-  ["DN400\n16\"", "400 - 406 - 426 - 429", "14", "155", "255", "14", "100"],
-  ["DN450\n18\"", "478", "12", "155", "255", "14", "120"],
-  ["DN500\n20\"", "500 - 508 - 530", "10", "155", "255", "14", "120"],
-  ["DN550\n22\"", "560", "9", "155", "255", "14", "120"],
-  ["DN600\n24\"", "609 - 630 - 635", "8", "155", "255", "16", "120"],
-  ["DN700\n28\"", "711 - 720 - 738", "7", "155", "255", "16", "150"],
-  ["DN750\n30\"", "762", "7", "155", "255", "16", "150"],
-  ["DN800\n32\"", "812 - 842", "6", "155", "255", "16", "150"],
-  ["DN900\n36\"", "914 - 920 - 945", "5", "155", "255", "16", "150"],
-  ["DN1000\n40\"", "1016 - 1020 - 1048", "4", "155", "255", "16", "150"]
+        [
+          "DN32\n1 1/4\"",
+          "42 - 45",
+          "32",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN40\n1 1/2\"",
+          "48 - 54",
+          "32",
+          "60",
+          "100",
+          "8",
+          "15"
+        ],
+        [
+          "DN50\n2\"",
+          "57 - 60 - 63",
+          "32",
+          "60",
+          "100",
+          "8",
+          "30"
+        ],
+        [
+          "DN65\n2 1/2\"",
+          "76 - 80",
+          "28",
+          "80",
+          "139",
+          "8",
+          "30"
+        ],
+        [
+          "DN80\n3\"",
+          "89",
+          "28",
+          "107",
+          "203",
+          "10",
+          "30"
+        ],
+        [
+          "DN100\n4\"",
+          "108 - 110 - 114 - 118",
+          "28",
+          "107",
+          "203",
+          "10",
+          "50"
+        ],
+        [
+          "DN125\n5\"",
+          "133 - 140",
+          "28",
+          "115",
+          "203",
+          "12",
+          "50"
+        ],
+        [
+          "DN150\n6\"",
+          "159 - 168 - 170",
+          "24",
+          "116",
+          "203",
+          "12",
+          "80"
+        ],
+        [
+          "DN200\n8\"",
+          "200 - 219",
+          "16",
+          "155",
+          "255",
+          "14",
+          "80"
+        ],
+        [
+          "DN250\n10\"",
+          "254 - 273",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN300\n12\"",
+          "315 - 325",
+          "16",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN350\n14\"",
+          "355 - 377",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN400\n16\"",
+          "400 - 406 - 426 - 429",
+          "14",
+          "155",
+          "255",
+          "14",
+          "100"
+        ],
+        [
+          "DN450\n18\"",
+          "478",
+          "12",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN500\n20\"",
+          "500 - 508 - 530",
+          "10",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN550\n22\"",
+          "560",
+          "9",
+          "155",
+          "255",
+          "14",
+          "120"
+        ],
+        [
+          "DN600\n24\"",
+          "609 - 630 - 635",
+          "8",
+          "155",
+          "255",
+          "16",
+          "120"
+        ],
+        [
+          "DN700\n28\"",
+          "711 - 720 - 738",
+          "7",
+          "155",
+          "255",
+          "16",
+          "150"
+        ],
+        [
+          "DN750\n30\"",
+          "762",
+          "7",
+          "155",
+          "255",
+          "16",
+          "150"
+        ],
+        [
+          "DN800\n32\"",
+          "812 - 842",
+          "6",
+          "155",
+          "255",
+          "16",
+          "150"
+        ],
+        [
+          "DN900\n36\"",
+          "914 - 920 - 945",
+          "5",
+          "155",
+          "255",
+          "16",
+          "150"
+        ],
+        [
+          "DN1000\n40\"",
+          "1016 - 1020 - 1048",
+          "4",
+          "155",
+          "255",
+          "16",
+          "150"
+        ]
       ]
     }
   },
   {
     "id": 5,
-    "name": "Abrazadera de Reparación Rápida - SEALPRO D",
-    "description": "Abrazadera metálica para reparación de fugas - DN20 a DN500 - 3/4\" a 20\"",
+    "name": "SEALPRO E - ABRAZADERA PARA REPARACIÓN - PLACA SIMPLE",
+    "description": "Dispositivo especializado para la reparación de microperforaciones",
     "image": "/sealproE.jpg",
-    "specs": ["Material: Acero inoxidable 304 / 316", "Presión: Hasta 30 BAR", "Temperatura: -20°C a 250°C (Vitón / NBR)"],
-    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía"],
+    "specs": [
+      "Material: Acero inoxidable 304",
+      "Presión: Hasta 16 BAR",
+      "Temperatura: -30°C a 130°C",
+      "Sellos: EPDM"
+      
+    ],
+    "details": "Repara de forma segura microperforaciones y fisuras ocasionadas por corrosión o envejecimiento. Capaz de sellar fugas bajo presión sin sustituir la tubería afectada. Ofrece una solución práctica y eficiente que no requiere herramientas especiales. Su diseño optimizado permite un uso general con mínimos requerimientos sobre la forma o grado de ovalidad del tubo.",
+    "applications": [
+      "Agua y saneamiento",
+      "Sales orgánicas",
+      "Ozono / Rayos UV / Bases suaves",
+      "Vapor < 130°C"
+    ],
     "technicalData": {
       "headers": [
-  
-  "Rango de tuberias\nODmín - ODmáx (mm)",
-  "Presión Admisible\nWP (bar)",
-  "Longitud (mm)",
-  "Perno\nM",
-  "Torque\nNm"
-],
+        "Rango de tuberias \nODmín - ODmáx (mm)",
+        "Presión Admisible \nWP (bar)",
+        "Longitud (mm)",
+        "Perno \nM",
+        "Torque \nNm"
+      ],
       "rows": [
-  ["59 - 67", "16", "150 - 600", "12", "50"],
-  ["65 - 73", "16", "150 - 600", "12", "50"],
-  ["69 - 76", "16", "150 - 600", "12", "50"],
-  ["75 - 83", "16", "150 - 600", "14", "80"],
-  ["86 - 94", "16", "150 - 600", "14", "80"],
-  ["108 - 118", "16", "150 - 600", "14", "80"],
-  ["113 - 121", "16", "150 - 600", "14", "80"],
-  ["121 - 131", "16", "150 - 600", "14", "80"],
-  ["126 - 136", "16", "150 - 600", "14", "80"],
-  ["132 - 142", "16", "150 - 600", "14", "80"],
-  ["145 - 155", "16", "150 - 600", "14", "80"],
-  ["151 - 161", "16", "150 - 600", "14", "80"],
-  ["159 - 170", "16", "150 - 600", "14", "80"],
-  ["166 - 177", "16", "150 - 600", "14", "80"],
-  ["170 - 180", "16", "150 - 600", "14", "80"],
-  ["174 - 184", "16", "150 - 600", "14", "80"],
-  ["179 - 189", "16", "150 - 600", "14", "80"],
-  ["189 - 199", "16", "150 - 600", "14", "80"],
-  ["218 - 228", "16", "150 - 600", "16", "100"],
-  ["222 - 233", "10", "150 - 600", "16", "100"],
-  ["229 - 239", "10", "150 - 600", "16", "100"],
-  ["236 - 246", "10", "150 - 600", "16", "100"],
-  ["248 - 258", "10", "150 - 600", "16", "100"],
-  ["250 - 260", "10", "150 - 600", "16", "100"],
-  ["252 - 263", "10", "150 - 600", "16", "100"],
-  ["261 - 271", "10", "150 - 600", "16", "100"],
-  ["271 - 281", "10", "150 - 600", "16", "100"],
-  ["280 - 291", "10", "150 - 600", "16", "100"],
-  ["288 - 298", "10", "150 - 600", "16", "100"],
-  ["298 - 309", "10", "150 - 600", "16", "120"],
-  ["300 - 310", "10", "150 - 600", "16", "120"],
-  ["304 - 314", "10", "150 - 600", "16", "120"],
-  ["321 - 331", "10", "150 - 600", "16", "120"],
-  ["333 - 343", "10", "150 - 600", "16", "120"],
-  ["340 - 351", "10", "150 - 600", "16", "120"],
-  ["348 - 358", "10", "150 - 600", "16", "120"],
-  ["356 - 366", "10", "150 - 600", "16", "120"]
+        [
+          "59 - 67",
+          "16",
+          "150 - 600",
+          "12",
+          "50"
+        ],
+        [
+          "65 - 73",
+          "16",
+          "150 - 600",
+          "12",
+          "50"
+        ],
+        [
+          "69 - 76",
+          "16",
+          "150 - 600",
+          "12",
+          "50"
+        ],
+        [
+          "75 - 83",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "86 - 94",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "108 - 118",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "113 - 121",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "121 - 131",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "126 - 136",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "132 - 142",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "145 - 155",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "151 - 161",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "159 - 170",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "166 - 177",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "170 - 180",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "174 - 184",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "179 - 189",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "189 - 199",
+          "16",
+          "150 - 600",
+          "14",
+          "80"
+        ],
+        [
+          "218 - 228",
+          "16",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "222 - 233",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "229 - 239",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "236 - 246",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "248 - 258",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "250 - 260",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "252 - 263",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "261 - 271",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "271 - 281",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "280 - 291",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "288 - 298",
+          "10",
+          "150 - 600",
+          "16",
+          "100"
+        ],
+        [
+          "298 - 309",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "300 - 310",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "304 - 314",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "321 - 331",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "333 - 343",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "340 - 351",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "348 - 358",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ],
+        [
+          "356 - 366",
+          "10",
+          "150 - 600",
+          "16",
+          "120"
+        ]
       ]
     }
   },
   {
     "id": 6,
-    "name": "Abrazadera de Reparación Rápida - SEALPRO D",
-    "description": "Abrazadera metálica para reparación de fugas - DN20 a DN500 - 3/4\" a 20\"",
+    "name": "SEALPRO CE - ABRAZADERA PARA REPARACIÓN - CODOS",
+    "description": "Diseñada para la reparación eficiente de tuberías en codos y tramos curvos",
     "image": "/sealproCE.jpg",
-    "specs": ["Material: Acero inoxidable 304 / 316", "Presión: Hasta 30 BAR", "Temperatura: -20°C a 250°C (Vitón / NBR)"],
-    "applications": ["Petroquímica", "Minería", "Tratamiento de agua", "Energía"],
+    "specs": [
+      "Material: Acero inoxidable 304",
+      "Presión: Hasta 16 BAR",
+      "Temperatura: -30°C a 130°C",
+      "Sellos: EPDM"
+    ],
+    "details": "Especialmente desarrollada para reparar tuberías en zonas curvas o de codo afectadas por impactos de presión, envejecimiento o corrosión. Su diseño estructural se adapta a arcos de 30° a 90°, garantizando una instalación rápida, precisa y con excelente sellado. Proporciona una solución segura en condiciones donde las abrazaderas rectas convencionales no son aplicables.",
+    "applications": [
+      "Petroquímica",
+      "Minería",
+      "Tratamiento de agua",
+      "Energía"
+    ],
     "technicalData": {
       "headers": [
-  "Diametro Nominal\nDN / Pulgadas",
-  "Rango de tuberias\nODmín - ODmáx (mm)",
-  "Presión Admisible\nWP (bar)",
-  "Longitud\nS (mm)",
-  "Perno\nM" 
-],
+        "Diametro Nominal\nDN / Pulgadas",
+        "Rango de tuberias\nODmín - ODmáx (mm)",
+        "Presión Admisible\nWP (bar)",
+        "Longitud\nS (mm)",
+        "Perno\nM"
+      ],
       "rows": [
-        ["DN25\n1\"", "34", "16", "30*15", "M12*90*1"],
-  ["DN40\n1 1/2\"", "48.6", "16", "50*20", "M12*90*1"],
-  ["DN50\n2\"", "60.5", "16", "80*30", "M14*135*2"],
-  ["DN65\n2 1/2\"", "76.8", "16", "80*30", "M14*135*2"],
-  ["DN80\n3\"", "89.1", "16", "100*40", "M14*135*2"],
-  ["DN100\n4\"", "108 / 110 / 114", "16", "120*50", "M14*150*2"],
-  ["DN125\n5\"", "133 / 140", "16", "120*50", "M16*150*2"],
-  ["DN150\n6\"", "159 / 168", "16", "150*80", "M16*150*2"],
-  ["DN200\n8\"", "219", "12", "200*100", "M16*150*2"],
-  ["DN250\n10\"", "250 / 273", "12", "200*100", "M16*150*2"],
-  ["DN300\n12\"", "315 / 325", "12", "200*100", "M16*150*2"]
+        [
+          "DN25\n1\"",
+          "34",
+          "16",
+          "30*15",
+          "M12*90*1"
+        ],
+        [
+          "DN40\n1 1/2\"",
+          "48.6",
+          "16",
+          "50*20",
+          "M12*90*1"
+        ],
+        [
+          "DN50\n2\"",
+          "60.5",
+          "16",
+          "80*30",
+          "M14*135*2"
+        ],
+        [
+          "DN65\n2 1/2\"",
+          "76.8",
+          "16",
+          "80*30",
+          "M14*135*2"
+        ],
+        [
+          "DN80\n3\"",
+          "89.1",
+          "16",
+          "100*40",
+          "M14*135*2"
+        ],
+        [
+          "DN100\n4\"",
+          "108 / 110 / 114",
+          "16",
+          "120*50",
+          "M14*150*2"
+        ],
+        [
+          "DN125\n5\"",
+          "133 / 140",
+          "16",
+          "120*50",
+          "M16*150*2"
+        ],
+        [
+          "DN150\n6\"",
+          "159 / 168",
+          "16",
+          "150*80",
+          "M16*150*2"
+        ],
+        [
+          "DN200\n8\"",
+          "219",
+          "12",
+          "200*100",
+          "M16*150*2"
+        ],
+        [
+          "DN250\n10\"",
+          "250 / 273",
+          "12",
+          "200*100",
+          "M16*150*2"
+        ],
+        [
+          "DN300\n12\"",
+          "315 / 325",
+          "12",
+          "200*100",
+          "M16*150*2"
+        ]
       ]
     }
   }
 ]
-

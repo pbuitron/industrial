@@ -3,9 +3,9 @@ import { Award, Users, Globe, Clock } from "lucide-react"
 
 const stats = [
   { icon: Award, label: "Certificaciones", value: "15+", description: "ISO, ASME, ANSI" },
-  { icon: Users, label: "Clientes Satisfechos", value: "2,500+", description: "En toda Latinoamérica" },
-  { icon: Globe, label: "Países", value: "12", description: "Presencia internacional" },
-  { icon: Clock, label: "Años de Experiencia", value: "25+", description: "Liderando el mercado" },
+  { icon: Users, label: "Clientes Satisfechos", value: "1,000+", description: "En toda Latinoamérica" },
+  { icon: Globe, label: "Países", value: "4", description: "Distribuidor Nacional de ARCOR" },
+  { icon: Clock, label: "Años de Experiencia", value: "5+", description: "Liderando el mercado Peruano" },
 ]
 
 export function AboutSection() {
@@ -19,9 +19,9 @@ export function AboutSection() {
                 Líderes en Soluciones Industriales
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
-                IndustrialTech es socio de confianza para empresas que buscan soluciones técnicas de
+                Industrial IOT es socio de confianza para empresas que buscan soluciones técnicas de
                 alta calidad. Nuestra experiencia y compromiso con la excelencia nos han posicionado como líderes en el
-                mercado latinoamericano.
+                mercado nacional.
               </p>
             </div>
 

@@ -55,9 +55,9 @@ export function ContactSection() {
                 <p className="text-muted-foreground">
                   El Agustino
                   <br />
-                 Lima - Perú
+                 Lima 15006
                   <br />
-                  Lima 15006
+                  Lima, Perú
                 </p>
               </CardContent>
             </Card>
@@ -71,8 +71,10 @@ export function ContactSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  +51 +936 312 086
-                  
+                  +51 936 312 086
+                </p>
+                <p className="text-muted-foreground">
+                  +51 983 411 735
                 </p>
               </CardContent>
             </Card>
@@ -177,7 +179,9 @@ export function ContactSection() {
                         <SelectItem value="abrazaderas">Abrazaderas Industriales</SelectItem>
                         <SelectItem value="kits">Kits de Reparación</SelectItem>
                         <SelectItem value="epoxicos">Epóxicos para Metales</SelectItem>
-                        <SelectItem value="todos">Todos los productos</SelectItem>
+                        <SelectItem value="Servicio de Recubrimiento">Servicio de Recubrimiento</SelectItem>
+                        <SelectItem value="Fabricacion de Pernos">Fabricacion de Pernos</SelectItem>
+                        <SelectItem value="Reparación de bombas">Reparación de bombas</SelectItem>
                         <SelectItem value="otro">Otro</SelectItem>
                       </SelectContent>
                     </Select>
