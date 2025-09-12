@@ -1,27 +1,185 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# ========================================
+# DEPENDENCIES
+# ========================================
+# Node.js dependencies (frontend y backend)
+node_modules/
 /node_modules
+server/node_modules/
+*/node_modules/
 
-# next.js
+# Package manager lock files (opcional)
+# Descomenta si quieres ignorar lock files
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ========================================
+# NEXT.JS (FRONTEND)
+# ========================================
+# Next.js build outputs
 /.next/
 /out/
+.next
 
-# production
+# Next.js cache
+.next/cache/
+
+# Production builds
 /build
+/dist
 
-# debug
+# ========================================
+# ENVIRONMENT VARIABLES (CRÍTICO)
+# ========================================
+# Archivos de variables de entorno (NUNCA subir)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# Variables de entorno del servidor (CRÍTICO)
+server/.env
+server/.env.local
+server/.env.development
+server/.env.production
+
+# ========================================
+# LOGS Y DEBUG
+# ========================================
+# Logs de npm/yarn/pnpm
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+lerna-debug.log*
 
-# env files
-.env*
+# Logs del servidor
+server/logs/
+*.log
+logs/
 
-# vercel
-.vercel
-
-# typescript
+# ========================================
+# TYPESCRIPT
+# ========================================
 *.tsbuildinfo
 next-env.d.ts
+*.d.ts.map
+
+# ========================================
+# ARCHIVOS TEMPORALES
+# ========================================
+# Sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vim/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# ========================================
+# DEPLOYMENT
+# ========================================
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# ========================================
+# DATABASE Y UPLOADS
+# ========================================
+# Archivos de base de datos local
+*.sqlite
+*.sqlite3
+*.db
+
+# Uploads de usuarios
+uploads/
+server/uploads/
+public/uploads/
+
+# ========================================
+# SEGURIDAD (CRÍTICO)
+# ========================================
+# Claves privadas y certificados
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+
+# Archivos de configuración sensibles
+config/production.js
+config/local.js
+
+# Backups de base de datos
+*.sql
+*.dump
+backup/
+
+# ========================================
+# CACHE Y BUILDS
+# ========================================
+# Cache de herramientas
+.cache/
+.parcel-cache/
+.npm
+.yarn
+.pnpm
+
+# Build artifacts
+build/
+dist/
+*.tgz
+
+# Coverage reports
+coverage/
+.nyc_output/
+*.lcov
+
+# ========================================
+# ARCHIVOS ESPECÍFICOS DEL PROYECTO
+# ========================================
+# Si tienes archivos específicos que no quieres subir
+# server/scripts/migration.js
+# data/
+# private/
+
+# ========================================
+# DEVELOPMENT TOOLS
+# ========================================
+# Jest
+/coverage
+/.nyc_output
+
+# ESLint
+.eslintcache
+
+# Storybook
+.out
+.storybook-out
+
+# Rush
+common/config/rush/pnpm-lock.yaml
+common/temp/

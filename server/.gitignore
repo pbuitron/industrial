@@ -1,0 +1,52 @@
+# ========================================
+# SERVER SPECIFIC .GITIGNORE
+# ========================================
+
+# CRÍTICO: Variables de entorno del servidor
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs del servidor
+logs/
+*.log
+
+# Archivos temporales
+*.tmp
+temp/
+
+# Uploads de usuarios
+uploads/
+public/uploads/
+
+# Base de datos local
+*.sqlite
+*.sqlite3
+*.db
+
+# Backups
+backup/
+*.sql
+*.dump
+
+# Certificados y claves
+*.pem
+*.key
+*.crt
+*.cert
+
+# Cache
+.npm
+.cache/
+
+# Coverage
+coverage/
+.nyc_output/

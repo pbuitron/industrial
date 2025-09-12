@@ -19,11 +19,71 @@ export function ContactSection() {
     productType: "",
     message: "",
   })
+  
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({
+    type: null,
+    message: ""
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setIsLoading(true)
+    setSubmitStatus({ type: null, message: "" })
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Tu solicitud ha sido enviada exitosamente. Nos pondremos en contacto contigo pronto.'
+        })
+        
+        // Limpiar formulario después del envío exitoso
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          productType: "",
+          message: "",
+        })
+      } else {
+        // Manejar errores de validación
+        if (result.errors && Array.isArray(result.errors)) {
+          const errorMessages = result.errors.map((error: any) => error.msg).join(', ')
+          setSubmitStatus({
+            type: 'error',
+            message: `Errores de validación: ${errorMessages}`
+          })
+        } else {
+          setSubmitStatus({
+            type: 'error',
+            message: result.message || 'Ha ocurrido un error al enviar tu solicitud. Por favor intenta nuevamente.'
+          })
+        }
+      }
+    } catch (error) {
+      console.error('Error al enviar formulario:', error)
+      setSubmitStatus({
+        type: 'error',
+        message: 'No se pudo conectar con el servidor. Por favor verifica tu conexión e intenta nuevamente.'
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (field: string, value: string) => {
@@ -179,9 +239,6 @@ export function ContactSection() {
                         <SelectItem value="abrazaderas">Abrazaderas Industriales</SelectItem>
                         <SelectItem value="kits">Kits de Reparación</SelectItem>
                         <SelectItem value="epoxicos">Epóxicos para Metales</SelectItem>
-                        <SelectItem value="Servicio de Recubrimiento">Servicio de Recubrimiento</SelectItem>
-                        <SelectItem value="Fabricacion de Pernos">Fabricacion de Pernos</SelectItem>
-                        <SelectItem value="Reparación de bombas">Reparación de bombas</SelectItem>
                         <SelectItem value="otro">Otro</SelectItem>
                       </SelectContent>
                     </Select>
@@ -198,9 +255,21 @@ export function ContactSection() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
-                    Enviar Solicitud
+                  <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
+                    {isLoading ? "Enviando..." : "Enviar Solicitud"}
                   </Button>
+
+                  {submitStatus.type && (
+                    <div
+                      className={`p-4 rounded-md text-sm ${
+                        submitStatus.type === 'success'
+                          ? 'bg-green-50 text-green-800 border border-green-200'
+                          : 'bg-red-50 text-red-800 border border-red-200'
+                      }`}
+                    >
+                      {submitStatus.message}
+                    </div>
+                  )}
 
                   <p className="text-xs text-muted-foreground text-center">
                     Al enviar este formulario, aceptas nuestros términos y condiciones. Nos comprometemos a proteger tu
