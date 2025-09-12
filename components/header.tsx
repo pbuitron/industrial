@@ -5,20 +5,21 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone, Mail } from "lucide-react"
+import { SearchBar } from "@/components/SearchBar"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
   
-  // Detectar si estamos en una página de producto
-  const isProductPage = pathname?.startsWith('/productos/')
+  // Detectar si estamos en una página que NO es la homepage
+  const isNotHomePage = pathname !== '/' && pathname !== null
   
   const navigation = [
-    { name: "Inicio", href: isProductPage ? "/#inicio" : "#inicio" },
-    { name: "Productos", href: isProductPage ? "/#productos" : "#productos" },
-    { name: "Aplicaciones", href: isProductPage ? "/#aplicaciones" : "#aplicaciones" },
-    { name: "Nosotros", href: isProductPage ? "/#nosotros" : "#nosotros" },
-    { name: "Contacto", href: isProductPage ? "/#contacto" : "#contacto" },
+    { name: "Inicio", href: isNotHomePage ? "/#inicio" : "#inicio" },
+    { name: "Productos", href: isNotHomePage ? "/#productos" : "#productos" },
+    { name: "Aplicaciones", href: isNotHomePage ? "/#aplicaciones" : "#aplicaciones" },
+    { name: "Nosotros", href: isNotHomePage ? "/#nosotros" : "#nosotros" },
+    { name: "Contacto", href: isNotHomePage ? "/#contacto" : "#contacto" },
   ]
 
   return (
@@ -67,9 +68,11 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" size="sm">
-              Solicitar Cotización
-            </Button>
+            <SearchBar 
+              placeholder="Buscar productos..."
+              className="w-64"
+            />
+            
           </div>
 
           {/* Mobile menu button */}
@@ -83,19 +86,25 @@ export function Header() {
         {/* Mobile navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Button className="mt-4 w-full">Solicitar Cotización</Button>
-            </nav>
+            <div className="space-y-4">
+              <SearchBar 
+                placeholder="Buscar productos..."
+                className="w-full"
+              />
+              <nav className="flex flex-col space-y-4">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-foreground hover:text-primary transition-colors font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                <Button className="mt-4 w-full">Solicitar Cotización</Button>
+              </nav>
+            </div>
           </div>
         )}
       </div>

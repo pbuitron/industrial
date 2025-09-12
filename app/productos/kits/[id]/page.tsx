@@ -1,20 +1,113 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { use } from 'react'
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Header } from "@/components/header"
-import kits from "@/data/kits.json"
+import { Loader2, AlertCircle } from "lucide-react"
+import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
+import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
+
+interface Kit {
+  _id: string
+  productId: number
+  name: string
+  description: string
+  image: string
+  specs: string[]
+  applications: string[]
+  resistencia?: string[]
+  isActive: boolean
+  technicalData?: {
+    headers: string[]
+    rows: any[][]
+  }
+}
 
 export default function KitDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
-  const product = kits.find((p) => p.id === Number(id))
+  const [product, setProduct] = useState<Kit | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
 
   const [selected, setSelected] = useState<number[]>([])
   const [open, setOpen] = useState(false)
+  
+  const { isModalOpen, currentMessageData, openWhatsAppForm, closeWhatsAppForm, sendToWhatsApp: sendToWhatsAppForm } = useWhatsAppForm()
 
-  if (!product) return <div className="p-6">Producto no encontrado</div>
+  const handleQuote = () => {
+    if (product) {
+      openWhatsAppForm({
+        type: 'product_selection',
+        data: {
+          selectedProducts: [{
+            id: product._id,
+            name: product.name,
+            category: 'Kits de Reparación',
+            specifications: [
+              `Aplicaciones: ${product.applications.join(', ')}`,
+              `Especificaciones: ${product.specs.join(', ')}`
+            ]
+          }]
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    fetchProduct()
+  }, [id])
+
+  const fetchProduct = async () => {
+    try {
+      setLoading(true)
+      setError("")
+      
+      const response = await fetch(`http://localhost:5000/api/products/kits/${id}`)
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setProduct(result.data)
+      } else {
+        setError(result.message || 'Producto no encontrado')
+      }
+    } catch (err) {
+      console.error('Error fetching product:', err)
+      setError('Error de conexión. Verifica que el servidor esté funcionando.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="max-w-6xl mx-auto py-12 px-6 flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
+            <p className="text-gray-600">Cargando producto...</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !product) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="max-w-6xl mx-auto py-12 px-6">
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{error || 'Producto no encontrado'}</AlertDescription>
+          </Alert>
+        </div>
+      </div>
+    )
+  }
 
   const toggleRow = (index: number) => {
     setSelected((prev) =>
@@ -23,12 +116,25 @@ export default function KitDetail({ params }: { params: Promise<{ id: string }> 
   }
 
   const handleSend = () => {
-    const selectedItems = selected.map((i) => {
-      const row = product.technicalData.rows[i];
-      return `${row[0]}: ${row[1]}`;
-    });
-    console.log("Enviando selección al proveedor:", selectedItems)
-    setOpen(true)
+    if (product?.technicalData && selected.length > 0) {
+      const selectedItems = selected.map((i) => {
+        const row = product.technicalData!.rows[i];
+        return `${row[0]}: ${row[1]}`;
+      });
+      
+      openWhatsAppForm({
+        type: 'product_selection',
+        data: {
+          selectedProducts: [{
+            id: product._id,
+            name: product.name,
+            category: 'Kits de Reparación',
+            specifications: selectedItems
+          }]
+        }
+      })
+    }
+    setOpen(false)
   }
 
   return (
@@ -85,6 +191,13 @@ export default function KitDetail({ params }: { params: Promise<{ id: string }> 
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Botón de cotización general */}
+        <div className="mt-8 pt-6 border-t">
+          <Button onClick={handleQuote} className="w-full md:w-auto px-8 py-3">
+            Solicitar Cotización por WhatsApp
+          </Button>
         </div>
 
         {/* Medidas disponibles con selección */}
@@ -159,14 +272,11 @@ export default function KitDetail({ params }: { params: Promise<{ id: string }> 
               </p>
               <ul className="list-disc pl-6 text-sm text-gray-800">
                 {selected.map((i) => (
-                  <li key={i}>{product.technicalData.rows[i].join(" | ")}</li>
+                  <li key={i}>{product.technicalData?.rows[i].join(" | ")}</li>
                 ))}
               </ul>
               <Button
-                onClick={() => {
-                  console.log("Enviar a proveedor vía n8n (futuro)")
-                  setOpen(false)
-                }}
+                onClick={handleSend}
                 className="w-full"
               >
                 Enviar al Proveedor
@@ -174,6 +284,16 @@ export default function KitDetail({ params }: { params: Promise<{ id: string }> 
             </div>
           </DialogContent>
         </Dialog>
+        
+        {/* Modal de formulario WhatsApp */}
+        {currentMessageData && (
+          <WhatsAppFormModal
+            isOpen={isModalOpen}
+            onClose={closeWhatsAppForm}
+            messageData={currentMessageData}
+            onSend={sendToWhatsAppForm}
+          />
+        )}
       </div>
     </div>
   )

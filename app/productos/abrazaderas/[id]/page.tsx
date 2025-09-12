@@ -1,165 +1,165 @@
-"use client"
-
-import { useState } from "react"
-import {use} from 'react'
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Metadata } from 'next'
 import { Header } from "@/components/header"
-import abrazaderas from "@/data/abrazaderas.json"
+import { AbrazaderaView } from "@/components/product/AbrazaderaView"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { AlertCircle } from "lucide-react"
 
-export default function AbrazaderaDetail({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params)
-  const product = abrazaderas.find((p) => p.id === Number(id))
+interface Abrazadera {
+  _id: string
+  productId: number
+  name: string
+  description: string
+  details: string
+  image: string
+  specs: string[]
+  applications: string[]
+  materials: string[]
+  isActive: boolean
+  technicalData?: {
+    headers: string[]
+    rows: string[][]
+  }
+}
 
-  const [selected, setSelected] = useState<number[]>([])
-  const [open, setOpen] = useState(false)
+interface PageProps {
+  params: Promise<{ id: string }>
+}
 
-  if (!product) return <div className="p-6">Producto no encontrado</div>
+// Función para obtener el producto (Server-side)
+async function getProduct(id: string): Promise<Abrazadera | null> {
+  try {
+    const response = await fetch(`http://localhost:5000/api/products/abrazaderas/${id}`, {
+      cache: 'no-store' // Para datos dinámicos
+    })
+    
+    if (!response.ok) {
+      return null
+    }
+    
+    const result = await response.json()
+    return result.success ? result.data : null
+  } catch (error) {
+    console.error('Error fetching product:', error)
+    return null
+  }
+}
 
-  const toggleRow = (index: number) => {
-    setSelected((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+// Generar metadata dinámicos para SEO
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params
+  const product = await getProduct(id)
+  
+  if (!product) {
+    return {
+      title: 'Producto no encontrado | SealPro Industrial',
+      description: 'El producto solicitado no fue encontrado en nuestro catálogo de abrazaderas industriales.'
+    }
+  }
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+  
+  return {
+    title: `${product.name} | Abrazaderas Industriales SealPro`,
+    description: `${product.description}. ${product.details.substring(0, 150)}...`,
+    keywords: [
+      'abrazaderas industriales',
+      'sealpro',
+      'acople flexible',
+      'conexiones industriales',
+      ...product.applications,
+      ...product.specs.map(spec => spec.split(':')[0]).slice(0, 3)
+    ].join(', '),
+    openGraph: {
+      title: `${product.name} | SealPro Industrial`,
+      description: product.description,
+      url: `${baseUrl}/productos/abrazaderas/${id}`,
+      siteName: 'SealPro Industrial',
+      images: [
+        {
+          url: `${baseUrl}${product.image}`,
+          width: 800,
+          height: 600,
+          alt: product.name,
+        }
+      ],
+      locale: 'es_MX',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | SealPro Industrial`,
+      description: product.description,
+      images: [`${baseUrl}${product.image}`],
+    },
+    alternates: {
+      canonical: `${baseUrl}/productos/abrazaderas/${id}`,
+    }
+  }
+}
+
+export default async function AbrazaderaPage({ params }: PageProps) {
+  const { id } = await params
+  const product = await getProduct(id)
+
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="container mx-auto px-4 py-8">
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
+              Producto no encontrado
+            </AlertDescription>
+          </Alert>
+        </div>
+      </div>
     )
   }
 
-  const handleSend = () => {
-    console.log("Enviando selección al proveedor:", selected.map((i) => product.technicalData.rows[i]))
-    setOpen(true)
-  }
-
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <div className="max-w-6xl mx-auto py-12 px-6">
-      <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
-      <p className="text-lg text-muted-foreground mb-6">{product.description}</p>
-
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Imagen con logo superpuesto */}
-        <div className="relative w-full md:w-1/2">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full rounded-lg shadow"
-          />
-          <img
-            src="/Logo-azul.jpg"
-            alt="Industrial IOT Logo"
-            className="absolute top-2 left-2 w-70 h-auto opacity-80 rounded-sm"
-          />
-        </div>
-
-        {/* Info */}
-        <div className="flex-1 space-y-6">
-          {product.details && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Detalles</h2>
-            <p className="text-sm text-justify text-gray-700">{product.details}</p>
-          </div>
-        )}
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Especificaciones</h2>
-            <ul className="text-sm list-disc pl-6 space-y-1">
-              {product.specs?.map((spec, i) => (
-                <li key={i}>{spec}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Aplicaciones</h2>
-            <ul className="text-sm list-disc pl-6 space-y-1">
-              {product.applications?.map((app, i) => (
-                <li key={i}>{app}</li>
-              ))}
-            </ul>
-          </div>
-          
-        </div>
-        
+    <>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <AbrazaderaView product={product} />
       </div>
-
-      {/* Datos técnicos con selección */}
-      {product.technicalData && (
-        <div className="mt-12">
-          <h2 className="text-2xl font-semibold mb-4">Datos Técnicos</h2>
-          <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-2"></th>
-                  {product.technicalData.headers.map((h: string, i: number) => (
-                    <th key={i} className="p-2 text-left border-b border-gray-300">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {product.technicalData.rows.map((row: string[], i: number) => (
-                  <tr
-                    key={i}
-                    className={`hover:bg-gray-50 ${
-                      selected.includes(i) ? "bg-blue-50" : ""
-                    }`}
-                  >
-                    <td className="p-2 border-b border-gray-200 text-center">
-                      <input
-                        type="checkbox"
-                        checked={selected.includes(i)}
-                        onChange={() => toggleRow(i)}
-                        className="h-4 w-4"
-                      />
-                    </td>
-                    {row.map((cell, j) => (
-                      <td key={j} className="p-2 border-b border-gray-200">
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <Button
-            onClick={handleSend}
-            disabled={selected.length === 0}
-            className="mt-6"
-          >
-            Enviar selección ({selected.length})
-          </Button>
-        </div>
-      )}
-
-      {/* Modal de confirmación */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Confirmación de Envío</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <p className="text-sm text-gray-600">
-              Has seleccionado las siguientes configuraciones:
-            </p>
-            <ul className="list-disc pl-6 text-sm text-gray-800">
-              {selected.map((i) => (
-                <li key={i}>{product.technicalData.rows[i].join(" | ")}</li>
-              ))}
-            </ul>
-            <Button
-              onClick={() => {
-                console.log("Enviar a proveedor vía n8n (futuro)")
-                setOpen(false)
-              }}
-              className="w-full"
-            >
-              Enviar al Proveedor
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-      </div>
-    </div>
+      
+      {/* Schema markup para SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            name: product.name,
+            description: product.description,
+            image: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}${product.image}`,
+            brand: {
+              "@type": "Brand",
+              name: "SealPro Industrial"
+            },
+            manufacturer: {
+              "@type": "Organization",
+              name: "SealPro Industrial"
+            },
+            category: "Abrazaderas Industriales",
+            additionalProperty: product.specs.map(spec => ({
+              "@type": "PropertyValue",
+              name: spec.split(':')[0],
+              value: spec.split(':')[1] || spec
+            })),
+            offers: {
+              "@type": "Offer",
+              availability: "https://schema.org/InStock",
+              priceCurrency: "MXN",
+              seller: {
+                "@type": "Organization",
+                name: "SealPro Industrial"
+              }
+            }
+          })
+        }}
+      />
+    </>
   )
 }

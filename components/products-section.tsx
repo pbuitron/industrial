@@ -6,7 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, Wrench, Droplets, Shield } from "lucide-react"
+import { ArrowRight, Wrench, Droplets, Shield, Search } from "lucide-react"
+import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
+import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
 
 // Importa los datos
 import abrazaderas from "@/data/abrazaderas.json"
@@ -16,16 +18,30 @@ import epoxicos from "@/data/epoxicos.json"
 
 export function ProductsSection() {
   const [activeTab, setActiveTab] = useState("abrazaderas")
+  const { isModalOpen, currentMessageData, openWhatsAppForm, closeWhatsAppForm, sendToWhatsApp } = useWhatsAppForm()
+
+  const handleQuoteClick = (product: any, category: string) => {
+    openWhatsAppForm({
+      type: 'quote',
+      data: {
+        message: `Me interesa solicitar una cotización para el producto: ${product.name} (${category}).`
+      }
+    })
+  }
 
   return (
     <section id="productos" className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Nuestros Productos</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
             Soluciones técnicas especializadas para cada necesidad industrial. Calidad certificada y respaldo técnico
             garantizado.
           </p>
+          <Link href="/search" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium">
+            <Search className="h-4 w-4" />
+            Búsqueda Avanzada de Productos
+          </Link>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -86,7 +102,7 @@ export function ProductsSection() {
             Ver Detalles <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
-        <Button variant="outline">Cotizar</Button>
+        <Button variant="outline" onClick={() => handleQuoteClick(product, 'Abrazaderas')}>Cotizar</Button>
       </div>
     </CardContent>
   </Card>
@@ -119,7 +135,7 @@ export function ProductsSection() {
                       <Link href={`/productos/kits/${product.id}`} className="flex-1">
                         <Button className="w-full">Ver Detalles</Button>
                       </Link>
-                      <Button variant="outline">Cotizar</Button>
+                      <Button variant="outline" onClick={() => handleQuoteClick(product, 'Kits de Reparación')}>Cotizar</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -150,7 +166,7 @@ export function ProductsSection() {
                       <Link href={`/productos/epoxicos/${product.id}`} className="flex-1">
                         <Button className="w-full">Ver Detalles</Button>
                       </Link>
-                      <Button variant="outline">Cotizar</Button>
+                      <Button variant="outline" onClick={() => handleQuoteClick(product, 'Epóxicos')}>Cotizar</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -160,6 +176,16 @@ export function ProductsSection() {
 
         </Tabs>
       </div>
+      
+      {/* Modal de formulario WhatsApp */}
+      {currentMessageData && (
+        <WhatsAppFormModal
+          isOpen={isModalOpen}
+          onClose={closeWhatsAppForm}
+          messageData={currentMessageData}
+          onSend={sendToWhatsApp}
+        />
+      )}
     </section>
   )
 }

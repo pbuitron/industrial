@@ -58,6 +58,8 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/contacts', require('./routes/contacts'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/products', require('./routes/products'));
+app.use('/api/search', require('./routes/search'));
 
 // Middleware para rutas no encontradas
 app.use('*', (req, res) => {

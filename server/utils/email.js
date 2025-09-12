@@ -12,7 +12,7 @@ class Email {
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       // Para producción - usando Gmail o servicio de email real
-      return nodemailer.createTransporter({
+      return nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: process.env.EMAIL_USERNAME,
@@ -39,9 +39,14 @@ class Email {
       if (emailConfig.port === 587) {
         emailConfig.requireTLS = true;
       }
+      // Configuración adicional para PrivateEmail
+      emailConfig.tls = {
+        // No verificar certificados auto-firmados (solo para desarrollo)
+        rejectUnauthorized: process.env.NODE_ENV === 'production'
+      };
     }
 
-    return nodemailer.createTransporter(emailConfig);
+    return nodemailer.createTransport(emailConfig);
   }
 
   // Enviar email

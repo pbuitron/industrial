@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(node:*)",
+      "Bash(npm run migrate-products)",
+      "Bash(curl:*)",
+      "Bash(npm run dev:*)",
+      "Bash(mongosh:*)",
+      "Bash(dir /b appapi)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npm run build:*)",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

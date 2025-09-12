@@ -1,13 +1,119 @@
-import { Header } from "@/components/header"
-import epoxicos from "@/data/epoxicos.json"
+"use client"
+
+import { useState, useEffect } from "react"
+import { use } from 'react'
 import { Button } from "@/components/ui/button"
-import Link from "next/link"  
-export default async function EpoxicoDetail({ params }: { params: { id: string } }) {
-  const { id } = await params // 👈 aquí esperamos params
-  const product = epoxicos.find((p) => String(p.id) === String(id))
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Header } from "@/components/header"
+import { Loader2, AlertCircle } from "lucide-react"
+import Link from "next/link"
+import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
+import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
+
+interface Epoxico {
+  _id: string
+  productId: number
+  name: string
+  description: string
+  generic_type: string
+  image_url: string
+  product_url: string
+  applications: string[]
+  isActive: boolean
+  specifications?: {
+    colors?: string[]
+    shelf_life?: string
+    mix_ratio?: string
+    solids_by_volume?: string
+    viscosity?: string
+    pot_life?: string
+  }
+  temperature_resistance?: {
+    immersion_max?: string
+    dry_max?: string
+    immersion_spike?: string
+    dry_spike?: string
+  }
+  special_features?: string[]
+}
+
+export default function EpoxicoDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const [product, setProduct] = useState<Epoxico | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
   
-  if (!product) {
-    return <div className="p-10">Epóxico no encontrado</div>
+  const { isModalOpen, currentMessageData, openWhatsAppForm, closeWhatsAppForm, sendToWhatsApp } = useWhatsAppForm()
+
+  const handleQuote = () => {
+    if (product) {
+      openWhatsAppForm({
+        type: 'product_selection',
+        data: {
+          selectedProducts: [{
+            id: product._id,
+            name: product.name,
+            category: 'Epóxicos',
+            specifications: [
+              `Tipo: ${product.generic_type}`,
+              `Aplicaciones: ${product.applications.join(', ')}`
+            ]
+          }]
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    fetchProduct()
+  }, [id])
+
+  const fetchProduct = async () => {
+    try {
+      setLoading(true)
+      setError("")
+      
+      const response = await fetch(`http://localhost:5000/api/products/epoxicos/${id}`)
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setProduct(result.data)
+      } else {
+        setError(result.message || 'Producto no encontrado')
+      }
+    } catch (err) {
+      console.error('Error fetching product:', err)
+      setError('Error de conexión. Verifica que el servidor esté funcionando.')
+    } finally {
+      setLoading(false)
+    }
+  }
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="max-w-6xl mx-auto py-12 px-6 flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
+            <p className="text-gray-600">Cargando producto...</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !product) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="max-w-6xl mx-auto py-12 px-6">
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{error || 'Producto no encontrado'}</AlertDescription>
+          </Alert>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -116,7 +222,24 @@ export default async function EpoxicoDetail({ params }: { params: { id: string }
             </div>
           </div>
         )}
+
+        {/* Botón de cotización */}
+        <div className="mt-8 pt-6 border-t">
+          <Button onClick={handleQuote} className="w-full md:w-auto px-8 py-3">
+            Solicitar Cotización por WhatsApp
+          </Button>
+        </div>
       </div>
+      
+      {/* Modal de formulario WhatsApp */}
+      {currentMessageData && (
+        <WhatsAppFormModal
+          isOpen={isModalOpen}
+          onClose={closeWhatsAppForm}
+          messageData={currentMessageData}
+          onSend={sendToWhatsApp}
+        />
+      )}
     </div>
   )
 }

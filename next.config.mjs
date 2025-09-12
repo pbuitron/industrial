@@ -23,8 +23,6 @@ const nextConfig = {
   // Configuración experimental (opcional)
   experimental: {
     // typedRoutes: true, // Rutas tipadas (Next.js 13.2+)
-suppressHydrationWarning: true,
-
   },
 
   // Variables de entorno

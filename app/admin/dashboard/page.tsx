@@ -1,38 +1,26 @@
 "use client"
 
 import { useAuth } from "@/contexts/AuthContext"
+import { AdminHeader } from "@/components/admin-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { User, Mail, Shield, Calendar, LogOut } from "lucide-react"
+import { User, Mail, Shield, Calendar } from "lucide-react"
 
 export default function AdminDashboard() {
-  const { admin, logout } = useAuth()
-
-  const handleLogout = async () => {
-    await logout()
-  }
+  const { admin } = useAuth()
 
   if (!admin) return null
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <div>
+    <div className="min-h-screen bg-gray-50">
+      <AdminHeader />
+      <div className="p-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900">Panel de Administración</h1>
             <p className="text-gray-600 mt-2">Bienvenido al sistema de gestión Industrial IOT</p>
           </div>
-          
-          <Button 
-            onClick={handleLogout}
-            variant="outline"
-            className="flex items-center gap-2"
-          >
-            <LogOut className="w-4 h-4" />
-            Cerrar Sesión
-          </Button>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Card>
@@ -121,10 +109,18 @@ export default function AdminDashboard() {
               <Button 
                 className="w-full justify-start"
                 variant="outline"
+                onClick={() => window.location.href = '/admin/products'}
+              >
+                <User className="w-4 h-4 mr-2" />
+                Gestionar Productos
+              </Button>
+              <Button 
+                className="w-full justify-start"
+                variant="outline"
                 onClick={() => window.location.href = '/productos'}
               >
                 <User className="w-4 h-4 mr-2" />
-                Ver Catálogo de Productos
+                Ver Catálogo Público
               </Button>
               <Button 
                 className="w-full justify-start"
@@ -164,6 +160,7 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
         </div>
+      </div>
       </div>
     </div>
   )

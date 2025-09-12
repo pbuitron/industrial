@@ -8,7 +8,9 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "security-check": "node check-security.js",
+    "pre-push": "npm run security-check && npm run lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

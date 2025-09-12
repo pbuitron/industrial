@@ -119,13 +119,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.log('📡 Respuesta de auth/me:', response.status, response.ok)
 
       if (response.ok) {
-        const result = await response.json()
-        console.log('📄 Datos de auth/me:', result)
-        if (result.success && result.data.admin) {
-          console.log('✅ Usuario autenticado:', result.data.admin.email)
-          dispatch({ type: 'AUTH_SUCCESS', payload: result.data.admin })
-        } else {
-          console.log('❌ Respuesta sin datos de admin válidos')
+        try {
+          const result = await response.json()
+          console.log('📄 Datos de auth/me:', result)
+          if (result.success && result.data.admin) {
+            console.log('✅ Usuario autenticado:', result.data.admin.email)
+            dispatch({ type: 'AUTH_SUCCESS', payload: result.data.admin })
+          } else {
+            console.log('❌ Respuesta sin datos de admin válidos')
+            dispatch({ type: 'LOGOUT' })
+          }
+        } catch (jsonError) {
+          console.log('❌ Error parsing JSON in auth/me:', jsonError)
           dispatch({ type: 'LOGOUT' })
         }
       } else {
@@ -159,17 +164,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
         body: JSON.stringify({ email, password }),
       })
 
-      const result = await response.json()
-      console.log('📡 Respuesta de login:', response.status, result)
+      try {
+        const result = await response.json()
+        console.log('📡 Respuesta de login:', response.status, result)
 
-      if (response.ok && result.success) {
-        console.log('✅ Login exitoso para:', result.data.admin.email)
-        dispatch({ type: 'AUTH_SUCCESS', payload: result.data.admin })
-        // No llamar checkAuth inmediatamente después del login para evitar conflicts
-        return true
-      } else {
-        console.log('❌ Login falló:', result.message)
-        dispatch({ type: 'AUTH_FAIL', payload: result.message || 'Error al iniciar sesión' })
+        if (response.ok && result.success) {
+          console.log('✅ Login exitoso para:', result.data.admin.email)
+          dispatch({ type: 'AUTH_SUCCESS', payload: result.data.admin })
+          // No llamar checkAuth inmediatamente después del login para evitar conflicts
+          return true
+        } else {
+          console.log('❌ Login falló:', result.message)
+          dispatch({ type: 'AUTH_FAIL', payload: result.message || 'Error al iniciar sesión' })
+          return false
+        }
+      } catch (jsonError) {
+        console.log('❌ Error parsing JSON in login:', jsonError)
+        dispatch({ type: 'AUTH_FAIL', payload: 'Error de respuesta del servidor' })
         return false
       }
     } catch (error) {

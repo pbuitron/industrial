@@ -221,7 +221,7 @@ export function ContactSection() {
                       <Input
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        placeholder="+52 (55) 1234-5678"
+                        placeholder="+51 9XX XXX XXX"
                       />
                     </div>
                   </div>

@@ -76,8 +76,34 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 import { Button } from "@/components/ui/button"
+import { scrollToSection } from "@/lib/whatsapp"
+import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
+import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
 
 export function HeroSection() {
+  const { isModalOpen, currentMessageData, openWhatsAppForm, closeWhatsAppForm, sendToWhatsApp } = useWhatsAppForm()
+
+  const handleButtonClick = (cta: string) => {
+    switch (cta) {
+      case "Contáctanos":
+        scrollToSection("contacto")
+        break
+      case "Ver Productos":
+        scrollToSection("productos")
+        break
+      case "Solicitar Cotización":
+        openWhatsAppForm({
+          type: 'quote',
+          data: {
+            message: 'Me interesa solicitar una cotización para sus productos industriales.'
+          }
+        })
+        break
+      default:
+        break
+    }
+  }
+
   const slides = [
     {
       title: "Soluciones Industriales",
@@ -123,7 +149,7 @@ export function HeroSection() {
                   {slide.title} <span className="text-primary block">{slide.subtitle}</span>
                 </h1>
                 <p className="mt-4 text-lg lg:text-xl">{slide.description}</p>
-                <Button size="lg" className="mt-6">
+                <Button size="lg" className="mt-6" onClick={() => handleButtonClick(slide.cta)}>
                   {slide.cta}
                 </Button>
               </div>
@@ -131,6 +157,16 @@ export function HeroSection() {
           </SwiperSlide>
         ))}
       </Swiper>
+      
+      {/* Modal de formulario WhatsApp */}
+      {currentMessageData && (
+        <WhatsAppFormModal
+          isOpen={isModalOpen}
+          onClose={closeWhatsAppForm}
+          messageData={currentMessageData}
+          onSend={sendToWhatsApp}
+        />
+      )}
     </section>
   )
 }
