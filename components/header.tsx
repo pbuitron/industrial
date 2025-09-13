@@ -10,7 +10,7 @@ import { SearchBar } from "@/components/SearchBar"
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
-  
+
   // Detectar si estamos en una página que NO es la homepage
   const isNotHomePage = pathname !== '/' && pathname !== null
   
@@ -55,7 +55,7 @@ export function Header() {
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8" suppressHydrationWarning>
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -91,7 +91,7 @@ export function Header() {
                 placeholder="Buscar productos..."
                 className="w-full"
               />
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-4" suppressHydrationWarning>
                 {navigation.map((item) => (
                   <Link
                     key={item.name}

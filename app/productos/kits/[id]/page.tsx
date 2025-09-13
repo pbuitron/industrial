@@ -9,6 +9,7 @@ import { Header } from "@/components/header"
 import { Loader2, AlertCircle } from "lucide-react"
 import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
 import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
+import { SEOBreadcrumb } from "@/components/seo-breadcrumb"
 
 interface Kit {
   _id: string
@@ -140,7 +141,11 @@ export default function KitDetail({ params }: { params: Promise<{ id: string }> 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="max-w-6xl mx-auto py-12 px-6">
+      {/* Breadcrumbs para SEO y navegación */}
+      <div className="max-w-6xl mx-auto px-6 pt-4">
+        <SEOBreadcrumb productName={product.name} />
+      </div>
+      <div className="max-w-6xl mx-auto py-8 px-6">
         <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
         <p className="text-lg text-muted-foreground mb-6">{product.description}</p>
 

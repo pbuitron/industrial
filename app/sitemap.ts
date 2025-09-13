@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
   
-  // URLs estáticas
+  // URLs estáticas con mayor granularidad SEO
   const staticUrls: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -17,73 +17,82 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    // Páginas de categorías específicas
     {
-      url: `${baseUrl}/contacto`,
+      url: `${baseUrl}/productos/abrazaderas`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
+    {
+      url: `${baseUrl}/productos/epoxicos`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/productos/kits`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    // Páginas funcionales
     {
       url: `${baseUrl}/search`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
+    },
+    // Admin (con menor prioridad)
+    {
+      url: `${baseUrl}/admin/dashboard`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.3,
     }
   ]
 
   try {
-    // Obtener productos dinámicamente
+    // Obtener productos dinámicamente con mejor manejo de errores
     const productUrls: MetadataRoute.Sitemap = []
     
-    // Obtener abrazaderas
-    const abrazaderasResponse = await fetch(`http://localhost:5000/api/products/abrazaderas`)
-    if (abrazaderasResponse.ok) {
-      const abrazaderasData = await abrazaderasResponse.json()
-      if (abrazaderasData.success && abrazaderasData.data) {
-        abrazaderasData.data.forEach((product: any) => {
-          productUrls.push({
-            url: `${baseUrl}/productos/abrazaderas/${product.productId}`,
-            lastModified: new Date(product.updatedAt || product.createdAt),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-          })
+    // Función helper para procesar productos
+    const processProducts = async (category: string, endpoint: string) => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/products/${endpoint}`, {
+          next: { revalidate: 3600 } // Cache por 1 hora
         })
+        
+        if (response.ok) {
+          const data = await response.json()
+          if (data.success && data.data && Array.isArray(data.data)) {
+            data.data.forEach((product: any) => {
+              if (product.isActive !== false) { // Solo productos activos
+                productUrls.push({
+                  url: `${baseUrl}/productos/${category}/${product.productId || product._id}`,
+                  lastModified: new Date(product.updatedAt || product.createdAt || new Date()),
+                  changeFrequency: 'monthly',
+                  priority: 0.8,
+                })
+              }
+            })
+          }
+        }
+      } catch (error) {
+        console.error(`Error fetching ${category}:`, error)
       }
     }
 
-    // Obtener epóxicos
-    const epoxicosResponse = await fetch(`http://localhost:5000/api/products/epoxicos`)
-    if (epoxicosResponse.ok) {
-      const epoxicosData = await epoxicosResponse.json()
-      if (epoxicosData.success && epoxicosData.data) {
-        epoxicosData.data.forEach((product: any) => {
-          productUrls.push({
-            url: `${baseUrl}/productos/epoxicos/${product.productId}`,
-            lastModified: new Date(product.updatedAt || product.createdAt),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-          })
-        })
-      }
-    }
+    // Procesar todas las categorías en paralelo para mejor performance
+    await Promise.all([
+      processProducts('abrazaderas', 'abrazaderas'),
+      processProducts('epoxicos', 'epoxicos'),
+      processProducts('kits', 'kits')
+    ])
 
-    // Obtener kits
-    const kitsResponse = await fetch(`http://localhost:5000/api/products/kits`)
-    if (kitsResponse.ok) {
-      const kitsData = await kitsResponse.json()
-      if (kitsData.success && kitsData.data) {
-        kitsData.data.forEach((product: any) => {
-          productUrls.push({
-            url: `${baseUrl}/productos/kits/${product.productId}`,
-            lastModified: new Date(product.updatedAt || product.createdAt),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-          })
-        })
-      }
-    }
-
+    console.log(`Sitemap generado con ${staticUrls.length + productUrls.length} URLs`)
     return [...staticUrls, ...productUrls]
+    
   } catch (error) {
     console.error('Error generando sitemap:', error)
     // Si hay error, devolver solo URLs estáticas

@@ -77,7 +77,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
 
 const initialState: AuthState = {
   admin: null,
-  isLoading: true, // Iniciar en true para verificar auth al cargar
+  isLoading: true, // Volvemos a true para verificar auth al cargar
   isAuthenticated: false,
   error: null
 }
@@ -95,7 +95,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (typeof window !== 'undefined') {
       const path = window.location.pathname;
       console.log('🔍 Ruta actual:', path);
-      
+
       if (path.startsWith('/admin')) {
         console.log('🔍 Verificando auth automáticamente para ruta admin')
         checkAuth()
@@ -110,7 +110,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       console.log('🔍 Verificando autenticación...')
       dispatch({ type: 'AUTH_START' })
-      
+
       const response = await fetch('http://localhost:5000/api/auth/me', {
         method: 'GET',
         credentials: 'include' // Incluir cookies

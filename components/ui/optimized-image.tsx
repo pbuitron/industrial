@@ -35,7 +35,7 @@ export function OptimizedImage({
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isError, setIsError] = useState(false)
-  const [isInView, setIsInView] = useState(priority)
+  const [isInView, setIsInView] = useState(true) // Temporalmente siempre true para debuggear
   const imgRef = useRef<HTMLImageElement>(null)
 
   // Intersection Observer para lazy loading
@@ -61,25 +61,21 @@ export function OptimizedImage({
     return () => observer.disconnect()
   }, [priority])
 
-  // Generar srcSet para responsive images
+  // Generar srcSet para responsive images (deshabilitado temporalmente)
   const generateSrcSet = (baseSrc: string) => {
-    if (!baseSrc.startsWith('/')) return baseSrc
-    
-    const sizes = [320, 640, 768, 1024, 1200, 1600]
-    return sizes
-      .map(size => {
-        const optimizedSrc = baseSrc.replace(/\.(jpg|jpeg|png|webp)$/i, `_${size}w.$1`)
-        return `${optimizedSrc} ${size}w`
-      })
-      .join(', ')
+    // Deshabilitamos srcSet para evitar buscar imágenes que no existen
+    // Las imágenes de Mongo como /sealproB.jpg no tienen versiones responsive
+    return undefined
   }
 
   const handleLoad = () => {
+    console.log('✅ Image loaded successfully:', src)
     setIsLoaded(true)
     onLoad?.()
   }
 
   const handleError = () => {
+    console.warn('❌ Image failed to load:', src)
     setIsError(true)
     onError?.()
   }
@@ -88,73 +84,46 @@ export function OptimizedImage({
   const defaultBlurDataURL = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+'
 
   return (
-    <div 
-      ref={imgRef}
-      className={cn(
-        "relative overflow-hidden bg-gray-100",
-        className
-      )}
-      style={{ width, height }}
-    >
-      {/* Placeholder durante carga */}
-      {!isLoaded && !isError && (
-        <div 
-          className="absolute inset-0 flex items-center justify-center bg-gray-100"
-          style={{
-            backgroundImage: placeholder === 'blur' 
-              ? `url(${blurDataURL || defaultBlurDataURL})`
-              : undefined,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'blur(5px)'
-          }}
-        >
-          {placeholder === 'empty' && (
-            <div className="w-8 h-8 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin" />
-          )}
-        </div>
-      )}
-
-      {/* Imagen principal */}
-      {isInView && !isError && (
-        <img
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          srcSet={generateSrcSet(src)}
-          sizes={sizes}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          className={cn(
-            "transition-opacity duration-300",
-            isLoaded ? "opacity-100" : "opacity-0"
-          )}
-          onLoad={handleLoad}
-          onError={handleError}
-          {...props}
-        />
-      )}
+    <>
+      {/* Imagen principal - simplificada para debug */}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        crossOrigin={src.includes('://') ? 'anonymous' : undefined}
+        className={cn(
+          "transition-opacity duration-300",
+          isLoaded ? "opacity-100" : "opacity-50",
+          className
+        )}
+        onLoad={handleLoad}
+        onError={handleError}
+        {...props}
+      />
 
       {/* Fallback para errores */}
       {isError && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400">
           <div className="text-center">
-            <svg 
-              className="w-8 h-8 mx-auto mb-2" 
-              fill="currentColor" 
+            <svg
+              className="w-8 h-8 mx-auto mb-2"
+              fill="currentColor"
               viewBox="0 0 20 20"
             >
-              <path 
-                fillRule="evenodd" 
-                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" 
-                clipRule="evenodd" 
+              <path
+                fillRule="evenodd"
+                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                clipRule="evenodd"
               />
             </svg>
             <p className="text-sm">Error al cargar imagen</p>
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }

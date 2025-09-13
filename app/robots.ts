@@ -7,27 +7,58 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: [
+          '/',
+          '/productos/',
+          '/search',
+          '/sitemap.xml',
+          '/robots.txt'
+        ],
         disallow: [
           '/admin/',
           '/api/',
           '/auth/',
           '/_next/',
-          '/.*\.json$',
-          '/sitemap.xml',
-          '/robots.txt'
+          '/.next/',
+          '/static/',
+          '/private/',
+          '/server/',
+          '*.json',
+          '/search?*', // Evitar páginas de búsqueda con parámetros
+          '/admin*',
+          '/auth*'
         ],
       },
       {
         userAgent: 'Googlebot',
-        allow: '/',
+        allow: [
+          '/',
+          '/productos/',
+          '/search',
+        ],
         disallow: [
           '/admin/',
           '/api/',
-          '/auth/'
+          '/auth/',
         ],
+        crawlDelay: 1
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: [
+          '/',
+          '/productos/',
+          '/search',
+        ],
+        disallow: [
+          '/admin/',
+          '/api/',
+          '/auth/',
+        ],
+        crawlDelay: 1
       }
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

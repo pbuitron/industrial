@@ -17,11 +17,12 @@ export function ProtectedRoute({ children, redirectTo = "/auth/login" }: Protect
 
   useEffect(() => {
     console.log('🛡️ ProtectedRoute - isLoading:', isLoading, 'isAuthenticated:', isAuthenticated, 'admin:', !!admin);
+    // Solo redirigir si no está cargando Y no está autenticado
     if (!isLoading && !isAuthenticated) {
       console.log('🔄 ProtectedRoute - Redirigiendo a login');
       router.push(redirectTo)
     }
-  }, [isAuthenticated, isLoading, router, redirectTo])
+  }, [isAuthenticated, isLoading, router, redirectTo, admin])
 
   if (isLoading) {
     return (

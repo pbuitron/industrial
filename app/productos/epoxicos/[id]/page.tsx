@@ -8,6 +8,7 @@ import { Header } from "@/components/header"
 import { Loader2, AlertCircle } from "lucide-react"
 import Link from "next/link"
 import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
+import { SEOBreadcrumb } from "@/components/seo-breadcrumb"
 import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
 
 interface Epoxico {
@@ -119,7 +120,11 @@ export default function EpoxicoDetail({ params }: { params: Promise<{ id: string
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="max-w-6xl mx-auto py-20 px-4">
+      {/* Breadcrumbs para SEO y navegación */}
+      <div className="max-w-6xl mx-auto px-4 pt-4">
+        <SEOBreadcrumb productName={product.name} />
+      </div>
+      <div className="max-w-6xl mx-auto py-8 px-4">
         <h1 className="text-3xl font-bold mb-6">{product.name}</h1>
         <p className="text-lg text-muted-foreground mb-6">{product.generic_type}</p>
 

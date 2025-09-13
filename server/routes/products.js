@@ -9,6 +9,8 @@ const Kit = require('../models/Kit');
 
 const router = express.Router();
 
+// Updated to handle MongoDB ObjectIds
+
 // ========================================
 // RUTAS PÚBLICAS - ABRAZADERAS
 // ========================================
@@ -42,21 +44,24 @@ router.get('/abrazaderas', async (req, res) => {
 });
 
 // GET /api/products/abrazaderas/:id - Obtener una abrazadera específica
-router.get('/abrazaderas/:id', [
-  param('id').isNumeric().withMessage('ID debe ser numérico')
-], async (req, res) => {
+router.get('/abrazaderas/:id', async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+    const { id } = req.params;
+    let abrazadera;
+
+    // Verificar si es un ObjectId de MongoDB (24 caracteres hexadecimales)
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      abrazadera = await Abrazadera.findById(id);
+    } else if (!isNaN(parseInt(id))) {
+      // Si es un número, buscar por productId
+      abrazadera = await Abrazadera.findByProductId(parseInt(id));
+    } else {
       return res.status(400).json({
         success: false,
-        message: 'Parámetros inválidos',
-        errors: errors.array()
+        message: 'ID debe ser un ObjectId válido o un número'
       });
     }
 
-    const abrazadera = await Abrazadera.findByProductId(parseInt(req.params.id));
-    
     if (!abrazadera) {
       return res.status(404).json({
         success: false,
@@ -114,8 +119,17 @@ router.get('/epoxicos', async (req, res) => {
 // GET /api/products/epoxicos/:id - Obtener un epóxico específico
 router.get('/epoxicos/:id', async (req, res) => {
   try {
-    const epoxico = await Epoxico.findByProductId(req.params.id);
-    
+    const { id } = req.params;
+    let epoxico;
+
+    // Verificar si es un ObjectId de MongoDB (24 caracteres hexadecimales)
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      epoxico = await Epoxico.findById(id);
+    } else {
+      // Si no es ObjectId, buscar por productId
+      epoxico = await Epoxico.findByProductId(id);
+    }
+
     if (!epoxico) {
       return res.status(404).json({
         success: false,
@@ -171,21 +185,24 @@ router.get('/kits', async (req, res) => {
 });
 
 // GET /api/products/kits/:id - Obtener un kit específico
-router.get('/kits/:id', [
-  param('id').isNumeric().withMessage('ID debe ser numérico')
-], async (req, res) => {
+router.get('/kits/:id', async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+    const { id } = req.params;
+    let kit;
+
+    // Verificar si es un ObjectId de MongoDB (24 caracteres hexadecimales)
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      kit = await Kit.findById(id);
+    } else if (!isNaN(parseInt(id))) {
+      // Si es un número, buscar por productId
+      kit = await Kit.findByProductId(parseInt(id));
+    } else {
       return res.status(400).json({
         success: false,
-        message: 'Parámetros inválidos',
-        errors: errors.array()
+        message: 'ID debe ser un ObjectId válido o un número'
       });
     }
 
-    const kit = await Kit.findByProductId(parseInt(req.params.id));
-    
     if (!kit) {
       return res.status(404).json({
         success: false,
