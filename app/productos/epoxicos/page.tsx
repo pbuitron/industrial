@@ -7,18 +7,18 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { OptimizedImage } from "@/components/ui/optimized-image"
-import { Wrench, Info, ArrowRight, Droplets, Shield, Thermometer, Settings } from "lucide-react"
+import { Wrench, Info, ArrowRight, Ship, Shield, Thermometer, Settings, Hammer } from "lucide-react"
 
 export const metadata: Metadata = {
   title: 'Epóxicos Industriales Bicomponente | Reparación Metal | SealPro',
-  description: 'Epóxicos de reparación industrial para aplicaciones submarinas y alta temperatura. Compuestos bicomponente para reconstrucción de equipos y tanques químicos.',
-  keywords: 'epóxicos industriales, reparación metal, bicomponente, aplicación submarina, compuestos industriales, reconstrucción equipos, resistencia química',
+  description: 'Epóxicos de reparación industrial para aplicaciones mineras expuestas a abrasión, impacto, ataque químico y alta temperatura. Compuestos bicomponente para reconstrucción de equipos críticos en todos los procesos.',
+  keywords: 'epóxicos industriales, reparación metal, bicomponente, aplicación minera, celdas de flotación, reparación de chutes, recubrimiento epoxico, compuestos industriales, reconstrucción de equipos, resistencia química',
   openGraph: {
-    title: 'Epóxicos de Reparación Industrial | SealPro',
-    description: 'Compuestos epóxicos especializados para reparación y reconstrucción de equipos industriales.',
+    title: 'Epóxicos de Reparación Industrial | Arcor Epoxy Technologies',
+    description: 'Compuestos epóxicos especializados para reparación y reconstrucción de equipos industriales críticos.',
     url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/productos/epoxicos`,
     siteName: 'SealPro Industrial',
-    locale: 'es_MX',
+    locale: 'es_PE',
     type: 'website',
   }
 }
@@ -29,7 +29,7 @@ async function getEpoxicos() {
     const response = await fetch(`http://localhost:5000/api/products/epoxicos`, {
       next: { revalidate: 3600 } // Cache por 1 hora
     })
-    
+
     if (response.ok) {
       const result = await response.json()
       return result.success ? result.data : []
@@ -47,7 +47,7 @@ export default async function EpoxicosPage() {
     <>
       <div className="min-h-screen bg-background">
         <Header />
-        
+
         {/* Breadcrumbs */}
         <div className="container mx-auto px-4 py-4">
           <SEOBreadcrumb />
@@ -68,16 +68,17 @@ export default async function EpoxicosPage() {
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid md:grid-cols-4 gap-4 mb-8">
             <div className="bg-muted/30 p-6 rounded-lg flex items-start border border-border">
-              <Droplets className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
+              <Hammer className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
               <div>
-                <h3 className="font-semibold text-foreground mb-2">Aplicación Submarina</h3>
+                <h3 className="font-semibold text-foreground mb-2">Impacto y Abrasión</h3>
                 <p className="text-muted-foreground text-sm">
-                  Curado y adhesión efectiva bajo agua en aplicaciones marinas y offshore
+                  Protección de equipos expuestos a desgaste mecánico severo
                 </p>
               </div>
             </div>
+
             <div className="bg-muted/30 p-6 rounded-lg flex items-start border border-border">
               <Thermometer className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
               <div>
@@ -96,6 +97,16 @@ export default async function EpoxicosPage() {
                 </p>
               </div>
             </div>
+                        <div className="bg-muted/30 p-6 rounded-lg flex items-start border border-border">
+              <Ship className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">Aplicación Submarina</h3>
+                <p className="text-muted-foreground text-sm">
+                  Curado y adhesión efectiva bajo agua en aplicaciones marinas y offshore
+                </p>
+              </div>
+
+            </div>
           </div>
 
           {/* Series de Productos */}
@@ -103,20 +114,21 @@ export default async function EpoxicosPage() {
             <h2 className="text-2xl font-semibold mb-4">Líneas de Productos Arcor</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-muted/40 p-4 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-2">Arcor Repair</h3>
+                <h3 className="font-semibold text-foreground mb-2">Arcor Rebuild</h3>
                 <p className="text-muted-foreground text-sm">Sistemas de reparación estructural y reconstrucción de equipos</p>
               </div>
+        
               <div className="bg-muted/40 p-4 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-2">Arcor Marine</h3>
-                <p className="text-muted-foreground text-sm">Aplicaciones submarinas y ambientes marinos extremos</p>
-              </div>
-              <div className="bg-muted/40 p-4 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-2">Arcor Protection</h3>
+                <h3 className="font-semibold text-foreground mb-2">Arcor Coating</h3>
                 <p className="text-muted-foreground text-sm">Revestimientos anticorrosivos y protección química</p>
               </div>
               <div className="bg-muted/40 p-4 rounded-lg border border-border">
-                <h3 className="font-semibold text-foreground mb-2">Arcor Industrial</h3>
+                <h3 className="font-semibold text-foreground mb-2">Arcor Chemical </h3>
                 <p className="text-muted-foreground text-sm">Soluciones de alta temperatura para procesos industriales</p>
+              </div>
+                    <div className="bg-muted/40 p-4 rounded-lg border border-border">
+                <h3 className="font-semibold text-foreground mb-2">Arcor Marine</h3>
+                <p className="text-muted-foreground text-sm">Aplicaciones submarinas y ambientes marinos extremos</p>
               </div>
             </div>
           </div>
@@ -129,7 +141,7 @@ export default async function EpoxicosPage() {
                   <CardHeader className="pb-3">
                     <div className="aspect-square relative mb-4 bg-gray-100 rounded-md overflow-hidden">
                       <OptimizedImage
-                        src={producto.image || '/placeholder-product.jpg'}
+                        src={producto.image || producto.image_url || '/placeholder.jpg'}
                         alt={producto.name}
                         width={300}
                         height={300}
@@ -171,7 +183,7 @@ export default async function EpoxicosPage() {
             <Alert>
               <Info className="h-4 w-4" />
               <AlertDescription>
-                Los productos están siendo cargados. Si el problema persiste, 
+                Los productos están siendo cargados. Si el problema persiste,
                 verifica que el servidor esté funcionando correctamente.
               </AlertDescription>
             </Alert>

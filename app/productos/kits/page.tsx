@@ -10,15 +10,15 @@ import { OptimizedImage } from "@/components/ui/optimized-image"
 import { Package, Info, ArrowRight, Clock, Wrench, AlertTriangle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: 'Kits de Reparación Industrial | Emergencia y Mantenimiento | SealPro',
-  description: 'Kits completos de reparación para emergencias industriales. Sellado temporal, reparación inmediata de fugas, mantenimiento predictivo portátil.',
-  keywords: 'kits reparación industrial, emergencia, sellado temporal, reparación fugas, mantenimiento predictivo, kit portátil, offshore',
+  title: 'Kits - Reparación de Fugas | Emergencia y Mantenimiento | SealPro',
+  description: 'Kits completos para reparación de fugas en emergencias industriales. Sellado temporal, reparación inmediata de fugas, mantenimiento predictivo portátil.',
+  keywords: 'kits reparación industrial, Kit de reparación de fugas, reparación de emergencia, fuga en tuberías, sellado temporal, reparación permanente, reparación fugas, mantenimiento predictivo, kit portátil, offshore',
   openGraph: {
     title: 'Kits de Reparación Industrial | SealPro',
-    description: 'Soluciones completas para reparaciones de emergencia y mantenimiento industrial.',
+    description: 'Soluciones completas para reparaciones de fugas en tuberíasy mantenimiento industrial.',
     url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/productos/kits`,
     siteName: 'SealPro Industrial',
-    locale: 'es_MX',
+    locale: 'es_PE',
     type: 'website',
   }
 }

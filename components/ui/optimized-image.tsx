@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
+import { getProxiedImageUrl, getImageFallbacks } from '@/lib/image-utils'
 
 interface OptimizedImageProps {
   src: string
@@ -36,7 +37,12 @@ export function OptimizedImage({
   const [isLoaded, setIsLoaded] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isInView, setIsInView] = useState(true) // Temporalmente siempre true para debuggear
+  const [currentSrcIndex, setCurrentSrcIndex] = useState(0)
   const imgRef = useRef<HTMLImageElement>(null)
+
+  // Generar URLs de fallback
+  const fallbackUrls = getImageFallbacks(src)
+  const currentSrc = fallbackUrls[currentSrcIndex] || '/placeholder.jpg'
 
   // Intersection Observer para lazy loading
   useEffect(() => {
@@ -69,35 +75,53 @@ export function OptimizedImage({
   }
 
   const handleLoad = () => {
-    console.log('✅ Image loaded successfully:', src)
+    console.log('✅ Image loaded successfully:', currentSrc)
     setIsLoaded(true)
+    setIsError(false) // Reset error state on successful load
     onLoad?.()
   }
 
   const handleError = () => {
-    console.warn('❌ Image failed to load:', src)
-    setIsError(true)
-    onError?.()
+    console.warn('❌ Image failed to load:', currentSrc)
+
+    // Intentar con la siguiente URL de fallback
+    if (currentSrcIndex < fallbackUrls.length - 1) {
+      console.log(`🔄 Trying fallback image ${currentSrcIndex + 1}:`, fallbackUrls[currentSrcIndex + 1])
+      setCurrentSrcIndex(currentSrcIndex + 1)
+      setIsError(false) // Reset error state for retry
+    } else {
+      console.error('❌ All fallback images failed for:', src)
+      setIsError(true)
+      onError?.()
+    }
   }
+
+  // Reset fallback index when src changes
+  useEffect(() => {
+    setCurrentSrcIndex(0)
+    setIsLoaded(false)
+    setIsError(false)
+  }, [src])
 
   // Placeholder para imagen por defecto
   const defaultBlurDataURL = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+'
 
   return (
     <>
-      {/* Imagen principal - simplificada para debug */}
+      {/* Imagen principal con sistema de fallbacks */}
       <img
         ref={imgRef}
-        src={src}
+        src={currentSrc}
         alt={alt}
         width={width}
         height={height}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
-        crossOrigin={src.includes('://') ? 'anonymous' : undefined}
+        crossOrigin={currentSrc.includes('://') && !currentSrc.startsWith('/api/') ? 'anonymous' : undefined}
         className={cn(
           "transition-opacity duration-300",
-          isLoaded ? "opacity-100" : "opacity-50",
+          isLoaded ? "opacity-100" : "opacity-75",
+          isError && "opacity-50",
           className
         )}
         onLoad={handleLoad}

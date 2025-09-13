@@ -1,9 +1,23 @@
 "use client"
 
+import { useRouter } from 'next/navigation'
 import { Header } from "@/components/header"
 import { AdvancedSearch } from "@/components/AdvancedSearch"
 
 export default function SearchPage() {
+  const router = useRouter()
+
+  const handleSearch = (term: string, category?: string) => {
+    const params = new URLSearchParams()
+    params.set('q', term)
+    if (category) params.set('category', category)
+    router.push(`/search?${params.toString()}`)
+  }
+
+  const handleCategoryFilter = (category: string) => {
+    router.push(`/search?category=${category}`)
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -43,12 +57,7 @@ export default function SearchPage() {
             ].map((item, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  const params = new URLSearchParams()
-                  params.set('q', item.term)
-                  if (item.category) params.set('category', item.category)
-                  window.location.href = `/search?${params.toString()}`
-                }}
+                onClick={() => handleSearch(item.term, item.category || undefined)}
                 className="p-4 bg-muted/50 hover:bg-muted transition-colors rounded-lg text-left group"
               >
                 <div className="text-sm font-medium group-hover:text-primary transition-colors">
@@ -93,9 +102,7 @@ export default function SearchPage() {
             ].map((item) => (
               <button
                 key={item.category}
-                onClick={() => {
-                  window.location.href = `/search?category=${item.category}`
-                }}
+                onClick={() => handleCategoryFilter(item.category)}
                 className="p-6 bg-card hover:shadow-lg transition-all duration-200 rounded-xl border group text-left"
               >
                 <div className={`w-12 h-12 ${item.color} rounded-lg flex items-center justify-center text-white text-xl mb-4 group-hover:scale-110 transition-transform`}>

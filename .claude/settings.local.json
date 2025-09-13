@@ -26,7 +26,9 @@
       "Bash(start http://localhost:3000/)",
       "Bash(start http://localhost:3000/productos)",
       "Bash(start http://localhost:3000/auth/login)",
-      "WebFetch(domain:www.arcorepoxy.com)"
+      "WebFetch(domain:www.arcorepoxy.com)",
+      "Bash(mkdir:*)",
+      "Bash(start http://localhost:3001/productos/epoxicos)"
     ],
     "deny": [],
     "ask": []
