@@ -7,15 +7,15 @@ import { AbrazaderasList } from "@/components/AbrazaderasList"
 import { Settings } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: 'Abrazaderas Industriales Alta Presión | Acero Inoxidable 316L | SealPro',
-  description: 'Abrazaderas industriales certificadas ASME para reparación de tuberías sin soldadura. Acero inoxidable 316L, hasta 16 bar. Petroquímica y manufactura.',
-  keywords: 'abrazaderas industriales, acero inoxidable 316L, alta presión, ASME B31.3, reparación tuberías, conexiones industriales, petroquímica',
+  title: 'Abrazaderas Industriales Alta Presión | Acero Inoxidable 316 | SealPro',
+  description: 'Abrazaderas industriales certificadas ASME para reparación de tuberías sin soldadura. Acero inoxidable 316, hasta 30 bar. Minería e industria pesada.',
+  keywords: 'abrazaderas industriales, acero inoxidable 316, alta presión, ASME B31.3, reparación tuberías, conexiones industriales, petroquímica',
   openGraph: {
     title: 'Abrazaderas Industriales | SealPro',
-    description: 'Abrazaderas certificadas para aplicaciones de alta presión en la industria petroquímica.',
+    description: 'Abrazaderas certificadas para aplicaciones de alta presión en la minera y de uso industrial.',
     url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/productos/abrazaderas`,
     siteName: 'SealPro Industrial',
-    locale: 'es_MX',
+    locale: 'es_PE',
     type: 'website',
   }
 }
@@ -63,7 +63,7 @@ export default function AbrazaderasPage() {
             <div className="bg-muted/30 p-6 rounded-lg border border-border">
               <h3 className="font-semibold text-foreground mb-2">Alta Presión</h3>
               <p className="text-muted-foreground text-sm">
-                Resistencia hasta 16 bar en aplicaciones industriales críticas
+                Resistencia hasta 30 bar en aplicaciones industriales críticas
               </p>
             </div>
           </div>

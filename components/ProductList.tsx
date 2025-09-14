@@ -110,13 +110,15 @@ export function ProductList<T extends BaseProduct>({
         {displayedProducts.map((producto) => (
           <Card key={producto._id} className="group hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <div className="aspect-square relative mb-4 bg-gray-100 rounded-md overflow-hidden">
+              <div className=" relative mb-4 bg-gray-100 rounded-md overflow-hidden">
                 <OptimizedImage
                   src={producto.image || producto.image_url || '/placeholder.jpg'}
                   alt={producto.name}
                   width={300}
-                  height={300}
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  height={200}
+
+
+                  className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-300"
                   onError={() => console.warn(`Failed to load image for ${producto.name}:`, producto.image || producto.image_url)}
                 />
                 {producto.generic_type && (

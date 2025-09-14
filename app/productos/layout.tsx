@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: 'Catálogo completo de productos industriales certificados para la industria petroquímica y manufactura.',
     url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/productos`,
     siteName: 'SealPro Industrial',
-    locale: 'es_MX',
+    locale: 'es_PE',
     type: 'website',
   },
   alternates: {

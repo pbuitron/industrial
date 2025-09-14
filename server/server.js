@@ -58,8 +58,12 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/contacts', require('./routes/contacts'));
 app.use('/api/auth', require('./routes/auth'));
+// Rutas de productos (mantener legacy y agregar nuevas)
 app.use('/api/products', require('./routes/products'));
+app.use('/api/products', require('./routes/productsNew'));
 app.use('/api/search', require('./routes/search'));
+app.use('/api/clientes', require('./routes/clientes'));
+app.use('/api/cotizaciones', require('./routes/cotizaciones'));
 
 // Middleware para rutas no encontradas
 app.use('*', (req, res) => {

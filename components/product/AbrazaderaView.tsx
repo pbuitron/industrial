@@ -61,7 +61,7 @@ export function AbrazaderaView({ product }: AbrazaderaViewProps) {
         const row = product.technicalData!.rows[i];
         return `${row[0]}: ${row[1]}`;
       });
-      
+
       openWhatsAppForm({
         type: 'product_selection',
         data: {
@@ -78,8 +78,8 @@ export function AbrazaderaView({ product }: AbrazaderaViewProps) {
 
   return (
     <div className="max-w-6xl mx-auto py-12 px-6">
-      <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
-      <p className="text-lg text-muted-foreground mb-6">{product.description}</p>
+      <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+      <p className="text-m text-muted-foreground mb-6">{product.description}</p>
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Imagen con logo superpuesto */}
@@ -99,6 +99,13 @@ export function AbrazaderaView({ product }: AbrazaderaViewProps) {
         {/* Info */}
         <div className="flex-1 space-y-6">
           <div>
+            {product.details && (
+              <div className="mb-4">
+                <h2 className="text-2xl font-semibold mb-2">Detalles</h2>
+                <p className=" text-gray-700 leading-relaxed">{product.details}</p>
+              </div>
+            )}
+
             <h2 className="text-2xl font-semibold mb-2">Características</h2>
             <ul className="list-disc pl-6 space-y-1">
               {product.specs?.map((spec, i) => (
@@ -131,12 +138,7 @@ export function AbrazaderaView({ product }: AbrazaderaViewProps) {
             </div>
           )}
 
-          {product.details && (
-            <div>
-              <h2 className="text-2xl font-semibold mb-2">Detalles</h2>
-              <p className="text-gray-700 leading-relaxed">{product.details}</p>
-            </div>
-          )}
+
         </div>
       </div>
 

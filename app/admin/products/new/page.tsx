@@ -13,6 +13,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { ArrowLeft, Plus, Trash2, AlertCircle, CheckCircle } from "lucide-react"
 
+interface Variante {
+  codigo: string
+  descripcion: string
+  precio: number
+  unidad: string
+}
+
 export default function NewProductPage() {
   const { admin } = useAuth()
   const router = useRouter()
@@ -22,7 +29,7 @@ export default function NewProductPage() {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
-  // Common fields
+  // Main product fields
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [applications, setApplications] = useState<string[]>([""])
@@ -49,14 +56,23 @@ export default function NewProductPage() {
   const [content, setContent] = useState<string[]>([""])
   const [instructions, setInstructions] = useState<string[]>([""])
 
+  // Technical Data (for abrazaderas and kits) - se convertirá en variantes
+  const [technicalDataHeaders, setTechnicalDataHeaders] = useState<string[]>([])
+  const [technicalDataRows, setTechnicalDataRows] = useState<string[][]>([[]])
+
+  // Variantes (para productos sin tabla técnica o adicionales)
+  const [variantes, setVariantes] = useState<Variante[]>([
+    { codigo: "", descripcion: "", precio: 0, unidad: "UND" }
+  ])
+
   const addArrayField = (setter: React.Dispatch<React.SetStateAction<string[]>>) => {
     setter(prev => [...prev, ""])
   }
 
   const updateArrayField = (
-    index: number, 
-    value: string, 
-    array: string[], 
+    index: number,
+    value: string,
+    array: string[],
     setter: React.Dispatch<React.SetStateAction<string[]>>
   ) => {
     const newArray = [...array]
@@ -65,8 +81,8 @@ export default function NewProductPage() {
   }
 
   const removeArrayField = (
-    index: number, 
-    array: string[], 
+    index: number,
+    array: string[],
     setter: React.Dispatch<React.SetStateAction<string[]>>
   ) => {
     if (array.length > 1) {
@@ -74,9 +90,63 @@ export default function NewProductPage() {
     }
   }
 
+  // Technical Data Management Functions
+  const addHeader = () => {
+    setTechnicalDataHeaders(prev => [...prev, ""])
+  }
+
+  const updateHeader = (index: number, value: string) => {
+    const newHeaders = [...technicalDataHeaders]
+    newHeaders[index] = value
+    setTechnicalDataHeaders(newHeaders)
+  }
+
+  const removeHeader = (index: number) => {
+    if (technicalDataHeaders.length > 1) {
+      setTechnicalDataHeaders(prev => prev.filter((_, i) => i !== index))
+      // Also remove corresponding column from all rows
+      setTechnicalDataRows(prev => prev.map(row => row.filter((_, i) => i !== index)))
+    }
+  }
+
+  const addRow = () => {
+    const newRow = new Array(technicalDataHeaders.length).fill("")
+    setTechnicalDataRows(prev => [...prev, newRow])
+  }
+
+  const updateRowCell = (rowIndex: number, cellIndex: number, value: string) => {
+    const newRows = [...technicalDataRows]
+    newRows[rowIndex][cellIndex] = value
+    setTechnicalDataRows(newRows)
+  }
+
+  const removeRow = (index: number) => {
+    if (technicalDataRows.length > 1) {
+      setTechnicalDataRows(prev => prev.filter((_, i) => i !== index))
+    }
+  }
+
+  const addVariante = () => {
+    setVariantes(prev => [...prev, { codigo: "", descripcion: "", precio: 0, unidad: "UND" }])
+  }
+
+  const updateVariante = (index: number, field: keyof Variante, value: string | number) => {
+    setVariantes(prev => {
+      const newVariantes = [...prev]
+      newVariantes[index] = { ...newVariantes[index], [field]: value }
+      return newVariantes
+    })
+  }
+
+  const removeVariante = (index: number) => {
+    if (variantes.length > 1) {
+      setVariantes(prev => prev.filter((_, i) => i !== index))
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!category) {
       setError("Por favor selecciona una categoría")
       return
@@ -87,26 +157,27 @@ export default function NewProductPage() {
     setSuccess("")
 
     try {
+      // Preparar datos básicos del producto
       let productData: any = {
         name: name.trim(),
         description: description.trim(),
-        applications: applications.filter(app => app.trim() !== "")
+        category: category,
+        applications: applications.filter(app => app.trim() !== ""),
+        isActive: true
       }
 
-      // Add category-specific fields
+      // Agregar metadatos específicos por categoría (para compatibilidad con el modelo legacy)
       if (category === "abrazaderas") {
-        productData = {
-          ...productData,
+        productData.image = image.trim() || undefined
+        productData.metadata = {
           details: details.trim(),
-          image: image.trim(),
           specs: specs.filter(spec => spec.trim() !== ""),
           materials: materials.filter(mat => mat.trim() !== "")
         }
       } else if (category === "epoxicos") {
-        productData = {
-          ...productData,
+        productData.image = imageUrl.trim() || undefined
+        productData.metadata = {
           generic_type: genericType.trim(),
-          image_url: imageUrl.trim(),
           product_url: productUrl.trim(),
           specifications: {
             colors: colors.filter(color => color.trim() !== ""),
@@ -119,16 +190,56 @@ export default function NewProductPage() {
           special_features: specialFeatures.filter(feature => feature.trim() !== "")
         }
       } else if (category === "kits") {
-        productData = {
-          ...productData,
-          image: image.trim(),
+        productData.image = image.trim() || undefined
+        productData.metadata = {
           specs: specs.filter(spec => spec.trim() !== ""),
           content: content.filter(item => item.trim() !== ""),
           instructions: instructions.filter(inst => inst.trim() !== "")
         }
       }
 
-      const response = await fetch(`http://localhost:5000/api/products/${category}`, {
+      // Generar variantes desde datos técnicos o usar variantes manuales
+      let finalVariantes: Variante[] = []
+
+      // Si hay datos técnicos, generar variantes desde ellos
+      if (technicalDataHeaders.length > 0 && technicalDataRows.length > 0) {
+        const validRows = technicalDataRows.filter(row =>
+          row.some(cell => cell.trim() !== "")
+        )
+
+        validRows.forEach((row, index) => {
+          let codigo = `${category.toUpperCase()}-${String(index + 1).padStart(3, '0')}`
+          let descripcion = `${name.trim()}`
+
+          // Usar primera columna como identificador principal
+          if (technicalDataHeaders.length > 0 && row[0]) {
+            descripcion += ` - ${technicalDataHeaders[0]}: ${row[0]}`
+          }
+
+          finalVariantes.push({
+            codigo,
+            descripcion,
+            precio: 0, // Precio por defecto
+            unidad: 'UND'
+          })
+        })
+      } else {
+        // Usar variantes manuales
+        finalVariantes = variantes.filter(v =>
+          v.codigo.trim() !== "" &&
+          v.descripcion.trim() !== ""
+        )
+      }
+
+      // Validar que hay al menos una variante
+      if (finalVariantes.length === 0) {
+        setError("Debes agregar al menos una variante válida o completar la tabla de datos técnicos")
+        return
+      }
+
+      productData.variantes = finalVariantes
+
+      const response = await fetch(`http://localhost:5000/api/products/v2`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -140,8 +251,8 @@ export default function NewProductPage() {
       const result = await response.json()
 
       if (response.ok && result.success) {
-        setSuccess(`Producto "${name}" creado exitosamente`)
-        
+        setSuccess(`Producto "${name}" creado exitosamente con ${finalVariantes.length} variantes`)
+
         // Reset form after successful creation
         setTimeout(() => {
           router.push('/admin/products')
@@ -194,6 +305,89 @@ export default function NewProductPage() {
       >
         <Plus className="w-4 h-4 mr-2" />
         Agregar {label.toLowerCase()}
+      </Button>
+    </div>
+  )
+
+  const renderVariantesInputs = () => (
+    <div className="space-y-4">
+      <Label>Variantes Manuales (Opcional)</Label>
+      <p className="text-sm text-gray-600">
+        Agrega variantes manuales si no tienes tabla de datos técnicos o quieres variantes adicionales.
+      </p>
+      {variantes.map((variante, index) => (
+        <Card key={index} className="p-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="space-y-2">
+              <Label>Código</Label>
+              <Input
+                value={variante.codigo}
+                onChange={(e) => updateVariante(index, 'codigo', e.target.value)}
+                placeholder="SPU001"
+                className="font-mono"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Descripción</Label>
+              <Input
+                value={variante.descripcion}
+                onChange={(e) => updateVariante(index, 'descripcion', e.target.value)}
+                placeholder="Descripción de la variante"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Precio</Label>
+              <Input
+                type="number"
+                min="0"
+                step="0.01"
+                value={variante.precio}
+                onChange={(e) => updateVariante(index, 'precio', parseFloat(e.target.value) || 0)}
+                placeholder="0.00"
+              />
+            </div>
+            <div className="space-y-2 flex items-end">
+              <div className="flex-1 space-y-2">
+                <Label>Unidad</Label>
+                <Select
+                  value={variante.unidad}
+                  onValueChange={(value) => updateVariante(index, 'unidad', value)}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="UND">UND</SelectItem>
+                    <SelectItem value="KIT">KIT</SelectItem>
+                    <SelectItem value="PZA">PZA</SelectItem>
+                    <SelectItem value="M">M</SelectItem>
+                    <SelectItem value="KG">KG</SelectItem>
+                    <SelectItem value="L">L</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => removeVariante(index)}
+                disabled={variantes.length === 1}
+                className="ml-2"
+              >
+                <Trash2 className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        </Card>
+      ))}
+      <Button
+        type="button"
+        variant="outline"
+        onClick={addVariante}
+        className="w-full"
+      >
+        <Plus className="w-4 h-4 mr-2" />
+        Agregar Variante Manual
       </Button>
     </div>
   )
@@ -288,7 +482,7 @@ export default function NewProductPage() {
                           rows={4}
                         />
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label>Imagen *</Label>
                         <Input
@@ -301,6 +495,90 @@ export default function NewProductPage() {
 
                       {renderArrayInputs("Especificaciones *", specs, setSpecs, "Especificación técnica")}
                       {renderArrayInputs("Materiales *", materials, setMaterials, "Material disponible")}
+
+                      {/* Technical Data Editor */}
+                      <div className="space-y-4 border-t pt-6">
+                        <h3 className="text-lg font-semibold">Datos Técnicos (Tabla)</h3>
+                        <p className="text-sm text-gray-600">
+                          Completa la tabla técnica para generar variantes automáticamente, o usa las variantes manuales más abajo.
+                        </p>
+
+                        {/* Headers */}
+                        <div className="space-y-2">
+                          <Label>Cabeceras de la Tabla</Label>
+                          {technicalDataHeaders.map((header, index) => (
+                            <div key={index} className="flex gap-2">
+                              <Input
+                                value={header}
+                                onChange={(e) => updateHeader(index, e.target.value)}
+                                placeholder="Nombre de la columna"
+                                className="flex-1"
+                              />
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => removeHeader(index)}
+                                disabled={technicalDataHeaders.length === 1}
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </Button>
+                            </div>
+                          ))}
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={addHeader}
+                            className="w-full"
+                          >
+                            <Plus className="w-4 h-4 mr-2" />
+                            Agregar Cabecera
+                          </Button>
+                        </div>
+
+                        {/* Rows */}
+                        {technicalDataHeaders.length > 0 && (
+                          <div className="space-y-2">
+                            <Label>Filas de Datos</Label>
+                            <div className="max-h-60 overflow-y-auto border rounded p-4">
+                              {technicalDataRows.map((row, rowIndex) => (
+                                <div key={rowIndex} className="flex gap-2 mb-2">
+                                  {row.map((cell, cellIndex) => (
+                                    <Input
+                                      key={cellIndex}
+                                      value={cell}
+                                      onChange={(e) => updateRowCell(rowIndex, cellIndex, e.target.value)}
+                                      placeholder={technicalDataHeaders[cellIndex] || `Col ${cellIndex + 1}`}
+                                      className="flex-1 text-xs"
+                                    />
+                                  ))}
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => removeRow(rowIndex)}
+                                    disabled={technicalDataRows.length === 1}
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="sm"
+                              onClick={addRow}
+                              className="w-full"
+                              disabled={technicalDataHeaders.length === 0}
+                            >
+                              <Plus className="w-4 h-4 mr-2" />
+                              Agregar Fila
+                            </Button>
+                          </div>
+                        )}
+                      </div>
                     </>
                   )}
 
@@ -400,8 +678,97 @@ export default function NewProductPage() {
                       {renderArrayInputs("Especificaciones *", specs, setSpecs, "Especificación del kit")}
                       {renderArrayInputs("Contenido", content, setContent, "Elemento del kit")}
                       {renderArrayInputs("Instrucciones", instructions, setInstructions, "Paso de instrucción")}
+
+                      {/* Technical Data Editor */}
+                      <div className="space-y-4 border-t pt-6">
+                        <h3 className="text-lg font-semibold">Datos Técnicos (Tabla)</h3>
+                        <p className="text-sm text-gray-600">
+                          Completa la tabla técnica para generar variantes automáticamente, o usa las variantes manuales más abajo.
+                        </p>
+
+                        {/* Headers */}
+                        <div className="space-y-2">
+                          <Label>Cabeceras de la Tabla</Label>
+                          {technicalDataHeaders.map((header, index) => (
+                            <div key={index} className="flex gap-2">
+                              <Input
+                                value={header}
+                                onChange={(e) => updateHeader(index, e.target.value)}
+                                placeholder="Nombre de la columna"
+                                className="flex-1"
+                              />
+                              <Button
+                                type="button"
+                                variant="outline"
+                                size="sm"
+                                onClick={() => removeHeader(index)}
+                                disabled={technicalDataHeaders.length === 1}
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </Button>
+                            </div>
+                          ))}
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={addHeader}
+                            className="w-full"
+                          >
+                            <Plus className="w-4 h-4 mr-2" />
+                            Agregar Cabecera
+                          </Button>
+                        </div>
+
+                        {/* Rows */}
+                        {technicalDataHeaders.length > 0 && (
+                          <div className="space-y-2">
+                            <Label>Filas de Datos</Label>
+                            <div className="max-h-60 overflow-y-auto border rounded p-4">
+                              {technicalDataRows.map((row, rowIndex) => (
+                                <div key={rowIndex} className="flex gap-2 mb-2">
+                                  {row.map((cell, cellIndex) => (
+                                    <Input
+                                      key={cellIndex}
+                                      value={cell}
+                                      onChange={(e) => updateRowCell(rowIndex, cellIndex, e.target.value)}
+                                      placeholder={technicalDataHeaders[cellIndex] || `Col ${cellIndex + 1}`}
+                                      className="flex-1 text-xs"
+                                    />
+                                  ))}
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => removeRow(rowIndex)}
+                                    disabled={technicalDataRows.length === 1}
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="sm"
+                              onClick={addRow}
+                              className="w-full"
+                              disabled={technicalDataHeaders.length === 0}
+                            >
+                              <Plus className="w-4 h-4 mr-2" />
+                              Agregar Fila
+                            </Button>
+                          </div>
+                        )}
+                      </div>
                     </>
                   )}
+
+                  {/* Variantes Manuales - Para todas las categorías */}
+                  <div className="border-t pt-6">
+                    {renderVariantesInputs()}
+                  </div>
                 </>
               )}
 

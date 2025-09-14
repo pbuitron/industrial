@@ -3,6 +3,10 @@ const Abrazadera = require('../models/Abrazadera');
 const Kit = require('../models/Kit');
 const Epoxico = require('../models/Epoxico');
 
+// Importar nuevos modelos
+const Product = require('../models/Product');
+const Variant = require('../models/Variant');
+
 const router = express.Router();
 
 // GET /api/search - Búsqueda avanzada de productos

@@ -7,7 +7,22 @@ const kitSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  
+
+  // Código para cotizaciones (no visible en frontend público)
+  codigo: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    uppercase: true,
+    validate: {
+      validator: function(v) {
+        return /^KIT-\d{3}$/.test(v); // Formato: KIT-001, KIT-002, etc.
+      },
+      message: 'Código debe tener el formato KIT-XXX donde XXX son 3 dígitos'
+    }
+  },
+
   // Información básica del producto
   name: {
     type: String,

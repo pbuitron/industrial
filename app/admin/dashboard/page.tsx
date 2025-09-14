@@ -5,7 +5,7 @@ import { AdminHeader } from "@/components/admin-header"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { User, Mail, Shield, Calendar } from "lucide-react"
+import { User, Mail, Shield, Calendar, FileText, Calculator } from "lucide-react"
 
 export default function AdminDashboard() {
   const { admin } = useAuth()
@@ -106,7 +106,7 @@ export default function AdminDashboard() {
                 <Mail className="w-4 h-4 mr-2" />
                 Gestionar Contactos
               </Button>
-              <Button 
+              <Button
                 className="w-full justify-start"
                 variant="outline"
                 onClick={() => window.location.href = '/admin/products'}
@@ -114,12 +114,20 @@ export default function AdminDashboard() {
                 <User className="w-4 h-4 mr-2" />
                 Gestionar Productos
               </Button>
-              <Button 
+              <Button
+                className="w-full justify-start"
+                variant="outline"
+                onClick={() => window.location.href = '/admin/cotizaciones'}
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Gestionar Cotizaciones
+              </Button>
+              <Button
                 className="w-full justify-start"
                 variant="outline"
                 onClick={() => window.location.href = '/productos'}
               >
-                <User className="w-4 h-4 mr-2" />
+                <Calculator className="w-4 h-4 mr-2" />
                 Ver Catálogo Público
               </Button>
               <Button 
