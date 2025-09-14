@@ -51,7 +51,7 @@ export function AdvancedSearch({
   const [suggestions, setSuggestions] = useState<string[]>([])
   
   const inputRef = useRef<HTMLInputElement>(null)
-  const suggestionTimeoutRef = useRef<NodeJS.Timeout>()
+  const suggestionTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const filterOptions = getFilterOptions()
 

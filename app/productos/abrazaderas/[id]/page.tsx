@@ -29,7 +29,8 @@ interface PageProps {
 // Función para obtener el producto (Server-side)
 async function getProduct(id: string): Promise<Abrazadera | null> {
   try {
-    const response = await fetch(`http://localhost:5000/api/products/abrazaderas/${id}`, {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+    const response = await fetch(`${baseUrl}/products/abrazaderas/${id}`, {
       cache: 'no-store' // Para datos dinámicos
     })
     

@@ -1,40 +1,60 @@
-/** @type {import('next').NextConfig} */
+  /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configuración de imágenes
   images: {
-    unoptimized: true, // Solo si realmente lo necesitas
-   domains: [], // Añade dominios permitidos aquí si cargas imágenes externas
-  formats: ['image/webp', 'image/avif'],
+    unoptimized: true,
+    domains: ['industrial-iot.us', 'localhost'],
+    formats: ['image/webp', 'image/avif'],
   },
-  
-  // Configuración de compilación
-  poweredByHeader: false, // Remueve el header "X-Powered-By: Next.js"
-  
-  // Configuración de TypeScript y ESLint (HABILITADAS)
+
+  // Configuración básica
+  poweredByHeader: false,
+
+  // TypeScript y ESLint más permisivos para desarrollo
   typescript: {
-    // TypeScript ahora está habilitado para builds
-    // ignoreBuildErrors: false, // Por defecto
+    ignoreBuildErrors: process.env.NODE_ENV === 'production',
   },
+
   eslint: {
-    // ESLint ahora está habilitado para builds
-    // ignoreDuringBuilds: false, // Por defecto
+    ignoreDuringBuilds: process.env.NODE_ENV === 'production',
   },
 
-  // Configuración experimental (opcional)
-  experimental: {
-    // typedRoutes: true, // Rutas tipadas (Next.js 13.2+)
-  },
-
-  // Variables de entorno
+  // Variables de entorno públicas
   env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
+    NEXT_PUBLIC_ENV: process.env.NODE_ENV || 'development',
   },
 
-  // Configuración de Webpack (si necesitas customización)
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Customizaciones de webpack aquí si es necesario
-    return config;
-  },
+  // Configuración condicional según el entorno
+  ...(process.env.NODE_ENV === 'production' && {
+    compress: true,
+
+    // Headers de seguridad solo en producción
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-Frame-Options',
+              value: 'DENY',
+            },
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'X-XSS-Protection',
+              value: '1; mode=block',
+            },
+            {
+              key: 'Referrer-Policy',
+              value: 'strict-origin-when-cross-origin',
+            },
+          ],
+        },
+      ];
+    },
+  }),
 }
 
-export default nextConfig
+  export default nextConfig

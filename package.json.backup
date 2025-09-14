@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "build:prod": "NODE_ENV=production next build",
-    "start": "next start",
-    "start:prod": "NODE_ENV=production next start",
+    "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "start": "next start",
     "type-check": "tsc --noEmit",
-    "clean": "rm -rf .next out node_modules/.cache"
+    "security-check": "node check-security.js",
+    "pre-push": "npm run security-check && npm run lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
