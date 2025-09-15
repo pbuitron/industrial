@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Construir URL del backend
-    const backendUrl = new URL('/api/search/suggestions', 'http://localhost:5000')
+    const backendUrl = new URL('/api/search/suggestions', process.env.BACKEND_URL || 'http://localhost:5000')
     backendUrl.searchParams.set('q', query.trim())
     backendUrl.searchParams.set('limit', limit)
 

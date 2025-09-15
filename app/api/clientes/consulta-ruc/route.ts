@@ -4,7 +4,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
-    const backendUrl = new URL('/api/clientes/consulta-ruc', 'http://localhost:5000')
+    const backendUrl = new URL('/api/clientes/consulta-ruc', process.env.BACKEND_URL || 'http://localhost:5000')
     const cookies = request.headers.get('cookie')
 
     console.log(`🔍 Consulting RUC: ${body.ruc}`)

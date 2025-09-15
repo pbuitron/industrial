@@ -42,9 +42,9 @@ export function ProductsSection() {
         setError(null)
 
         const [abrazaderasRes, kitsRes, epoxicosRes] = await Promise.all([
-          fetch('http://localhost:5000/api/products/abrazaderas'),
-          fetch('http://localhost:5000/api/products/kits'),
-          fetch('http://localhost:5000/api/products/epoxicos')
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/abrazaderas`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/kits`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/epoxicos`)
         ])
 
         if (!abrazaderasRes.ok || !kitsRes.ok || !epoxicosRes.ok) {
@@ -108,7 +108,7 @@ export function ProductsSection() {
           <Alert variant="destructive">
             <AlertDescription>
               Error al cargar productos: {error}. 
-              Verifica que el servidor esté funcionando en http://localhost:5000
+              Verifica que el servidor esté funcionando correctamente
             </AlertDescription>
           </Alert>
         </div>

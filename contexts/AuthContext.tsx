@@ -111,7 +111,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.log('🔍 Verificando autenticación...')
       dispatch({ type: 'AUTH_START' })
 
-      const response = await fetch('http://localhost:5000/api/auth/me', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
         method: 'GET',
         credentials: 'include' // Incluir cookies
       })
@@ -155,7 +155,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.log('🔑 Intentando login para:', email)
       dispatch({ type: 'AUTH_START' })
 
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const logout = async () => {
     try {
       // Intentar logout en el servidor
-      await fetch('http://localhost:5000/api/auth/logout', {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       })

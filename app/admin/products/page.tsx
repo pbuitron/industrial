@@ -59,14 +59,15 @@ export default function AdminProductsPage() {
       setLoading(true)
       setError("")
 
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
       const [abrazaderasRes, epoxicosRes, kitsRes] = await Promise.all([
-        fetch('http://localhost:5000/api/products/abrazaderas?includeInactive=true', {
+        fetch(`${baseUrl}/api/products/abrazaderas?includeInactive=true`, {
           credentials: 'include'
         }),
-        fetch('http://localhost:5000/api/products/epoxicos?includeInactive=true', {
+        fetch(`${baseUrl}/api/products/epoxicos?includeInactive=true`, {
           credentials: 'include'
         }),
-        fetch('http://localhost:5000/api/products/kits?includeInactive=true', {
+        fetch(`${baseUrl}/api/products/kits?includeInactive=true`, {
           credentials: 'include'
         })
       ])

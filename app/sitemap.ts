@@ -59,7 +59,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Función helper para procesar productos
     const processProducts = async (category: string, endpoint: string) => {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/${endpoint}`, {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+        const response = await fetch(`${baseUrl}/api/products/${endpoint}`, {
           next: { revalidate: 3600 } // Cache por 1 hora
         })
         

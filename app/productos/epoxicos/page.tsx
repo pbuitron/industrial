@@ -26,7 +26,8 @@ export const metadata: Metadata = {
 // Esta función obtendría los productos reales de la API
 async function getEpoxicos() {
   try {
-    const response = await fetch(`http://localhost:5000/api/products/epoxicos`, {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+    const response = await fetch(`${baseUrl}/api/products/epoxicos`, {
       next: { revalidate: 3600 } // Cache por 1 hora
     })
 

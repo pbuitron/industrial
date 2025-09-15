@@ -100,7 +100,7 @@ export default function EditProductPage({
       setLoading(true)
       setError("")
       
-      const response = await fetch(`http://localhost:5000/api/products/${category}/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}/${id}`, {
         credentials: 'include'
       })
       const result = await response.json()
@@ -274,7 +274,7 @@ export default function EditProductPage({
         }
       }
 
-      const response = await fetch(`http://localhost:5000/api/products/${category}/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

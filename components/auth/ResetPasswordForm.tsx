@@ -37,7 +37,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
   const validateToken = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/validate-reset-token/${token}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/validate-reset-token/${token}`)
       const result = await response.json()
 
       if (response.ok && result.success) {
@@ -106,7 +106,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     setError("")
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/reset-password/${token}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/reset-password/${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

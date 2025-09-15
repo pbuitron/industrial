@@ -35,7 +35,7 @@ export function ContactSection() {
     setSubmitStatus({ type: null, message: "" })
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contacts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

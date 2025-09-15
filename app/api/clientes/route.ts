@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
 
     // Construir URL del backend con todos los parámetros
-    const backendUrl = new URL('/api/clientes', 'http://localhost:5000')
+    const backendUrl = new URL('/api/clientes', process.env.BACKEND_URL || 'http://localhost:5000')
     searchParams.forEach((value, key) => {
       backendUrl.searchParams.set(key, value)
     })
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
-    const backendUrl = new URL('/api/clientes', 'http://localhost:5000')
+    const backendUrl = new URL('/api/clientes', process.env.BACKEND_URL || 'http://localhost:5000')
     const cookies = request.headers.get('cookie')
 
     console.log(`📝 Creating cliente...`)

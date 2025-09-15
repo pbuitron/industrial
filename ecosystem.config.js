@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'industrial-backend',
+      name: 'industrial-website-server',
       script: './server/server.js',
       cwd: '/root/industrial',
       instances: 1,
@@ -31,7 +31,7 @@ module.exports = {
       }
     },
     {
-      name: 'industrial-frontend',
+      name: 'industrial-project',
       script: 'node_modules/next/dist/bin/next',
       args: 'start -p 3000',
       cwd: '/root/industrial',

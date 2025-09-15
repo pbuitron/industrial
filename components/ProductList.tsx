@@ -42,7 +42,7 @@ export function ProductList<T extends BaseProduct>({
         setError(null)
 
         console.log(`🔄 Fetching ${category}...`)
-        const response = await fetch(`http://localhost:5000/api/products/${category}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}`)
 
         if (!response.ok) {
           throw new Error(`API Error: ${response.status} ${response.statusText}`)
@@ -85,7 +85,7 @@ export function ProductList<T extends BaseProduct>({
         <Info className="h-4 w-4" />
         <AlertDescription>
           Error al cargar productos: {error}.
-          Verifica que el servidor esté funcionando en http://localhost:5000
+          Verifica que el servidor esté funcionando correctamente
         </AlertDescription>
       </Alert>
     )

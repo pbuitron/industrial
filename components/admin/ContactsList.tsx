@@ -75,7 +75,7 @@ export function ContactsList() {
       if (statusFilter) params.append('status', statusFilter)
       if (productTypeFilter) params.append('productType', productTypeFilter)
 
-      const response = await fetch(`http://localhost:5000/api/contacts?${params}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contacts?${params}`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -97,7 +97,7 @@ export function ContactsList() {
 
   const updateContactStatus = async (contactId: string, newStatus: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${contactId}/status`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contacts/${contactId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

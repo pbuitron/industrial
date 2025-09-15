@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
 
     // Construir URL del backend con todos los parámetros
-    const backendUrl = new URL('/api/cotizaciones/productos/search', 'http://localhost:5000')
+    const backendUrl = new URL('/api/cotizaciones/productos/search', process.env.BACKEND_URL || 'http://localhost:5000')
     searchParams.forEach((value, key) => {
       backendUrl.searchParams.set(key, value)
     })
