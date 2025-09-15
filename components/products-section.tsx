@@ -132,7 +132,7 @@ export function ProductsSection() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-12">
+          <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-12">
             <TabsTrigger value="abrazaderas" className="flex items-center gap-2">
               <Wrench className="h-4 w-4" /> Abrazaderas
             </TabsTrigger>
