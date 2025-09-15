@@ -15,16 +15,16 @@ export function Footer() {
               Líderes en soluciones industriales. Calidad, confianza y excelencia técnica para su empresa.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-all duration-300 hover:scale-125 hover:bg-primary-foreground/10 p-2 rounded-full">
                 <Facebook className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-all duration-300 hover:scale-125 hover:bg-primary-foreground/10 p-2 rounded-full">
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-all duration-300 hover:scale-125 hover:bg-primary-foreground/10 p-2 rounded-full">
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-all duration-300 hover:scale-125 hover:bg-primary-foreground/10 p-2 rounded-full">
                 <Instagram className="h-5 w-5" />
               </Link>
             </div>
@@ -35,27 +35,27 @@ export function Footer() {
             <h4 className="text-lg font-semibold">Productos</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Abrazaderas Industriales
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Kits de Reparación de Fugas
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Epóxicos para Metales
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Accesorios
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Catálogo Completo
                 </Link>
               </li>
@@ -67,27 +67,27 @@ export function Footer() {
             <h4 className="text-lg font-semibold">Servicios</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Consultoría Técnica
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Instalación
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Mantenimiento
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Capacitación
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-primary-foreground transition-colors">
+                <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:translate-x-2 inline-block">
                   Soporte 24/7
                 </Link>
               </li>
@@ -98,20 +98,20 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Contacto</h4>
             <div className="space-y-3 text-primary-foreground/80">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 flex-shrink-0" />
+              <div className="flex items-center gap-2 hover:text-primary-foreground transition-all duration-300 cursor-default">
+                <MapPin className="h-4 w-4 flex-shrink-0 hover:scale-110 transition-transform duration-300" />
                 <span className="text-sm">El Agustino - Lima - Perú</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 flex-shrink-0" />
+              <div className="flex items-center gap-2 hover:text-primary-foreground transition-all duration-300 cursor-default">
+                <Phone className="h-4 w-4 flex-shrink-0 hover:scale-110 transition-transform duration-300" />
                 <span className="text-sm">+51 936 312 086</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 flex-shrink-0" />
+              <div className="flex items-center gap-2 hover:text-primary-foreground transition-all duration-300 cursor-default">
+                <Mail className="h-4 w-4 flex-shrink-0 hover:scale-110 transition-transform duration-300" />
                 <span className="text-sm">info@industrial-iot.us</span>
               </div>
-               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 flex-shrink-0" />
+               <div className="flex items-center gap-2 hover:text-primary-foreground transition-all duration-300 cursor-default">
+                <Mail className="h-4 w-4 flex-shrink-0 hover:scale-110 transition-transform duration-300" />
                 <span className="text-sm">ventas@industrial-iot.us</span>
               </div>
             </div>
@@ -124,13 +124,13 @@ export function Footer() {
               © {currentYear} Industrial Iot EIRL. Todos los derechos reservados.
             </p>
             <div className="flex gap-6 text-sm text-primary-foreground/80">
-              <Link href="#" className="hover:text-primary-foreground transition-colors">
+              <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:scale-105">
                 Política de Privacidad
               </Link>
-              <Link href="#" className="hover:text-primary-foreground transition-colors">
+              <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:scale-105">
                 Términos y Condiciones
               </Link>
-              <Link href="#" className="hover:text-primary-foreground transition-colors">
+              <Link href="#" className="hover:text-primary-foreground transition-all duration-300 hover:scale-105">
                 Certificaciones
               </Link>
             </div>

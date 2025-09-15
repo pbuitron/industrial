@@ -29,12 +29,12 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
+              <div className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors duration-300 cursor-default">
+                <Phone className="h-4 w-4 hover:scale-110 transition-transform duration-300" />
                 <span>+51 936 312 086</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
+              <div className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors duration-300 cursor-default">
+                <Mail className="h-4 w-4 hover:scale-110 transition-transform duration-300" />
                 <span>info@industrial-iot.us</span>
               </div>
             </div>
@@ -49,7 +49,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-primary">
+            <Link href="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-all duration-300 hover:scale-105 transform-gpu">
               INDUSTRIAL IOT
             </Link>
           </div>
@@ -60,9 +60,10 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-foreground hover:text-primary transition-all duration-300 font-medium relative hover:scale-105 group"
               >
-                {item.name}
+                <span className="relative z-10">{item.name}</span>
+                <span className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300 -z-10"></span>
               </Link>
             ))}
           </nav>
@@ -77,8 +78,8 @@ export function Header() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Button variant="ghost" size="sm" onClick={() => setIsMenuOpen(!isMenuOpen)} className="hover:bg-primary/10 hover:scale-110 transition-all duration-300">
+              {isMenuOpen ? <X className="h-6 w-6 rotate-0 hover:rotate-90 transition-transform duration-300" /> : <Menu className="h-6 w-6 hover:scale-110 transition-transform duration-300" />}
             </Button>
           </div>
         </div>
@@ -96,13 +97,13 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-foreground hover:text-primary transition-colors font-medium"
+                    className="text-foreground hover:text-primary transition-all duration-300 font-medium hover:bg-primary/10 p-2 rounded-md hover:scale-105"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <Button className="mt-4 w-full">Solicitar Cotización</Button>
+                <Button className="mt-4 w-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105">Solicitar Cotización</Button>
               </nav>
             </div>
           </div>
