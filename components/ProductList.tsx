@@ -42,7 +42,7 @@ export function ProductList<T extends BaseProduct>({
         setError(null)
 
         console.log(`🔄 Fetching ${category}...`)
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${category}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${category}`)
 
         if (!response.ok) {
           throw new Error(`API Error: ${response.status} ${response.statusText}`)

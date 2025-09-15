@@ -239,7 +239,7 @@ export default function NewProductPage() {
 
       productData.variantes = finalVariantes
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/v2`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/v2`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

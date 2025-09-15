@@ -66,7 +66,7 @@ export default function KitDetail({ params }: { params: Promise<{ id: string }> 
       setLoading(true)
       setError("")
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/kits/${id}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/kits/${id}`)
       const result = await response.json()
 
       if (response.ok && result.success) {
