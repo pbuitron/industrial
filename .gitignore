@@ -31,21 +31,32 @@ server/node_modules/
 /dist
 
 # ========================================
-# ENVIRONMENT VARIABLES (CRÍTICO)
+# ENVIRONMENT VARIABLES (CRÍTICO - NUNCA SUBIR)
 # ========================================
 # Archivos de variables de entorno (NUNCA subir)
 .env
 .env.local
+.env.development
 .env.development.local
 .env.test.local
-.env.production.local
 .env.production
+.env.production.local
 
 # Variables de entorno del servidor (CRÍTICO)
 server/.env
 server/.env.local
 server/.env.development
 server/.env.production
+
+# Backups de archivos .env (CRÍTICO)
+*.env.backup.*
+server/*.env.backup.*
+.env.backup.*
+.env.*.backup
+
+# Solo permitir archivos .example
+!.env.example
+!server/.env.example
 
 # ========================================
 # LOGS Y DEBUG
