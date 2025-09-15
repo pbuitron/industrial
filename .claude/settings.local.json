@@ -30,7 +30,9 @@
       "Bash(mkdir:*)",
       "Bash(start http://localhost:3001/productos/epoxicos)",
       "Bash(start http://localhost:3000/admin/cotizaciones/nueva)",
-      "Bash(start http://localhost:3002/admin/cotizaciones/nueva)"
+      "Bash(start http://localhost:3002/admin/cotizaciones/nueva)",
+      "Bash(git push:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

@@ -5,8 +5,17 @@ const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 
-// Cargar variables de entorno
-dotenv.config();
+// Cargar variables de entorno según el ambiente
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+dotenv.config({ path: envFile });
+
+// Debug: Verificar que la URI se cargó correctamente
+if (!process.env.MONGODB_URI) {
+  console.error('❌ MONGODB_URI no está definida');
+  console.error('Archivo .env usado:', envFile);
+  console.error('NODE_ENV:', process.env.NODE_ENV);
+  process.exit(1);
+}
 
 // Conectar a MongoDB
 connectDB();
