@@ -1,0 +1,534 @@
+🔧 DIAGNÓSTICO AVANZADO - API 404 EN VPS
+========================================
+Fecha: Mon Sep 15 06:41:44 PM UTC 2025
+
+🔍 PASO 1: VERIFICAR BACKEND EN PUERTO 3001
+----------------------------------------
+=== ¿Qué está corriendo en puerto 3001? ===
+tcp6       0      0 :::3001                 :::*                    LISTEN      28494/node /root/in 
+
+=== Test directo localhost:3001 ===
+Probando /api/health en localhost:3001...
+* Host localhost:3001 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:3001...
+* Connected to localhost (::1) port 3001
+> GET /api/health HTTP/1.1
+> Host: localhost:3001
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+< Cross-Origin-Opener-Policy: same-origin
+< Cross-Origin-Resource-Policy: cross-origin
+< Origin-Agent-Cluster: ?1
+< Referrer-Policy: no-referrer
+< Strict-Transport-Security: max-age=15552000; includeSubDomains
+< X-Content-Type-Options: nosniff
+< X-DNS-Prefetch-Control: off
+< X-Download-Options: noopen
+< X-Frame-Options: SAMEORIGIN
+< X-Permitted-Cross-Domain-Policies: none
+< X-XSS-Protection: 0
+< Vary: Origin
+< Access-Control-Allow-Credentials: true
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 112
+< ETag: W/"70-45ZKC+1A4zolCNLS6uzqlgktoqo"
+< Date: Mon, 15 Sep 2025 18:41:44 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [112 bytes data]
+100   112  100   112    0     0  60409      0 --:--:-- --:--:-- --:--:--  109k
+* Connection #0 to host localhost left intact
+{"success":true,"message":"Server is running","timestamp":"2025-09-15T18:41:44.784Z","environment":"production"}
+=== Test directo sin /api/ ===
+Probando /health en localhost:3001...
+* Host localhost:3001 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:3001...
+* Connected to localhost (::1) port 3001
+> GET /health HTTP/1.1
+> Host: localhost:3001
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+< Cross-Origin-Opener-Policy: same-origin
+< Cross-Origin-Resource-Policy: cross-origin
+< Origin-Agent-Cluster: ?1
+< Referrer-Policy: no-referrer
+< Strict-Transport-Security: max-age=15552000; includeSubDomains
+< X-Content-Type-Options: nosniff
+< X-DNS-Prefetch-Control: off
+< X-Download-Options: noopen
+< X-Frame-Options: SAMEORIGIN
+< X-Permitted-Cross-Domain-Policies: none
+< X-XSS-Protection: 0
+< Vary: Origin
+< Access-Control-Allow-Credentials: true
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 48
+< ETag: W/"30-177dX+vhLAEB2U0+vVGvR4Q40eo"
+< Date: Mon, 15 Sep 2025 18:41:44 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [48 bytes data]
+100    48  100    48    0     0  23610      0 --:--:-- --:--:-- --:--:-- 48000
+* Connection #0 to host localhost left intact
+{"success":false,"message":"Ruta no encontrada"}
+=== Test root backend ===
+Probando root en localhost:3001...
+* Host localhost:3001 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:3001...
+* Connected to localhost (::1) port 3001
+> GET / HTTP/1.1
+> Host: localhost:3001
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+< Cross-Origin-Opener-Policy: same-origin
+< Cross-Origin-Resource-Policy: cross-origin
+< Origin-Agent-Cluster: ?1
+< Referrer-Policy: no-referrer
+< Strict-Transport-Security: max-age=15552000; includeSubDomains
+< X-Content-Type-Options: nosniff
+< X-DNS-Prefetch-Control: off
+< X-Download-Options: noopen
+< X-Frame-Options: SAMEORIGIN
+< X-Permitted-Cross-Domain-Policies: none
+< X-XSS-Protection: 0
+< Vary: Origin
+< Access-Control-Allow-Credentials: true
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 48
+< ETag: W/"30-177dX+vhLAEB2U0+vVGvR4Q40eo"
+< Date: Mon, 15 Sep 2025 18:41:44 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [48 bytes data]
+100    48  100    48    0     0  25130      0 --:--:-- --:--:-- --:--:-- 48000
+* Connection #0 to host localhost left intact
+{"success":false,"message":"Ruta no encontrada"}
+
+🔍 PASO 2: PM2 LOGS Y CONFIGURACIÓN
+----------------------------------------
+=== PM2 Status ===
+┌────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 3  │ backend     │ default     │ 1.0.0   │ fork    │ 28494    │ 24m    │ 0    │ online    │ 0%       │ 92.7mb   │ root     │ disabled │
+│ 1  │ frontend    │ default     │ 0.40.3  │ fork    │ 26227    │ 103m   │ 6    │ online    │ 0%       │ 67.1mb   │ root     │ disabled │
+└────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+=== PM2 Logs Backend (últimas 20 líneas) ===
+[TAILING] Tailing last 20 lines for [backend] process (change the value with --lines option)
+/root/.pm2/logs/backend-error.log last 20 lines:
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+
+/root/.pm2/logs/backend-out.log last 20 lines:
+3|backend  | 🚀 Servidor corriendo en puerto 3001
+3|backend  | 📍 Environment: production
+3|backend  | 🔗 Health check: http://localhost:3001/api/health
+3|backend  | MongoDB conectado: backend-shard-00-00.98juy.mongodb.net
+3|backend  | SIGINT recibido. Cerrando servidor HTTP...
+3|backend  | Servidor HTTP cerrado.
+3|backend  | MongoDB desconectado
+3|backend  | Conexión a MongoDB cerrada por terminación de la aplicación
+3|backend  | 🚀 Servidor corriendo en puerto 3001
+3|backend  | 📍 Environment: production
+3|backend  | 🔗 Health check: http://localhost:3001/api/health
+3|backend  | MongoDB conectado: backend-shard-00-00.98juy.mongodb.net
+3|backend  | SIGINT recibido. Cerrando servidor HTTP...
+3|backend  | Servidor HTTP cerrado.
+3|backend  | MongoDB desconectado
+3|backend  | Conexión a MongoDB cerrada por terminación de la aplicación
+3|backend  | 🚀 Servidor corriendo en puerto 3001
+3|backend  | 📍 Environment: production
+3|backend  | 🔗 Health check: http://localhost:3001/api/health
+3|backend  | MongoDB conectado: backend-shard-00-00.98juy.mongodb.net
+
+
+=== PM2 Environment Variables ===
+
+
+🔍 PASO 3: VERIFICAR CONFIGURACIÓN DEL SERVIDOR
+----------------------------------------
+=== Archivo server.js o app.js ===
+No se encontró server.js ni app.js en /var/www/html/server/
+Buscando archivos principales en server/:
+ls: cannot access '/var/www/html/server/': No such file or directory
+
+
+🔍 PASO 4: NGINX CONFIGURACIÓN DETALLADA
+----------------------------------------
+=== Test sintaxis Nginx ===
+2025/09/15 18:41:45 [warn] 29043#29043: conflicting server name "industrial-iot.us" on 0.0.0.0:80, ignored
+2025/09/15 18:41:45 [warn] 29043#29043: conflicting server name "www.industrial-iot.us" on 0.0.0.0:80, ignored
+2025/09/15 18:41:45 [warn] 29043#29043: conflicting server name "industrial-iot.us" on 0.0.0.0:443, ignored
+2025/09/15 18:41:45 [warn] 29043#29043: conflicting server name "www.industrial-iot.us" on 0.0.0.0:443, ignored
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+=== Configuración completa location /api/ ===
+
+=== Verificar si hay múltiples configuraciones ===
+=== /etc/nginx/sites-enabled/ ===
+cat: /etc/nginx/sites-enabled/: Is a directory
+=== /etc/nginx/sites-enabled/industrial-iot ===
+# HTTP - Redirección a HTTPS
+server {
+    listen 80;
+    server_name industrial-iot.us www.industrial-iot.us;
+
+    # Redirección permanente a HTTPS
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS - Configuración principal
+server {
+    listen 443 ssl http2;
+    server_name industrial-iot.us www.industrial-iot.us;
+
+    # SSL Configuration
+    ssl_certificate /etc/letsencrypt/live/industrial-iot.us/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/industrial-iot.us/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    # Headers de seguridad
+    add_header X-Frame-Options DENY always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Configuración de logs
+    access_log /var/log/nginx/industrial-iot.access.log;
+    error_log /var/log/nginx/industrial-iot.error.log;
+
+    # API Backend (puerto 3001) - CORREGIDO
+    location /api/ {
+        proxy_pass http://localhost:3001/;
+
+        # Headers básicos de proxy
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+
+        # Timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+
+        # CORS Headers para ambos dominios
+        add_header Access-Control-Allow-Origin "https://industrial-iot.us, https://www.industrial-iot.us" always;
+        add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" always;
+        add_header Access-Control-Allow-Headers "Content-Type, Authorization" always;
+        add_header Access-Control-Allow-Credentials "true" always;
+
+        # Headers para APIs
+        proxy_set_header Accept-Encoding "";
+        add_header X-API-Server "industrial-backend" always;
+    }
+
+    # Frontend Next.js (puerto 3000)
+    location / {
+        proxy_pass http://localhost:3000;
+
+        # Headers básicos de proxy
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Para WebSocket y Hot Reload
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_cache_bypass $http_upgrade;
+
+        # Timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # Manejo de archivos estáticos
+    location /_next/static/ {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Favicon y robots.txt
+    location = /favicon.ico {
+        proxy_pass http://localhost:3000;
+        expires 1d;
+        add_header Cache-Control "public";
+    }
+
+    location = /robots.txt {
+        proxy_pass http://localhost:3000;
+        expires 1d;
+        add_header Cache-Control "public";
+    }
+}
+=== /etc/nginx/sites-enabled/backend ===
+server {
+    listen 80;
+    server_name api.industrial-iot.us;
+
+    location / {
+        proxy_pass http://localhost:5000;   # puerto donde corre tu backend con PM2
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+=== /etc/nginx/sites-enabled/frontend ===
+server {
+    server_name industrial-iot.us www.industrial-iot.us;
+
+    location / {
+        proxy_pass http://localhost:3000;   # puerto donde corre tu frontend con PM2
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/industrial-iot.us/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/industrial-iot.us/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = www.industrial-iot.us) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name industrial-iot.us www.industrial-iot.us;
+    return 404; # managed by Certbot
+
+
+}
+
+🔍 PASO 5: TEST PASO A PASO NGINX
+----------------------------------------
+=== Test Nginx sin SSL (puerto 80) ===
+* Host localhost:80 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:80...
+* connect to ::1 port 80 from ::1 port 33536 failed: Connection refused
+*   Trying 127.0.0.1:80...
+* Connected to localhost (127.0.0.1) port 80
+> GET /api/health HTTP/1.1
+> Host: localhost
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 502 Bad Gateway
+< Server: nginx/1.24.0 (Ubuntu)
+< Date: Mon, 15 Sep 2025 18:41:45 GMT
+< Content-Type: text/html
+< Content-Length: 166
+< Connection: keep-alive
+< 
+{ [166 bytes data]
+100   166  100   166    0     0   220k      0 --:--:-- --:--:-- --:--:--  162k
+* Connection #0 to host localhost left intact
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.24.0 (Ubuntu)</center>
+</body>
+</html>
+
+=== Test directo al proxy_pass ===
+* Host localhost:3001 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:3001...
+* Connected to localhost (::1) port 3001
+> GET /health HTTP/1.1
+> Host: localhost:3001
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+< Cross-Origin-Opener-Policy: same-origin
+< Cross-Origin-Resource-Policy: cross-origin
+< Origin-Agent-Cluster: ?1
+< Referrer-Policy: no-referrer
+< Strict-Transport-Security: max-age=15552000; includeSubDomains
+< X-Content-Type-Options: nosniff
+< X-DNS-Prefetch-Control: off
+< X-Download-Options: noopen
+< X-Frame-Options: SAMEORIGIN
+< X-Permitted-Cross-Domain-Policies: none
+< X-XSS-Protection: 0
+< Vary: Origin
+< Access-Control-Allow-Credentials: true
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 48
+< ETag: W/"30-177dX+vhLAEB2U0+vVGvR4Q40eo"
+< Date: Mon, 15 Sep 2025 18:41:45 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [48 bytes data]
+100    48  100    48    0     0  22119      0 --:--:-- --:--:-- --:--:-- 24000
+* Connection #0 to host localhost left intact
+{"success":false,"message":"Ruta no encontrada"}
+
+🔍 PASO 6: PROCESOS Y PUERTOS
+----------------------------------------
+=== Todos los puertos Node.js ===
+tcp6       0      0 :::3001                 :::*                    LISTEN      28494/node /root/in 
+
+=== Procesos Node.js ===
+root       28494  0.2  4.7 1352872 95012 ?       Ssl  18:17   0:03 node /root/industrial/server/server.js
+
+
+🔍 PASO 7: LOGS EN TIEMPO REAL
+----------------------------------------
+=== Monitoreando logs Nginx mientras hacemos request ===
+Iniciando monitoreo...
+==> /var/log/nginx/access.log <==
+38.253.158.122 - - [15/Sep/2025:18:31:56 +0000] "GET /api/products/abrazaderas HTTP/2.0" 404 2916 "https://industrial-iot.us/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+38.253.158.122 - - [15/Sep/2025:18:31:56 +0000] "GET /api/products/kits HTTP/2.0" 404 2916 "https://industrial-iot.us/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+38.253.158.122 - - [15/Sep/2025:18:31:56 +0000] "GET /api/products/epoxicos HTTP/2.0" 404 2916 "https://industrial-iot.us/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+91.224.92.17 - - [15/Sep/2025:18:35:39 +0000] "GET / HTTP/1.1" 502 166 "-" "-"
+138.197.140.218 - - [15/Sep/2025:18:35:45 +0000] "GET /.env HTTP/1.1" 404 2933 "-" "Mozilla/5.0; Keydrop.io/1.0(onlyscans.com/about);"
+138.197.140.218 - - [15/Sep/2025:18:35:45 +0000] "GET /.env HTTP/1.1" 400 264 "-" "Mozilla/5.0; Keydrop.io/1.0(onlyscans.com/about);"
+138.197.140.218 - - [15/Sep/2025:18:35:45 +0000] "GET /.git/config HTTP/1.1" 404 2933 "-" "Mozilla/5.0; Keydrop.io/1.0(onlyscans.com/about);"
+138.197.140.218 - - [15/Sep/2025:18:35:46 +0000] "GET /.git/config HTTP/1.1" 400 264 "-" "Mozilla/5.0; Keydrop.io/1.0(onlyscans.com/about);"
+172.68.164.87 - - [15/Sep/2025:18:37:20 +0000] "GET / HTTP/2.0" 200 15170 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+127.0.0.1 - - [15/Sep/2025:18:41:45 +0000] "GET /api/health HTTP/1.1" 502 166 "-" "curl/8.5.0"
+
+==> /var/log/nginx/error.log <==
+2025/09/15 17:58:49 [error] 22288#22288: *4030 connect() failed (111: Connection refused) while connecting to upstream, client: 172.234.207.202, server: api.industrial-iot.us, request: "GET / HTTP/1.0", upstream: "http://[::1]:5000/"
+2025/09/15 17:58:49 [error] 22288#22288: *4040 no live upstreams while connecting to upstream, client: 172.234.207.202, server: api.industrial-iot.us, request: "GET / HTTP/1.1", upstream: "http://localhost/", host: "162.254.37.42"
+2025/09/15 18:08:12 [error] 22288#22288: *4115 connect() failed (111: Connection refused) while connecting to upstream, client: 91.224.92.17, server: api.industrial-iot.us, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "162.254.37.42:80"
+2025/09/15 18:08:12 [error] 22288#22288: *4115 connect() failed (111: Connection refused) while connecting to upstream, client: 91.224.92.17, server: api.industrial-iot.us, request: "GET / HTTP/1.1", upstream: "http://[::1]:5000/", host: "162.254.37.42:80"
+2025/09/15 18:16:46 [error] 28349#28349: *4210 connect() failed (111: Connection refused) while connecting to upstream, client: 180.149.126.9, server: api.industrial-iot.us, request: "GET /c/ HTTP/1.1", upstream: "http://[::1]:5000/c/", host: "162.254.37.42"
+2025/09/15 18:16:46 [error] 28349#28349: *4210 connect() failed (111: Connection refused) while connecting to upstream, client: 180.149.126.9, server: api.industrial-iot.us, request: "GET /c/ HTTP/1.1", upstream: "http://127.0.0.1:5000/c/", host: "162.254.37.42"
+2025/09/15 18:35:39 [error] 28350#28350: *4370 connect() failed (111: Connection refused) while connecting to upstream, client: 91.224.92.17, server: api.industrial-iot.us, request: "GET / HTTP/1.1", upstream: "http://[::1]:5000/", host: "162.254.37.42:80"
+2025/09/15 18:35:39 [error] 28350#28350: *4370 connect() failed (111: Connection refused) while connecting to upstream, client: 91.224.92.17, server: api.industrial-iot.us, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "162.254.37.42:80"
+2025/09/15 18:41:45 [error] 28350#28350: *4381 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: api.industrial-iot.us, request: "GET /api/health HTTP/1.1", upstream: "http://127.0.0.1:5000/api/health", host: "localhost"
+2025/09/15 18:41:45 [error] 28350#28350: *4381 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: api.industrial-iot.us, request: "GET /api/health HTTP/1.1", upstream: "http://[::1]:5000/api/health", host: "localhost"
+Haciendo request de prueba...
+2025/09/15 18:41:47 [error] 28350#28350: *4384 no live upstreams while connecting to upstream, client: 127.0.0.1, server: api.industrial-iot.us, request: "GET /api/health HTTP/1.1", upstream: "http://localhost/api/health", host: "localhost"
+
+==> /var/log/nginx/access.log <==
+127.0.0.1 - - [15/Sep/2025:18:41:47 +0000] "GET /api/health HTTP/1.1" 502 166 "-" "curl/8.5.0"
+
+==> /var/log/nginx/error.log <==
+2025/09/15 18:41:47 [error] 28350#28350: *4385 no live upstreams while connecting to upstream, client: 127.0.0.1, server: api.industrial-iot.us, request: "GET /api/products/abrazaderas HTTP/1.1", upstream: "http://localhost/api/products/abrazaderas", host: "localhost"
+
+==> /var/log/nginx/access.log <==
+127.0.0.1 - - [15/Sep/2025:18:41:47 +0000] "GET /api/products/abrazaderas HTTP/1.1" 502 166 "-" "curl/8.5.0"
+No se pudieron leer logs de Nginx
+
+=== PM2 logs en tiempo real (últimas líneas) ===
+[TAILING] Tailing last 5 lines for [backend] process (change the value with --lines option)
+/root/.pm2/logs/backend-error.log last 5 lines:
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+3|backend  | Error conectando a MongoDB: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+
+/root/.pm2/logs/backend-out.log last 5 lines:
+3|backend  | Conexión a MongoDB cerrada por terminación de la aplicación
+3|backend  | 🚀 Servidor corriendo en puerto 3001
+3|backend  | 📍 Environment: production
+3|backend  | 🔗 Health check: http://localhost:3001/api/health
+3|backend  | MongoDB conectado: backend-shard-00-00.98juy.mongodb.net
+
+
+🔍 PASO 8: VARIABLES DE ENTORNO
+----------------------------------------
+=== Variables cargadas en el proceso Node.js ===
+Ejecutando verificación de variables...
+./diagnose_api_404.sh: line 149: cd: /var/www/html/server: No such file or directory
+
+🔍 PASO 9: ESTRUCTURA DE RUTAS DEL BACKEND
+----------------------------------------
+=== Archivos de rutas ===
+
+=== Contenido de rutas principales ===
+Buscando archivos con 'router' o 'app.get'...
+grep: /var/www/html/server: No such file or directory
+
+🔍 PASO 10: RESUMEN Y PRÓXIMOS PASOS
+----------------------------------------
+=== Resumen de hallazgos ===
+1. Puerto 3001 en uso: 1 procesos
+2. Procesos Node.js: 1
+3. Estado PM2 backend: fork
+4. Configuración Nginx: 1 successful
+
+✅ Diagnóstico completo finalizado!
+📁 Archivo generado: diagnose_api_404.sh
+
+🔧 PRÓXIMOS PASOS SUGERIDOS:
+1. Revisar si el backend está corriendo en el puerto correcto
+2. Verificar las rutas del backend (/api/ vs sin /api/)
+3. Comprobar la configuración proxy_pass de Nginx
+4. Revisar los logs de PM2 para errores
