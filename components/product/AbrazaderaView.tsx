@@ -92,7 +92,7 @@ export function AbrazaderaView({ product }: AbrazaderaViewProps) {
           <img
             src="/Logo-azul.jpg"
             alt="Industrial IOT Logo"
-            className="absolute top-2 left-2 w-80 h-auto opacity-80 rounded-sm"
+            className="absolute top-2 left-2 w-50 h-auto opacity-80 rounded-sm"
           />
         </div>
 
