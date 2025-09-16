@@ -41,29 +41,8 @@ export function ProductsSection() {
         setLoading(true)
         setError(null)
 
-        // Obtener API URL con fallback robusto
-        const getApiUrl = () => {
-          // Prioridad: variable de entorno, luego detectar dominio actual, luego fallback
-          if (process.env.NEXT_PUBLIC_API_URL) {
-            return process.env.NEXT_PUBLIC_API_URL
-          }
-
-          // Si estamos en el cliente, usar el dominio actual
-          if (typeof window !== 'undefined') {
-            const hostname = window.location.hostname
-            if (hostname === 'www.industrial-iot.us') {
-              return 'https://www.industrial-iot.us/api'
-            }
-            if (hostname === 'localhost') {
-              return 'http://localhost:3001/api'
-            }
-          }
-
-          // Fallback por defecto
-          return 'https://industrial-iot.us/api'
-        }
-
-        const apiUrl = getApiUrl()
+        // Usar URL simple y directa - versión de emergencia
+        const apiUrl = 'https://industrial-iot.us/api'
         console.log('API URL being used:', apiUrl) // Para debugging
 
         const [abrazaderasRes, kitsRes, epoxicosRes] = await Promise.all([
