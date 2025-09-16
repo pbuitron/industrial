@@ -41,8 +41,8 @@ export function ProductsSection() {
         setLoading(true)
         setError(null)
 
-        // Usar URL simple y directa - versión de emergencia
-        const apiUrl = 'https://industrial-iot.us/api'
+        // Usar URL dinámica basada en el dominio actual
+        const apiUrl = `${window.location.protocol}//${window.location.host}/api`
         console.log('API URL being used:', apiUrl) // Para debugging
 
         const [abrazaderasRes, kitsRes, epoxicosRes] = await Promise.all([
