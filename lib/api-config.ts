@@ -4,9 +4,9 @@
  */
 
 export function getApiUrl(): string {
-  // En el servidor (SSR), usar la URL de producción por defecto
+  // En el servidor (SSR), siempre usar la URL principal
   if (typeof window === 'undefined') {
-    return process.env.NEXT_PUBLIC_API_URL || 'https://industrial-iot.us/api'
+    return 'https://industrial-iot.us/api'
   }
 
   // En el cliente, usar el dominio actual para evitar problemas CORS
@@ -20,7 +20,7 @@ export function getApiUrl(): string {
     'localhost': 'http://localhost:3001/api'
   }
 
-  return apiMapping[currentHost] || `${protocol}//${currentHost}/api`
+  return apiMapping[currentHost] || 'https://industrial-iot.us/api'
 }
 
 export function getBaseUrl(): string {

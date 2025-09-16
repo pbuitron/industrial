@@ -11,7 +11,6 @@ import { useWhatsAppForm } from "@/hooks/useWhatsAppForm"
 import { WhatsAppFormModal } from "@/components/WhatsAppFormModal"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { OptimizedImage } from "@/components/ui/optimized-image"
-import { getApiUrl } from "@/lib/api-config"
 
 interface Product {
   _id?: string
@@ -42,11 +41,10 @@ export function ProductsSection() {
         setLoading(true)
         setError(null)
 
-        const apiUrl = getApiUrl()
         const [abrazaderasRes, kitsRes, epoxicosRes] = await Promise.all([
-          fetch(`${apiUrl}/products/abrazaderas`),
-          fetch(`${apiUrl}/products/kits`),
-          fetch(`${apiUrl}/products/epoxicos`)
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/abrazaderas`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/kits`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/epoxicos`)
         ])
 
         if (!abrazaderasRes.ok || !kitsRes.ok || !epoxicosRes.ok) {
